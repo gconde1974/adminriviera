@@ -41,7 +41,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    *** ADMIN AEPSA RIVIERA ***
                 </div>
 
                 <div class="links">
