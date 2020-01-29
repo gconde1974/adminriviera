@@ -7,5 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class Obras extends Model
 {
-    //
+    public function getObras(){
+        
+    }
 }
