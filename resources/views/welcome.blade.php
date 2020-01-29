@@ -21,7 +21,7 @@
             .links > a {color: #636b6f;padding: 0 25px;font-size: 13px;font-weight: 600;letter-spacing: .1rem;text-decoration: none;text-transform: uppercase;}
             .m-b-md {margin-bottom: 30px;}
         </style>
-        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" href="{{ asset('css/app.css')}}">
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -45,8 +45,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
+                    <a href="{{route('clientes.nuevo')}}">Docs</a>
+                    <a href="{{route('clientes.clientes')}}">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://blog.laravel.com">Blog</a>
                     <a href="https://nova.laravel.com">Nova</a>
