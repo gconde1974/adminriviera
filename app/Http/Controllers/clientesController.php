@@ -7,16 +7,16 @@ use App\Clientes;
 
 class clientesController extends Controller
 {
-    protected $clientes;
+    protected $Clientes;
 
     public function __construct(Clientes $clientes)
     {
-        $this->clientes = $clientes;
+        $this->Clientes = $clientes;
     }
 
     public function index()
     {
-        $Listadoclientes = $this->clientes->getClientes();
+        $Listadoclientes = $this->Clientes->getClientes();
 
         return view('welcome', ['clientes' => $Listadoclientes]);
     }

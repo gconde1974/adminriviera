@@ -7,11 +7,11 @@ use App\Obras;
 
 class obrasController extends Controller
 {
-    protected $obras;
+    protected $Obras;
 
     public function __construct(Obras $obras)
     {
-        $this->obras = $obras;
+        $this->Obras = $obras;
     }
 
     /**

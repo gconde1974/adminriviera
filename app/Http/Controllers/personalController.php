@@ -7,11 +7,11 @@ use App\Personal;
 
 class personalController extends Controller
 {
-    protected $personal;
+    protected $Personal;
 
     public function __construct(Personal $personal)
     {
-        $this->personal = $personal;
+        $this->Personal = $personal;
     }
 
     /**

@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Cotizaciones;
+use App\Proveedores;
 
-class cotizacionesController extends Controller
+class proveedoresController extends Controller
 {
-    protected $Cotizaciones;
-
-    public function __construct(Cotizaciones $cotizaciones)
-    {
-        $this->Cotizaciones = $cotizaciones;
+    protected $Proveedores;
+    
+    public function __construct(Proveedores $proveedores){
+        $this->Proveedores = $proveedores;
     }
 
     /**
