@@ -3,22 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Clientes;
+use App\Personal;
 
-class clientesController extends Controller
+class personalController extends Controller
 {
-    protected $clientes;
+    protected $personal;
 
-    public function __construct(Clientes $clientes)
+    public function __construct(Personal $personal)
     {
-        $this->clientes = $clientes;
+        $this->personal = $personal;
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $Listadoclientes = $this->clientes->getClientes();
-
-        return view('welcome', ['clientes' => $Listadoclientes]);
+        //
     }
 
     /**
@@ -76,4 +79,14 @@ class clientesController extends Controller
         //
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
 }
