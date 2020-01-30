@@ -20,63 +20,119 @@ class clientesController extends Controller
     public function index()
     {
         $Listadoclientes = $this->Clientes->getClientes();
-
         return view('welcome', ['clientes' => $Listadoclientes]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $paises = $this->Catalogos->getPaises();
+        $idPais = 1; //México
+        $estados = $this->Catalogos->getEstadosByPais($idPais);
+
+        return view('welcome', ['estados' => $estados]); //cambiar vista
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        try {
+            $arrayCliente = ['nombre' => $request->input('nombre'), 
+                        'telefono' => $request->input('telefono'),
+                        'correo' => $request->input('email'),
+                        'direccion' => $request->input('direccion'),
+                        'idCiudad' => $request->input('idciudad'),
+                        'idEstado' => $request->input('idestado'),
+                        'fechaRegistro' => date("Y-m-d")];
+
+            $nuevoCliente = $this->Clientes->createCliente($arrayCliente);
+            return redirect()->route('clientes.clientes');
+
+        } catch (\Throwable $th) {
+            return redirect()->route('clientes.clientes');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        try {
+            $cliente = $this->Clientes->getCliente($id);
+            
+            if(cliente)
+                return view('welcome', ['cliente' => $cliente]); //cambiar vista
+
+        } catch (\Throwable $th) {
+            return redirect()->route('clientes.clientes');
+        }
+        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        try {
+            $cliente = $this->Clientes->getCliente($id);
+
+            $paises = $this->Catalogos->getPaises();
+            $idPais = 1; //México
+            $estados = $this->Catalogos->getEstadosByPais($idPais);
+            $ciudades = $this->Catalogos->getCiudadesByEstado($Cliente->idEstado);
+
+            if(cliente)
+                return view('welcome', ['cliente' => $cliente, 'estados' => $estados, 'ciudades' => $ciudades]); //cambiar vista
+
+        } catch (\Throwable $th) {
+            return redirect()->route('clientes.clientes');
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $arrayCliente = ['nombre' => $request->input('nombre'), 
+                            'telefono' => $request->input('telefono'),
+                            'correo' => $request->input('email'),
+                            'direccion' => $request->input('direccion'),
+                            'idCiudad' => $request->input('idciudad'),
+                            'idEstado' => $request->input('idestado')
+                        ];
+
+            $updateCliente = $this->Clientes->updateCliente($id, $arrayCliente);
+            return redirect()->route('clientes.clientes');
+
+        } catch (\Throwable $th) {
+            return redirect()->route('clientes.clientes');
+        }
+    }
+
+    public function showSeguimientoCliente($id)
+    {
+        $seguimiento = $this->Catalogos->getSeguimientoCliente($id);
+        return view('welcome', ['seguimiento' => $seguimiento]); //cambiar vista
+    }
+
+    public function nuevoSeguimiento()
+    {
+        $mediosContacto = $this->Catalogos->getMediosContactos();
+        return redirect('/clientes')->with('status', 'seguimiento creado!');
+
+        return view('welcome', ['mediosContacto' => $mediosContacto]); //cambiar vista
+    }
+
+    public function createSeguimiento(Request $request, $id)
+    {
+        try {
+            $arraySeguimiento = ['idCliente' => $request->input('idCliente'),
+                            'fecha' => $request->input('fecha'),
+                            'idMedioContacto' => $request->input('idMedio'),
+                            'descripcion' => $request->input('descripcion')
+                        ];
+
+            $nuevoSeguimiento = $this->Clientes->createSeguimientoCliente($arraySeguimiento);
+            // return redirect()->route('clientes.seguimiento');
+            return redirect('/clientes')->with('status', 'seguimiento creado!'); //cambiar vista
+
+        } catch (\Throwable $th) {
+            return redirect()->route('clientes.seguimiento');
+        }
     }
 
 }

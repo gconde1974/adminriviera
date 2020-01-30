@@ -23,6 +23,13 @@ Route::get('/blank', function () {
 Route::prefix('clientes')->group(function () {
     Route::get('/', 'clientesController@index')->name('clientes.clientes');
     Route::get('/nuevo', 'clientesController@create')->name('clientes.nuevo');
+    Route::post('/crear', 'clientesController@store')->name('clientes.crear');
+    Route::get('/ver/{id}', 'clientesController@show')->name('clientes.ver');
+    Route::get('/editar/{id}', 'clientesController@edit')->name('clientes.editar');
+    Route::post('/actualizar/{id}', 'clientesController@update')->name('clientes.actualizar');
+    Route::get('/seguimiento/{id}', 'clientesController@showSeguimientoCliente')->name('clientes.seguimiento');
+    Route::get('/nuevoseguimiento', 'clientesController@nuevoSeguimiento')->name('clientes.nuevoseguimiento');
+    Route::post('/crearseguimiento/{id}', 'clientesController@createSeguimiento')->name('clientes.crearseguimiento');
     
 });
 
