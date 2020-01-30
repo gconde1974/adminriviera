@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Clientes;
+use App\Catalogos;
 
 class clientesController extends Controller
 {
     protected $Clientes;
+    protected $Catalogos;
 
-    public function __construct(Clientes $clientes)
+    public function __construct(Clientes $clientes, Catalogos $catalogos)
     {
         $this->Clientes = $clientes;
+        $this->Catalogos = $catalogos;
     }
 
     public function index()
