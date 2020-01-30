@@ -14,6 +14,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// PAGINA EN BLANCO
+Route::get('/blank', function () {
+    return view('blank');
+});
+
 //Grupo de rutas para clientes
 Route::prefix('clientes')->group(function () {
     Route::get('/', 'clientesController@index')->name('clientes.clientes');
