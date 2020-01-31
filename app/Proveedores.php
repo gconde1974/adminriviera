@@ -14,7 +14,7 @@ class Proveedores extends Model
 
     public function getProveedor($idProveedor)
     {
-        return $cliente = DB::table('proveedores')->where('idProveedores', $idProveedor)->first();
+        return $proveedor = DB::table('proveedores')->where('idProveedores', $idProveedor)->first();
     }
 
     public function createProveedor($arrayProveedor)
