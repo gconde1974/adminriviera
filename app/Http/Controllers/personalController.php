@@ -4,87 +4,96 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Personal;
+use App\Catalogos;
 
 class personalController extends Controller
 {
     protected $Personal;
+    protected $Catalogos;
 
-    public function __construct(Personal $personal)
+    public function __construct(Personal $personal, Catalogos $catalogos)
     {
         $this->Personal = $personal;
+        $this->Catalogos = $catalogos;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $ListadoPersonal = $this->Personal->getListadoPersonal();
+        return view('welcome', ['personal' => $ListadoPersonal]); //cambiar vista
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $estatus = $this->Catalogos->getStatusPersonal();
+        $puestos = $this->Catalogos->getPuestosPersonal();
+
+        return view('welcome', ['estatus' => $estatus, 'puestos' => $puestos]); //cambiar vista
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        try {
+            $arrayPersonal = ['nombre' => $request->input('nombre'),
+                        'sueldoDiario' => $request->input('sueldodiario'),
+                        'immsDiario' => $request->input('immsdiario'),
+                        'status' => $request->input('idStatus'),
+                        'idPuestos' => $request->input('idPuesto')
+                    ];
+            $nuevoPersonal = $this->Personal->createPersonal($arrayPersonal);
+            // return redirect()->route('personal.personal');
+            return redirect('/personal')->with('status', 'Personal creado!'); //cambiar vista
+        } catch (\Throwable $th) {
+            return redirect()->route('personal.personal');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
-    }
+        try {
+            $personal = $this->Personal->getPersonal($id);
+            
+            if(personal)
+                return view('welcome', ['personal' => $personal]); //cambiar vista
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+        } catch (\Throwable $th) {
+            return redirect()->route('personal.personal');
+        }
+    }
+    
     public function edit($id)
     {
-        //
+        try {
+            $personal = $this->Personal->getPersonal($id);
+
+            $estatus = $this->Catalogos->getStatusPersonal();
+            $puestos = $this->Catalogos->getPuestosPersonal();
+            
+            if(personal)
+                return view('welcome', ['personal' => $personal, 'estatus' => $estatus, 'puestos' => $puestos]); //cambiar vista
+
+        } catch (\Throwable $th) {
+            return redirect()->route('personal.personal');
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $arrayPersonal = ['nombre' => $request->input('nombre'),
+                        'sueldoDiario' => $request->input('sueldodiario'),
+                        'immsDiario' => $request->input('immsdiario'),
+                        'status' => $request->input('idStatus'),
+                        'idPuestos' => $request->input('idPuesto')
+                    ];
+            $updatePersonal = $this->Personal->updatePersonal($id, $arrayPersonal);
+            return redirect('/personal')->with('status', 'Personal actualizado!'); //cambiar vista
+        } catch (\Throwable $th) {
+            return redirect()->route('personal.personal');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         //

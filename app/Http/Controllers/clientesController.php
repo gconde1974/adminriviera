@@ -20,7 +20,7 @@ class clientesController extends Controller
     public function index()
     {
         $Listadoclientes = $this->Clientes->getClientes();
-        return view('welcome', ['clientes' => $Listadoclientes]);
+        return view('welcome', ['clientes' => $Listadoclientes]); //cambiar vista
     }
 
     public function create()
@@ -63,7 +63,6 @@ class clientesController extends Controller
         } catch (\Throwable $th) {
             return redirect()->route('clientes.clientes');
         }
-        
     }
 
     public function edit($id)
@@ -112,7 +111,6 @@ class clientesController extends Controller
     public function nuevoSeguimiento()
     {
         $mediosContacto = $this->Catalogos->getMediosContactos();
-        return redirect('/clientes')->with('status', 'seguimiento creado!');
 
         return view('welcome', ['mediosContacto' => $mediosContacto]); //cambiar vista
     }

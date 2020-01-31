@@ -13,69 +13,68 @@ class proveedoresController extends Controller
         $this->Proveedores = $proveedores;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $ListadoProveedores = $this->Proveedores->getProveedores();
+        return view('welcome', ['proveedores' => $ListadoProveedores]); //cambiar vista
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('welcome', []); //cambiar vista
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        try {
+            $arrayProveedor = ['nombre' => $request->input('nombre'), 
+                        'direccion' => $request->input('direccion')
+                    ];
+
+            $nuevoProveedor = $this->Proveedores->createProveedor($arrayProveedor);
+            return redirect('/proveedores')->with('status', 'proveedor creado!'); //cambiar vista
+        } catch (\Throwable $th) {
+            return redirect()->route('proveedores.proveedores');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        try {
+            $proveedor = $this->Proveedores->getProveedor($id);
+            
+            if(proveedor)
+                return view('welcome', ['proveedor' => $proveedor]); //cambiar vista
+        } catch (\Throwable $th) {
+            return redirect()->route('proveedores.proveedores');
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        try {
+            $proveedor = $this->Proveedores->getProveedor($id);
+            
+            if(proveedor)
+                return view('welcome', ['proveedor' => $proveedor]); //cambiar vista
+        } catch (\Throwable $th) {
+            return redirect()->route('proveedores.proveedores');
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $arrayProveedor = ['nombre' => $request->input('nombre'), 
+                        'direccion' => $request->input('direccion')
+                    ];
+
+            $updateProveedor = $this->Proveedores->updateProveedor($arrayProveedor);
+            return redirect('/proveedores')->with('status', 'proveedor actualizado!'); //cambiar vista
+
+        } catch (\Throwable $th) {
+            return redirect()->route('proveedores.proveedores');
+        }
     }
 
     /**

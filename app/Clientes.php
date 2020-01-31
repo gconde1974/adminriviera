@@ -13,7 +13,9 @@ class Clientes extends Model
     }
 
     public function getCliente($id){
-        return $cliente = DB::table('clientes')->where('idClientes')
+        // DB::enableQueryLog()
+        // dd(DB::getQueryLog());
+        return $cliente = DB::table('clientes')->where('idClientes', $id)
                             ->join('estado', 'clientes.idEstado', '=', 'estado.idEstado')
                             ->join('ciudad', 'clientes.idCiudad', '=', 'ciudad.idCiudad')
                             ->select('clientes.*', 'estado.nombre', 'ciudad.nombre')
@@ -27,14 +29,13 @@ class Clientes extends Model
 
     public function updateCliente($idCliente, $arrayCliente)
     {
-        return $update = DB::table('clientes')->where('idCliente', $idCliente)
+        return $update = DB::table('clientes')->where('idClientes', $idCliente)
                             ->update($arrayCliente);
     }
 
     public function getSeguimientoCliente($idCliente)
     {
-        //unir con tabla medioContacto
-        return $seguimiento = DB::table('clienteSeguimiento')->where('idClientes', '=', $idCliente)
+        return $seguimiento = DB::table('clienteSeguimiento')->where('idClientes', $idCliente)
                                 ->join('medioContacto', 'clienteSeguimiento.idMedioContacto', '=', 'medioContacto.idMedioContacto')
                                 ->select('clienteSeguimiento.*', 'medioContacto.descripcion')
                                 ->get()->toArray();
@@ -44,5 +45,6 @@ class Clientes extends Model
     {
         return $seguimientoCliente = DB::table('clienteSeguimiento')->insertGetId($arraySeguimiento);
     }
+
 
 }

@@ -47,13 +47,23 @@ Route::prefix('obras')->group(function () {
 
 //Grupo de rutas para personal
 Route::prefix('personal')->group(function () {
-    // Route::get('/', 'personalController@index')->name('personal');
+    Route::get('/', 'personalController@index')->name('personal.personal');
+    Route::get('/nuevo', 'personalController@create')->name('personal.nuevo');
+    Route::post('/crear', 'personalController@store')->name('personal.crear');
+    Route::get('/ver/{id}', 'personalController@show')->name('personal.ver');
+    Route::get('/editar/{id}', 'personalController@edit')->name('personal.editar');
+    Route::post('/actualizar/{id}', 'personalController@update')->name('personal.actualizar');
     
 });
 
 //Grupo de rutas para proveedores
 Route::prefix('proveedores')->group(function () {
-    // Route::get('/', 'proveedoresController@index')->name('proveedores');
+    Route::get('/', 'proveedoresController@index')->name('proveedores.proveedores');
+    Route::get('/nuevo', 'proveedoresController@create')->name('proveedores.nuevo');
+    Route::post('/crear', 'proveedoresController@store')->name('proveedores.crear');
+    Route::get('/ver/{id}', 'proveedoresController@show')->name('proveedores.ver');
+    Route::get('/editar/{id}', 'proveedoresController@edit')->name('proveedores.editar');
+    Route::post('/actualizar/{id}', 'proveedoresController@update')->name('proveedores.actualizar');
     
 });
 
