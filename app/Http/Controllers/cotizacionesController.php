@@ -14,77 +14,71 @@ class cotizacionesController extends Controller
         $this->Cotizaciones = $cotizaciones;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $cotizaciones = $this->Cotizaciones->getCotizaciones();
+        //getDetalles cot.
+        //get archivos
+        //get anticipos
+        return view('welcome', ['cotizaciones' => $cotizaciones]); //cambiar vista
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $responsables = $this->Cotizaciones->getResponsables();
+
+        return view('welcome', ['responsables' => $responsables]); //cambiar vista
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        try {
+            $arrayCotizacion = ['descripcionGeneral' => $request->input('descripcion'),
+                            'subtotal' => $request->input('subtotal'),
+                            'iva' => $request->input('iva'),
+                            'total' => $request->input('total'),
+                            'moneda' => $request->input('moneda'),
+                            'fecha' => date('Y-m-d'),
+                            'vencimiento' => $request->input('vence'),
+                            'idClientes' => $request->input('idCliente'),
+                            'observaciones' => $request->input('observaciones'),
+                            'garantia' => $request->input('garantia'),
+                            'tiempoEntrega' => $request->input('tiempoentrega'),
+                            'formaPago' => $request->input('formapago'),
+                            'idResponsableCotizacion' => $request->input('idResponsable'),
+                        ];
+            $idCotizacion = $this->Cotizaciones->createCotizacion($arrayCotizacion);
+
+            //insertDetalles cot.
+            //insert archivos
+            //insert anticipos
+        } catch (\Throwable $th) {
+            return redirect()->route('cotizaciones.cotizaciones');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        try {
+            $cotizacion = $this->Cotizaciones->getCotizacion($id);
+            $detalleCotizacion = $this->Cotizaciones->getDetalleCotizacion($id);
+            $archivosCotizacion = $this->Cotizaciones->getArchivosCotizacion($id);
+            $anticiposCotizacion = $this->Cotizaciones->getAnticiposCotizacion($id);
+
+            $arrayCotizacion = ['cotizacion' => $cotizacion, 
+                                'detalle' => $detalleCotizacion,
+                                'archivos' => $archivosCotizacion,
+                                'anticipos' => $anticiposCotizacion
+                            ];
+            if($cotizacion){
+                return view('welcome', $arrayCotizacion); //cambiar vista
+            }
+            throw new \Exception("Error Processing Request", 1);
+        } catch (\Throwable $th) {
+            return redirect()->route('cotizaciones.cotizaciones');
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

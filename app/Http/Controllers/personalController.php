@@ -41,7 +41,6 @@ class personalController extends Controller
                         'idPuestos' => $request->input('idPuesto')
                     ];
             $nuevoPersonal = $this->Personal->createPersonal($arrayPersonal);
-            // return redirect()->route('personal.personal');
             return redirect('/personal')->with('status', 'Personal creado!'); //cambiar vista
         } catch (\Throwable $th) {
             return redirect()->route('personal.personal');
@@ -52,10 +51,10 @@ class personalController extends Controller
     {
         try {
             $personal = $this->Personal->getPersonal($id);
-            
-            if(personal)
+            if($personal){
                 return view('welcome', ['personal' => $personal]); //cambiar vista
-
+            }
+            throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {
             return redirect()->route('personal.personal');
         }
@@ -69,9 +68,10 @@ class personalController extends Controller
             $estatus = $this->Catalogos->getStatusPersonal();
             $puestos = $this->Catalogos->getPuestosPersonal();
             
-            if(personal)
+            if($personal){
                 return view('welcome', ['personal' => $personal, 'estatus' => $estatus, 'puestos' => $puestos]); //cambiar vista
-
+            }
+            throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {
             return redirect()->route('personal.personal');
         }

@@ -30,13 +30,14 @@ Route::prefix('clientes')->group(function () {
     Route::get('/seguimiento/{id}', 'clientesController@showSeguimientoCliente')->name('clientes.seguimiento');
     Route::get('/nuevoseguimiento', 'clientesController@nuevoSeguimiento')->name('clientes.nuevoseguimiento');
     Route::post('/crearseguimiento/{id}', 'clientesController@createSeguimiento')->name('clientes.crearseguimiento');
-    
 });
 
 //Grupo de rutas para cotizaciones
 Route::prefix('cotizaciones')->group(function () {
-    // Route::get('/', 'cotizacionesController@index')->name('cotizaciones');
-    
+    Route::get('/', 'cotizacionesController@index')->name('cotizaciones.cotizaciones');
+    Route::get('/nuevo', 'cotizacionesController@create')->name('cotizaciones.nuevo');
+    Route::post('/crear', 'cotizacionesController@store')->name('cotizaciones.crear');
+    Route::get('/ver/{id}', 'cotizacionesController@show')->name('cotizaciones.ver');
 });
 
 //Grupo de rutas para obras
@@ -53,7 +54,6 @@ Route::prefix('personal')->group(function () {
     Route::get('/ver/{id}', 'personalController@show')->name('personal.ver');
     Route::get('/editar/{id}', 'personalController@edit')->name('personal.editar');
     Route::post('/actualizar/{id}', 'personalController@update')->name('personal.actualizar');
-    
 });
 
 //Grupo de rutas para proveedores
@@ -64,7 +64,6 @@ Route::prefix('proveedores')->group(function () {
     Route::get('/ver/{id}', 'proveedoresController@show')->name('proveedores.ver');
     Route::get('/editar/{id}', 'proveedoresController@edit')->name('proveedores.editar');
     Route::post('/actualizar/{id}', 'proveedoresController@update')->name('proveedores.actualizar');
-    
 });
 
 //Grupo de rutas para inventarios

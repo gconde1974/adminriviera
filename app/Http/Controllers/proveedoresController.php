@@ -43,8 +43,10 @@ class proveedoresController extends Controller
         try {
             $proveedor = $this->Proveedores->getProveedor($id);
             
-            if(proveedor)
+            if($proveedor){
                 return view('welcome', ['proveedor' => $proveedor]); //cambiar vista
+            }
+            throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {
             return redirect()->route('proveedores.proveedores');
         }
@@ -55,8 +57,10 @@ class proveedoresController extends Controller
         try {
             $proveedor = $this->Proveedores->getProveedor($id);
             
-            if(proveedor)
+            if($proveedor){
                 return view('welcome', ['proveedor' => $proveedor]); //cambiar vista
+            }
+            throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {
             return redirect()->route('proveedores.proveedores');
         }
@@ -77,12 +81,6 @@ class proveedoresController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

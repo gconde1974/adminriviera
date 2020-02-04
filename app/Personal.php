@@ -9,7 +9,11 @@ class Personal extends Model
 {
     public function getListadoPersonal()
     {
-        return $personal = DB::select('select * from personal');
+        return $personal = DB::table('personal')
+                            ->join('statusPersonal', 'personal.status', '=', 'statusPersonal.idStatusPersonal')
+                            ->join('puestos', 'personal.idPuestos', '=', 'puestos.idPuestos')
+                            ->select('personal.*', 'statusPersonal.descripcion', 'puestos.descripcion')
+                            ->get()->toArray();
     }
 
     public function getPersonal($idPersonal)

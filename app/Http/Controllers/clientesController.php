@@ -30,7 +30,6 @@ class clientesController extends Controller
         $estados = $this->Catalogos->getEstadosByPais($idPais);
 
         return view('welcome', ['estados' => $estados]); //cambiar vista
-
     }
 
     public function store(Request $request)
@@ -45,8 +44,7 @@ class clientesController extends Controller
                         'fechaRegistro' => date("Y-m-d")];
 
             $nuevoCliente = $this->Clientes->createCliente($arrayCliente);
-            return redirect()->route('clientes.clientes');
-
+            return redirect('/clientes')->with('status', 'cliente creado!'); //cambiar vista
         } catch (\Throwable $th) {
             return redirect()->route('clientes.clientes');
         }
@@ -57,9 +55,10 @@ class clientesController extends Controller
         try {
             $cliente = $this->Clientes->getCliente($id);
             
-            if(cliente)
+            if($cliente){
                 return view('welcome', ['cliente' => $cliente]); //cambiar vista
-
+            }
+            throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {
             return redirect()->route('clientes.clientes');
         }
@@ -75,9 +74,10 @@ class clientesController extends Controller
             $estados = $this->Catalogos->getEstadosByPais($idPais);
             $ciudades = $this->Catalogos->getCiudadesByEstado($Cliente->idEstado);
 
-            if(cliente)
+            if($cliente){
                 return view('welcome', ['cliente' => $cliente, 'estados' => $estados, 'ciudades' => $ciudades]); //cambiar vista
-
+            }
+            throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {
             return redirect()->route('clientes.clientes');
         }
@@ -95,8 +95,7 @@ class clientesController extends Controller
                         ];
 
             $updateCliente = $this->Clientes->updateCliente($id, $arrayCliente);
-            return redirect()->route('clientes.clientes');
-
+            return redirect('/clientes')->with('status', 'cliente actualizado!'); //cambiar vista
         } catch (\Throwable $th) {
             return redirect()->route('clientes.clientes');
         }
@@ -125,9 +124,7 @@ class clientesController extends Controller
                         ];
 
             $nuevoSeguimiento = $this->Clientes->createSeguimientoCliente($arraySeguimiento);
-            // return redirect()->route('clientes.seguimiento');
             return redirect('/clientes')->with('status', 'seguimiento creado!'); //cambiar vista
-
         } catch (\Throwable $th) {
             return redirect()->route('clientes.seguimiento');
         }
