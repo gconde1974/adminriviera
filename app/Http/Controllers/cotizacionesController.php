@@ -33,6 +33,7 @@ class cotizacionesController extends Controller
     public function store(Request $request)
     {
         try {
+            // dd($request->all());
             $arrayCotizacion = ['descripcionGeneral' => $request->input('descripcion'),
                             'subtotal' => $request->input('subtotal'),
                             'iva' => $request->input('iva'),
@@ -48,10 +49,20 @@ class cotizacionesController extends Controller
                             'idResponsableCotizacion' => $request->input('idResponsable'),
                         ];
             $idCotizacion = $this->Cotizaciones->createCotizacion($arrayCotizacion);
+            $arrayDetalle = []; //revisar el request para llenar el arreglo.
+            $descripcionArray = $request->has('descripciones') ? $request->input('descripciones') : [];
+            foreach ($descripcionArray as $key => $value) {
+                $arrayDetalle[] = ['descripcion' => $value,
+                            'cantidad' => $request->input('cantidad1'),
+                            'precioUnitario' => $request->input('pu1'),
+                            'total' => $request->input('total1'),
+                            'idCotizaciones' => $idCotizacion,
+                        ];
+            }
 
-            //insertDetalles cot.
-            //insert archivos
-            //insert anticipos
+            $detalle = $this->Cotizaciones->createDetalleCotizacion($arrayDetalle); //insertDetalles cot.
+            //insert archivos?
+            //insert anticipos?
         } catch (\Throwable $th) {
             return redirect()->route('cotizaciones.cotizaciones');
         }
