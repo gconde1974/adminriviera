@@ -33,7 +33,6 @@
     @include('includes.navsuperior')
 
     @include('includes.sidebar')
-
    
     <div id="main-content">
         @yield('contenido')
