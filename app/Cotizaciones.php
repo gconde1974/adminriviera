@@ -67,4 +67,9 @@ class Cotizaciones extends Model
     {
         return $anticipos = DB::table('anticipos')->insert($arrayAnticipos);
     }
+
+    public function getResponsables()
+    {
+        return $responsables = DB::select('select * from responsablesCotizacion');
+    }
 }
