@@ -85,6 +85,11 @@ Route::prefix('gastos')->group(function () {
 
 //Grupo de rutas para vehículos
 Route::prefix('vehiculos')->group(function () {
-    // Route::get('/', 'vehiculosController@index')->name('vehiculos');
+    Route::get('/', 'vehiculosController@index')->name('vehiculos.vehiculos');
+    Route::get('/nuevo', 'vehiculosController@create')->name('vehiculos.nuevo');
+    Route::post('/crear', 'vehiculosController@store')->name('vehiculos.crear');
+    Route::get('/ver/{id}', 'vehiculosController@show')->name('vehiculos.ver');
+    Route::get('/editar/{id}', 'vehiculosController@edit')->name('vehiculos.editar');
+    Route::post('/actualizar/{id}', 'vehiculosController@update')->name('vehiculos.actualizar');
     
 });
