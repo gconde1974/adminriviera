@@ -19,6 +19,11 @@ Route::get('/blank', function () {
     return view('blank');
 });
 
+// PAGINA EN FRONT CLIENTES
+Route::get('/clientesFront', function () {
+    return view('secciones.clientes.listado');
+});
+
 //Grupo de rutas para clientes
 Route::prefix('clientes')->group(function () {
     Route::get('/', 'clientesController@index')->name('clientes.clientes');

@@ -1,7 +1,7 @@
 <div id="left-sidebar" class="sidebar">
         <div class="sidebar-scroll">
             <div class="user-account">
-                <img src="{{ asset('images/user.png') }}" class="rounded-circle user-photo" alt="User Profile Picture">
+                <img src="{{ asset('assets/images/user.png') }}" class="rounded-circle user-photo" alt="User Profile Picture">
                 <div class="dropdown">
                     <span>Bienvenido,</span>
                     <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>Mariana Cervantes</strong></a>
