@@ -79,7 +79,10 @@ Route::prefix('inventarios')->group(function () {
 
 //Grupo de rutas para gastos
 Route::prefix('gastos')->group(function () {
-    // Route::get('/', 'gastosController@index')->name('gastos');
+    Route::get('/', 'gastosController@index')->name('gastos.gastos');
+    Route::get('/nuevo', 'gastosController@create')->name('gastos.nuevo');
+    Route::post('/crear', 'gastosController@store')->name('gastos.crear');
+    Route::get('/ver/{id}', 'gastosController@show')->name('gastos.ver');
     
 });
 

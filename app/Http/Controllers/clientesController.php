@@ -20,7 +20,7 @@ class clientesController extends Controller
     public function index()
     {
         $Listadoclientes = $this->Clientes->getClientes();
-        return view('welcome', ['clientes' => $Listadoclientes]); //cambiar vista
+        return view('secciones.clientes.listado', ['clientes' => $Listadoclientes]); //cambiar vista
     }
 
     public function create()

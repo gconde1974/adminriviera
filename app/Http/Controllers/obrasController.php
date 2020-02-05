@@ -14,14 +14,11 @@ class obrasController extends Controller
         $this->Obras = $obras;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $obras = $this->Obras->getObras();
+
+        return view('obras', ['obras' => $obras]);
     }
 
     /**

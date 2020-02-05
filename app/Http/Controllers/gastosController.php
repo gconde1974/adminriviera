@@ -13,46 +13,44 @@ class gastosController extends Controller
         $this->Gastos = $gastos;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $gastos = $this->Gastos->getGastos();
+        return view('gastos.listado', ['gastos' => $gastos]); //cambiar vista
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('welcome'); //cambiar vista
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        try {
+            $arrayGasto = ['' => $request->input(''),
+                        '' => $request->input(''),
+                    ];
+            $nuevoGasto = $this->Gastos->createGasto($arrayGasto);
+            return redirect('/gastos')->with('status', 'gasto creado!'); //cambiar vista
+
+            // throw new \Exception("Error Processing Request", 1);
+        } catch (\Throwable $th) {
+            return redirect()->route('gastos.gastos');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        try {
+            $gasto = $this->Gastos->getGasto($id);
+
+            if($gasto){
+                return view('gastos.ver', ['gasto' => $gasto]); //cambiar vista
+            }
+            throw new \Exception("Error Processing Request", 1);
+        } catch (\Throwable $th) {
+            return redirect()->route('gastos.gastos');
+        }
     }
 
     /**
@@ -66,24 +64,12 @@ class gastosController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
