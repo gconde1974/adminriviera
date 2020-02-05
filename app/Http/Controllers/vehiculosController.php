@@ -90,6 +90,9 @@ class vehiculosController extends Controller
         }
     }
 
+
+    //falta ver como se agregaran los tramites, mantenimiento y control de combustible y kilometraje
+    //cada uno tendra un CRUD completo?
     
     public function destroy($id)
     {
