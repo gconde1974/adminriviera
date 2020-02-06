@@ -27,8 +27,12 @@ class gastosController extends Controller
     public function store(Request $request)
     {
         try {
-            $arrayGasto = ['' => $request->input(''),
-                        '' => $request->input(''),
+            $arrayGasto = ['fecha' => $request->input('fecha'),
+                        'descripcion' => $request->input('descripcion'),
+                        'monto' => $request->input('total'),
+                        'observaciones' => $request->input('observaciones'),
+                        'idObras' => $request->input('idObras'),
+                        'idPersonal' => $request->input('idPersonal'),
                     ];
             $nuevoGasto = $this->Gastos->createGasto($arrayGasto);
             return redirect('/gastos')->with('status', 'gasto creado!'); //cambiar vista

@@ -47,8 +47,12 @@ Route::prefix('cotizaciones')->group(function () {
 
 //Grupo de rutas para obras
 Route::prefix('obras')->group(function () {
-    // Route::get('/', 'obrasController@index')->name('obras');
-    
+    Route::get('/', 'obrasController@index')->name('obras.obras');
+    Route::get('/nuevo', 'obrasController@create')->name('obras.nuevo');
+    Route::post('/crear', 'obrasController@store')->name('obras.crear');
+    Route::get('/ver/{id}', 'obrasController@show')->name('obras.ver');
+    Route::get('/editar/{id}', 'obrasController@edit')->name('obras.editar');
+    Route::post('/actualizar/{id}', 'obrasController@update')->name('obras.actualizar');
 });
 
 //Grupo de rutas para personal
@@ -83,7 +87,6 @@ Route::prefix('gastos')->group(function () {
     Route::get('/nuevo', 'gastosController@create')->name('gastos.nuevo');
     Route::post('/crear', 'gastosController@store')->name('gastos.crear');
     Route::get('/ver/{id}', 'gastosController@show')->name('gastos.ver');
-    
 });
 
 //Grupo de rutas para vehículos
@@ -94,5 +97,4 @@ Route::prefix('vehiculos')->group(function () {
     Route::get('/ver/{id}', 'vehiculosController@show')->name('vehiculos.ver');
     Route::get('/editar/{id}', 'vehiculosController@edit')->name('vehiculos.editar');
     Route::post('/actualizar/{id}', 'vehiculosController@update')->name('vehiculos.actualizar');
-    
 });
