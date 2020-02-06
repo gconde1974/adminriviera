@@ -22,67 +22,44 @@ Clientes | Admin AEPSA Riviera
         <div class="col-lg-12">
             <div class="card">
                 <div class="header">
-                    <h2>Lista general de seguimientos <small>Basic example without any additional modification classes</small></h2>
+                    <h2>Lista individual de seguimientos <small>Basic example without any additional modification classes</small></h2>
                     <br>
-                    <!-- <a href="{{ asset('/clientesSeguimientoIndFront') }}" class="btn btn-primary">Nuevo seguimiento de cliente</a> -->
+                    <h2>ID: 1</h2>
+                    <h2>Nombre: Misael sajaropulos</h2>
+                    <br>
+                    <a href="{{ asset('/clientesSeguimientoIndEdicionFront') }}" class="btn btn-info">Nuevo seguimiento cliente</a>
+                    <a href="{{ asset('/cotizacionIndFront') }}" class="btn btn-warning">Cotizacion</a>
                 </div>
                 <div class="body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover js-basic-example dataTable table-custom">
                             <thead>
                                 <tr>
-                                    <th>ID cliente</th>
-                                    <th>Nombre</th>
                                     <th>Fecha</th>
                                     <th>Descripcion</th>
                                     <th>Medio</th>
-                                    <th>Accion</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Misael sajaropulos</td>
                                     <td>5-feb-20</td>
                                     <td>se hablo por telefono pero no se localizo</td>
                                     <td>telefono</td>
-                                    <td>
-                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-info">Seguimiento cliente</a>
-                                        <a href="{{ asset('/cotizacionIndFront') }}" class="btn btn-warning">Cotizacion</a>
-                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>2</td>
-                                    <td>Sebastian</td>
                                     <td>5-feb-20</td>
                                     <td>se le envio cotizacion de poliuretano</td>
                                     <td>correo</td>
-                                    <td>                                            
-                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-info">Seguimiento cliente</a>
-                                        <a href="{{ asset('/cotizacionIndFront') }}" class="btn btn-warning">Cotizacion</a>
-                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>3</td>
-                                    <td>Bernado Gonzalez</td>
                                     <td>5-feb-20</td>
                                     <td>se hablo con el cliente y se agendo una visita</td>
                                     <td>telefono</td>
-                                    <td>                                            
-                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-info">Seguimiento cliente</a>
-                                        <a href="{{ asset('/cotizacionIndFront') }}" class="btn btn-warning">Cotizacion</a>
-                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>5</td>
-                                    <td>Nancy Bahena Delgado</td>
                                     <td>2-feb-20</td>
                                     <td>se hizo inspeccion del area y se encontraron los siguientes puntos.</td>
                                     <td>visita</td>
-                                    <td>                                            
-                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-info">Seguimiento cliente</a>
-                                        <a href="{{ asset('/cotizacionIndFront') }}" class="btn btn-warning">Cotizacion</a>
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
