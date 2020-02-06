@@ -23,6 +23,21 @@ Route::get('/blank', function () {
 Route::get('/clientesFront', function () {
     return view('secciones.clientes.listado');
 });
+Route::get('/clientesNuevoFront', function () {
+    return view('secciones.clientes.nuevo');
+});
+Route::get('/clientesEdicionFront', function () {
+    return view('secciones.clientes.edicion');
+});
+Route::get('/clientesSeguimientoFront', function () {
+    return view('secciones.clientes.seguimiento');
+});
+Route::get('/clientesSeguimientoIndFront', function () {
+    return view('secciones.clientes.seguimientoInd');
+});
+Route::get('/clientesSeguimientoIndEdicionFront', function () {
+    return view('secciones.clientes.seguimientoIndEdicion');
+});
 
 //Grupo de rutas para clientes
 Route::prefix('clientes')->group(function () {

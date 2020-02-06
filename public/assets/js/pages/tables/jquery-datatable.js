@@ -31,7 +31,7 @@ function format ( d ) {
  
 $(document).ready(function() {
     var table = $('#example').DataTable( {
-        "ajax": "assets/data/objects.txt",
+        "ajax": "assets/data/objects1.txt",
         "columns": [
             {
                 "className":      'details-control',
