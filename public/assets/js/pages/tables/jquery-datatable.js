@@ -1,5 +1,7 @@
 $(function () {
-    $('.js-basic-example').DataTable();
+    $('.js-basic-example').DataTable({
+        "language": {"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"}    
+    });
 
     //Exportable table
     $('.js-exportable').DataTable({
@@ -31,7 +33,7 @@ function format ( d ) {
  
 $(document).ready(function() {
     var table = $('#example').DataTable( {
-        "ajax": "assets/data/objects.txt",
+        "ajax": "assets/data/objects1.txt",
         "columns": [
             {
                 "className":      'details-control',

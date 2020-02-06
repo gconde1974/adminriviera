@@ -20,8 +20,29 @@ Route::get('/blank', function () {
 });
 
 // PAGINA EN FRONT CLIENTES
+//ok
 Route::get('/clientesFront', function () {
     return view('secciones.clientes.listado');
+});
+//ok
+Route::get('/clientesNuevoFront', function () {
+    return view('secciones.clientes.nuevo');
+});
+//ok
+Route::get('/clientesEdicionFront', function () {
+    return view('secciones.clientes.edicion');
+});
+//ok
+Route::get('/clientesSeguimientoFront', function () {
+    return view('secciones.clientes.seguimiento');
+});
+//ok
+Route::get('/clientesSeguimientoIndEdicionFront', function () {
+    return view('secciones.clientes.seguimientoIndEdicion');
+});
+//ok
+Route::get('/seguimientoClienteGeneral', function () {
+    return view('secciones.clientes.seguimientoClienteGeneral');
 });
 
 //Grupo de rutas para clientes
