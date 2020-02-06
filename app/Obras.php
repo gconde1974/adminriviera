@@ -35,8 +35,33 @@ class Obras extends Model
                             ->update($arrayObra);
     }
 
-    public function getBitacora($idObra)
+    public function getBitacoraObra($idObra)
     {
         return $bitacora = DB::table('bitacora')->where('idObras', $idObra)->get()->toArray();
+    }
+
+    public function createBitacora($arrayBitacora)
+    {
+        return $bitacora = DB::table('bitacora')->insertGetId($arrayBitacora);
+    }
+
+    public function createObraPersonal($arrayObraPersonal)
+    {
+        return $ObraPersonal = DB::table('obrasPersonal')->insert($arrayObraPersonal);
+    }
+
+    public function createObraVehiculos($arrayObraVehiculos)
+    {
+        return $ObraVehiculos = DB::table('obrasVehiculos')->insert($arrayObraVehiculos);
+    }
+
+    public function getObraPersonal($idObra)
+    {
+        return $personalObra = DB::table('obrasPersonal')->where('idObras', $idObra)->get()->toArray();
+    }
+
+    public function getObraVehiculos($idObra)
+    {
+        return $vehiculosObra = DB::table('obrasVehiculos')->where('idObras', $idObra)->get()->toArray();
     }
 }

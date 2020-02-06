@@ -100,6 +100,18 @@ class obrasController extends Controller
         }
     }
 
+    public function getBitacoraObra($id)
+    {
+        $bitacora = $this->Obras->getBitacoraObra($id);
+        return $bitacora;
+    }
+
+    public function getObraPersonal($id)
+    {
+        $bitacora = $this->Obras->getObraPersonal($id);
+        return $bitacora;
+    }
+
     public function destroy($id)
     {
         //
