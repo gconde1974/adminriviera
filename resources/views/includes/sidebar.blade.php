@@ -39,7 +39,7 @@
                 <div class="tab-pane active" id="menu">
                     <nav id="left-sidebar-nav" class="sidebar-nav">
                         <ul id="main-menu" class="metismenu">
-                            <li><a href="{{ asset('/clientesFront') }}"><i class="icon-user"></i> <span>Clientes</span></a></li>
+                            <li><a href="{{route('clientes.clientes')}}"><i class="icon-user"></i> <span>Clientes</span></a></li>
                             <li><a href="{{ asset('/clientesSeguimientoFront') }}"><i class="icon-users"></i> <span>Seguimientos clientes</span></a></li>
                             <li><a href="#Dashboard"><i class="icon-calculator"></i> <span>Cotizaciones</span></a></li>
                             <li><a href="#Dashboard"><i class="fa fa-legal"></i> <span>Obras</span></a></li>

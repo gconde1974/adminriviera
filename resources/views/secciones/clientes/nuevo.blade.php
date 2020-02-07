@@ -25,58 +25,52 @@ Clientes | Admin AEPSA Riviera
                     <h2>Nuevo cliente</h2>
                 </div>
                 <div class="body">
-                    <form id="basic-form" method="post" novalidate>
+                    <form id="basic-form" method="post" novalidate action="{{route('clientes.crear')}}">  
+                    @csrf
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input type="text" class="form-control" required>
+                            <input type="text" class="form-control" name="nombre" required>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control" required>
+                            <input type="email" class="form-control" name="email" required>
                         </div>
                         <div class="form-group">
                             <label>Telefono</label>
-                            <input type="text" class="form-control" required>
+                            <input type="text" class="form-control" name="tel" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Dirección</label>
+                            <input type="text" class="form-control" name="direccion" placeholder="Calle, No., Col.">
                         </div>
                         <div class="form-group">
                             <label>Estado</label>
-                            <select class="form-control show-tick ms select2" data-placeholder="Select">
-                                <option></option>
-                                <option>Quintana Roo</option>
-                                <option>Yucatan</option>
-                                <option>Campeche</option>
-                                <option>Tabasco</option>
+                            <select class="form-control show-tick ms select2 states" name="idestado" data-placeholder="Select">
+                                @foreach($estados as $estado)
+                                <option value="{{$estado->idEstado}}">{{$estado->nombre}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Ciudad</label>
-                            <select class="form-control show-tick ms select2" data-placeholder="Select">
-                                <option></option>
-                                <option>Playa del carmen</option>
-                                <option>Cancun</option>
-                                <option>Tulum</option>
-                                <option>Chetumal</option>
-                                <option>Merida</option>
-                                <option>Cd del Carmen</option>
+                            <select class="form-control show-tick ms select2 cities" name="idciudad" data-placeholder="Select">
+                                
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Descripcion</label>
-                            <textarea class="form-control" rows="5" cols="30" required></textarea>
+                            <textarea class="form-control" name="descripcion" rows="5" cols="30" required></textarea>
                         </div>
                         <div class="form-group">
                             <label>Metros <sup>2</sup></label>
-                            <input type="text" class="form-control">
+                            <input type="text" name="metrosC" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Medio</label>
-                            <select class="form-control show-tick ms select2" data-placeholder="Select" required>
-                                <option></option>
-                                <option>Chat</option>
-                                <option>Telefono</option>
-                                <option>Correo</option>
-                                <option>Whatsapp</option>
-                                <option>Recomendacion</option>
+                            <select class="form-control show-tick ms select2" name="medio" data-placeholder="Select" required>
+                                @foreach($medios as $medio)
+                                    <option value="{{$medio->idMedioContacto}}">{{$medio->descripcion}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <br>
@@ -89,4 +83,27 @@ Clientes | Admin AEPSA Riviera
     
 </div>
 @stop
+
+@section('scripts')
+<script>
+$(document).ready(function() {
+    $('.states').on('change', function(){
+        let selected = $('.states :selected').val();
+        let html = '';
+        $.ajax({
+            method: "POST",
+            url: "{{route('catalogos.cities')}}",
+            data: { id: selected}
+        })
+        .done(function(data) {
+            data.forEach(function(element) {
+                html += `<option value="${element.idCiudad}">${element.nombre}</option>`;
+            });
+
+            $('.cities').html(html);
+        });
+    })
+});
+</script>
+@endsection
 

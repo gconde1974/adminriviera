@@ -29,23 +29,39 @@ class clientesController extends Controller
         $idPais = 1; //México
         $estados = $this->Catalogos->getEstadosByPais($idPais);
 
-        return view('welcome', ['estados' => $estados]); //cambiar vista
+        $mediosContacto = $this->Catalogos->getMediosContactos();
+
+        return view('secciones.clientes.nuevo', ['estados' => $estados, 'medios' => $mediosContacto]); //cambiar vista
     }
 
     public function store(Request $request)
     {
+        // dd($request->all());
         try {
             $arrayCliente = ['nombre' => $request->input('nombre'), 
-                        'telefono' => $request->input('telefono'),
+                        'telefono' => $request->input('tel'),
                         'correo' => $request->input('email'),
                         'direccion' => $request->input('direccion'),
                         'idCiudad' => $request->input('idciudad'),
                         'idEstado' => $request->input('idestado'),
                         'fechaRegistro' => date("Y-m-d")];
 
-            $nuevoCliente = $this->Clientes->createCliente($arrayCliente);
+            // $nuevoCliente = $this->Clientes->createCliente($arrayCliente);
+
+            // $arraySeguimiento = ['idCliente' => $nuevoCliente,
+            //                 'fecha' => date("Y-m-d"),
+            //                 'idMedioContacto' => $request->input('medio'),
+            //                 'descripcion' => $request->input('descripcion'),
+            //                 'metrosCuadrados' => $request->input('metrosC')
+            //             ];
+
+            // $nuevoSeguimiento = $this->Clientes->createSeguimientoCliente($arraySeguimiento);
+            
             return redirect('/clientes')->with('status', 'cliente creado!'); //cambiar vista
         } catch (\Throwable $th) {
+            // dd($th);
+            return redirect('/clientes')->with('status', 'No se ha creado el cliente!'); //cambiar vista
+
             return redirect()->route('clientes.clientes');
         }
     }

@@ -119,3 +119,8 @@ Route::prefix('vehiculos')->group(function () {
     Route::get('/editar/{id}', 'vehiculosController@edit')->name('vehiculos.editar');
     Route::post('/actualizar/{id}', 'vehiculosController@update')->name('vehiculos.actualizar');
 });
+
+Route::prefix('api')->group(function () {
+    Route::post('/cities', 'catalogosController@getCities')->name('catalogos.cities');
+    
+});

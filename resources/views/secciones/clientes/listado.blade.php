@@ -24,8 +24,9 @@ Clientes | Admin AEPSA Riviera
                 <div class="header">
                     <h2>Listado general de clientes <small>Basic example without any additional modification classes</small></h2>
                     <br>
-                    <a href="{{ asset('/clientesNuevoFront') }}" class="btn btn-primary">Nuevo cliente</a>
+                    <a href="{{route('clientes.nuevo')}}" class="btn btn-primary">Nuevo cliente</a>
                 </div>
+               
                 <div class="body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover js-basic-example dataTable table-custom">

@@ -1,6 +1,6 @@
 $(function () {
     $('.js-basic-example').DataTable({
-        "language": {"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"}    
+        "language": {"url": "assets/data/Spanish.json"}    
     });
 
     //Exportable table

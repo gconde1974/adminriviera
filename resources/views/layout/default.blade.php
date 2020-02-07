@@ -6,6 +6,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -18,6 +19,7 @@
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/sweetalert/sweetalert.css') }}"/>
+<link rel="stylesheet" href="{{ asset('assets/vendor/toastr/toastr.min.css') }}"/>
 
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
@@ -58,6 +60,6 @@
 </div>
 
 @include('includes.js')
-
+@yield('scripts')
 </body>
 </html>

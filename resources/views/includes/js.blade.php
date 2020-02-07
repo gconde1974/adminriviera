@@ -15,12 +15,19 @@
 <script src="{{ asset('assets/vendor/parsleyjs/js/parsley.min.js') }}"></script>
 
 <script src="{{ asset('assets/vendor/select2/select2.min.js') }}"></script> <!-- Select2 Js -->
+<script src="{{ asset('assets/vendor/toastr/toastr.js') }}"></script> <!-- Select2 Js -->
 
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
-<script src="{{ asset('assets/js/pages/forms/advanced-form-elements.js') }}"></script>
+<!-- <script src="{{ asset('assets/js/pages/forms/advanced-form-elements.js') }}"></script> -->
 
 <script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    
     $(function() {
         // validation needs name of the element
         $('#food').multiselect();
