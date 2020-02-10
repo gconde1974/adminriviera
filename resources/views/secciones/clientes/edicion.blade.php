@@ -25,58 +25,55 @@ Clientes | Admin AEPSA Riviera
                     <h2>Edicion de cliente</h2>
                 </div>
                 <div class="body">
-                    <form id="basic-form" method="post" novalidate>
+                    <form id="basic-form" method="post" novalidate action="{{route('clientes.actualizar',$id)}}">  
+                        @csrf
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input type="text" class="form-control" value="Misael sajaropulos" required>
+                        <input type="text" class="form-control" name="nombre" value="{{$cliente->nombre}}" required>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control" value="m.sajaropulos@hotmail.com" required>
+                            <input type="email" class="form-control" name="email" value="{{$cliente->correo}}" required>
                         </div>
                         <div class="form-group">
                             <label>Telefono</label>
-                            <input type="text" class="form-control" value="9841355905" required>
+                            <input type="text" class="form-control" name="tel" value="{{$cliente->telefono}}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Dirección</label>
+                            <input type="text" class="form-control" name="direccion" value="{{$cliente->direccion}}" placeholder="Calle, No., Col.">
                         </div>
                         <div class="form-group">
                             <label>Estado</label>
-                            <select class="form-control show-tick ms select2" data-placeholder="Select" required>
-                                <option></option>
-                                <option selected>Quintana Roo</option>
-                                <option>Yucatan</option>
-                                <option>Campeche</option>
-                                <option>Tabasco</option>
+                            <select class="form-control show-tick ms select2 states" name="idestado" data-placeholder="Select">
+                                @foreach($estados as $estado)
+                                <option value="{{$estado->idEstado}}" {{$estado->idEstado == $cliente->idEstado ? 'selected' : ''}} >{{$estado->nombre}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Ciudad</label>
-                            <select class="form-control show-tick ms select2" data-placeholder="Select" required>
-                                <option></option>
-                                <option selected>Playa del carmen</option>
-                                <option>Cancun</option>
-                                <option>Tulum</option>
-                                <option>Chetumal</option>
-                                <option>Merida</option>
-                                <option>Cd del Carmen</option>
+                            <select class="form-control show-tick ms select2 cities" name="idciudad" data-placeholder="Select">
+                                @foreach($ciudades as $ciudad)
+                                <option value="{{$ciudad->idCiudad}}" {{$ciudad->idCiudad == $cliente->idCiudad ? 'selected' : ''}} >{{$ciudad->nombre}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
+                        <input type="hidden" name="idSeguimiento" value="{{$seguimiento->idClienteSeguimiento}}">
                             <label>Descripcion</label>
-                            <textarea class="form-control" rows="5" cols="30" required>quisiera usar su productos en la proteccion de una area pequeña de 80M2 aprox para una casa en area rural</textarea>
+                            <textarea class="form-control" name="descripcion" rows="5" cols="30" required>{{$seguimiento->descripcion}}</textarea>
                         </div>
                         <div class="form-group">
                             <label>Metros <sup>2</sup></label>
-                            <input type="text" class="form-control" value="180">
+                            <input type="text" name="metrosC" value="{{$seguimiento->metrosCuadrados}}" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Medio</label>
-                            <select class="form-control show-tick ms select2" data-placeholder="Select" value="chat" required>
-                                <option></option>
-                                <option>Chat</option>
-                                <option selected>Telefono</option>
-                                <option>Correo</option>
-                                <option>Whatsapp</option>
-                                <option>Recomendacion</option>
+                            <select class="form-control show-tick ms select2" name="medio" data-placeholder="Select" required>
+                                @foreach($medios as $medio)
+                                    <option value="{{$medio->idMedioContacto}}" {{$medio->idMedioContacto == $seguimiento->idMedioContacto ? 'selected' : ''}}>{{$medio->descripcion}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <br>
@@ -90,3 +87,26 @@ Clientes | Admin AEPSA Riviera
 </div>
 @stop
 
+@section('scripts')
+<script>
+$(document).ready(function() {
+    $('.states').on('change', function(){
+        let selected = $('.states :selected').val();
+        let html = '';
+        $('.cities').html(html);
+        $.ajax({
+            method: "POST",
+            url: "{{route('catalogos.cities')}}",
+            data: { id: selected}
+        })
+        .done(function(data) {
+            data.forEach(function(element) {
+                html += `<option value="${element.idCiudad}">${element.nombre}</option>`;
+            });
+
+            $('.cities').html(html);
+        });
+    })
+});
+</script>
+@endsection

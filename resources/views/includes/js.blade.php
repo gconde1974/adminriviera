@@ -34,5 +34,30 @@
 
         // initialize after multiselect
         $('#basic-form').parsley();
+
+        //notificaciones
+        @if(session('status'))
+            $(function() {
+                toastr.options.closeButton = true;
+                $context = '{{ session('context') }}';
+                $message = '{{ session('status') }}';
+                $position = '{{ session('position') ? session('position') : '' }}';
+
+                if ($context === '') {
+                    $context = 'info';
+                }
+
+                if ($position === '') {
+                    $positionClass = 'toast-top-center';
+                } else {
+                    $positionClass = 'toast-' + $position;
+                }
+
+                toastr.remove();
+                toastr[$context]($message, '', {
+                    positionClass: $positionClass
+                });
+            });
+        @endif
     });
 </script>

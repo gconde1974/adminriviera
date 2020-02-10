@@ -17,7 +17,7 @@ Clientes | Admin AEPSA Riviera
             </div>
         </div>
     </div>
-
+    
     <div class="row clearfix">
         <div class="col-lg-12">
             <div class="card">
@@ -47,66 +47,28 @@ Clientes | Admin AEPSA Riviera
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($clientes as $cliente)
                                 <tr>
-                                    <td>1</td>
-                                    <td>5-feb-20</td>
-                                    <td>Misael sajaropulos</td>
-                                    <td>m.sajaropulos@hotmail.com</td>
-                                    <td>9841355905</td>
-                                    <td>Playa del carmen</td>
-                                    <td>Quintana Roo</td>
-                                    <td>quisiera usar su productos en la proteccion de una area pequeña de 80M2 aprox para una casa en area rural</td>
-                                    <td>1800</td>
-                                    <td>Chat</td>
+                                    <td>{{$cliente['idClientes']}}</td>
+                                    <td>{{$cliente['fechaRegistro']}}</td>
+                                    <td>{{$cliente['nombre']}}</td>
+                                    <td>{{$cliente['correo']}}</td>
+                                    <td>{{$cliente['telefono']}}</td>
+                                    <td>{{$cliente['ciudad']}}</td>
+                                    <td>{{$cliente['estado']}}</td>
+                                    <td>{{$cliente['seguimiento']->descripcion}}</td>
+                                    <td>{{$cliente['seguimiento']->metrosCuadrados}}</td>
+                                    <td>{{$cliente['seguimiento']->medio}}</td>
                                     <td>
                                         <a href="{{ asset('/clientesSeguimientoIndEdicionFront') }}" class="btn btn-info">Seguimiento</a>
                                         <a href="{{ asset('/cotizacionIndFront') }}" class="btn btn-warning">Cotizaciones</a>
-                                        <a href="{{ asset('/clientesEdicionFront') }}" class="btn btn-primary">Edicion</a>
+                                        <a href="{{route('clientes.editar', $cliente['idClientes'])}}" class="btn btn-primary">Edicion</a>
                                     </td>
                                     <td>
                                         <a href="#" class="btn btn-outline-danger">Anticipo</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>5-feb-20</td>
-                                    <td>Misael sajaropulos</td>
-                                    <td>m.sajaropulos@hotmail.com</td>
-                                    <td>9841355905</td>
-                                    <td>Playa del carmen</td>
-                                    <td>Quintana Roo</td>
-                                    <td>quisiera usar su productos en la proteccion de una area pequeña de 80M2 aprox para una casa en area rural</td>
-                                    <td>1800</td>
-                                    <td>Chat</td>
-                                    <td>
-                                        <a href="{{ asset('/clientesSeguimientoIndEdicionFront') }}" class="btn btn-info">Seguimiento</a>
-                                        <a href="{{ asset('/cotizacionIndFront') }}" class="btn btn-warning">Cotizaciones</a>
-                                        <a href="{{ asset('/clientesEdicionFront') }}" class="btn btn-primary">Edicion</a>
-                                    </td>
-                                    <td>
-                                        <a href="#" class="btn btn-outline-danger">Anticipo</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>5-feb-20</td>
-                                    <td>Misael sajaropulos</td>
-                                    <td>m.sajaropulos@hotmail.com</td>
-                                    <td>9841355905</td>
-                                    <td>Playa del carmen</td>
-                                    <td>Quintana Roo</td>
-                                    <td>quisiera usar su productos en la proteccion de una area pequeña de 80M2 aprox para una casa en area rural</td>
-                                    <td>1800</td>
-                                    <td>Chat</td>
-                                    <td>
-                                        <a href="{{ asset('/clientesSeguimientoIndEdicionFront') }}" class="btn btn-info">Seguimiento</a>
-                                        <a href="{{ asset('/cotizacionIndFront') }}" class="btn btn-warning">Cotizaciones</a>
-                                        <a href="{{ asset('/clientesEdicionFront') }}" class="btn btn-primary">Edicion</a>
-                                    </td>
-                                    <td>
-                                        <a href="#" class="btn btn-outline-danger">Anticipo</a>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -120,3 +82,8 @@ Clientes | Admin AEPSA Riviera
 </div>
 @stop
 
+@section('scripts')
+<script>
+    
+</script>
+@endsection

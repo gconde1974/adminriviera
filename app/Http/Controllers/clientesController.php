@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Clientes;
 use App\Catalogos;
 
@@ -20,6 +21,7 @@ class clientesController extends Controller
     public function index()
     {
         $Listadoclientes = $this->Clientes->getClientes();
+        // dd($Listadoclientes);
         return view('secciones.clientes.listado', ['clientes' => $Listadoclientes]); //cambiar vista
     }
 
@@ -38,31 +40,31 @@ class clientesController extends Controller
     {
         // dd($request->all());
         try {
+            DB::beginTransaction();
             $arrayCliente = ['nombre' => $request->input('nombre'), 
                         'telefono' => $request->input('tel'),
                         'correo' => $request->input('email'),
                         'direccion' => $request->input('direccion'),
                         'idCiudad' => $request->input('idciudad'),
                         'idEstado' => $request->input('idestado'),
-                        'fechaRegistro' => date("Y-m-d")];
+                        'fechaRegistro' => date("d-m-Y")];
 
-            // $nuevoCliente = $this->Clientes->createCliente($arrayCliente);
+            $nuevoCliente = $this->Clientes->createCliente($arrayCliente);
 
-            // $arraySeguimiento = ['idCliente' => $nuevoCliente,
-            //                 'fecha' => date("Y-m-d"),
-            //                 'idMedioContacto' => $request->input('medio'),
-            //                 'descripcion' => $request->input('descripcion'),
-            //                 'metrosCuadrados' => $request->input('metrosC')
-            //             ];
+            $arraySeguimiento = ['idClientes' => $nuevoCliente,
+                            'fecha' => date("Y-m-d"),
+                            'idMedioContacto' => $request->input('medio'),
+                            'descripcion' => $request->input('descripcion'),
+                            'metrosCuadrados' => $request->input('metrosC')
+                        ];
 
-            // $nuevoSeguimiento = $this->Clientes->createSeguimientoCliente($arraySeguimiento);
-            
-            return redirect('/clientes')->with('status', 'cliente creado!'); //cambiar vista
+            $nuevoSeguimiento = $this->Clientes->createSeguimientoCliente($arraySeguimiento);
+            DB::commit();
+            return redirect('/clientes')->with(['status' => 'cliente creado!','context' => 'success']);
         } catch (\Throwable $th) {
+            DB::rollBack();
             // dd($th);
-            return redirect('/clientes')->with('status', 'No se ha creado el cliente!'); //cambiar vista
-
-            return redirect()->route('clientes.clientes');
+            return redirect('/clientes')->with(['status' => 'No se ha creado el cliente!' ,'context' => 'error']);
         }
     }
 
@@ -72,7 +74,7 @@ class clientesController extends Controller
             $cliente = $this->Clientes->getCliente($id);
             
             if($cliente){
-                return view('welcome', ['cliente' => $cliente]); //cambiar vista
+                return view('secciones.clientes.listado', ['cliente' => $cliente]); //cambiar vista
             }
             throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {
@@ -84,34 +86,50 @@ class clientesController extends Controller
     {
         try {
             $cliente = $this->Clientes->getCliente($id);
-
+            $primerSeguimiento = $this->Clientes->getPrimerSeguimiento($id);
             $paises = $this->Catalogos->getPaises();
             $idPais = 1; //México
             $estados = $this->Catalogos->getEstadosByPais($idPais);
-            $ciudades = $this->Catalogos->getCiudadesByEstado($Cliente->idEstado);
-
+            $ciudades = $this->Catalogos->getCiudadesByEstado($cliente->idEstado);
+            $mediosContacto = $this->Catalogos->getMediosContactos();
+            // dd($cliente);
             if($cliente){
-                return view('welcome', ['cliente' => $cliente, 'estados' => $estados, 'ciudades' => $ciudades]); //cambiar vista
+                return view('secciones.clientes.edicion', ['id' => $id, 'cliente' => $cliente, 'seguimiento' => $primerSeguimiento, 'estados' => $estados, 'ciudades' => $ciudades, 'medios' => $mediosContacto]);
             }
             throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {
-            return redirect()->route('clientes.clientes');
+            // return redirect()->route('clientes.clientes');
+            return redirect('/clientes')->with(['status' => 'no se pudo obtener la información','context' => 'error']);
         }
     }
 
     public function update(Request $request, $id)
     {
         try {
+            dd($request->all());
+
+
+            DB::beginTransaction();
             $arrayCliente = ['nombre' => $request->input('nombre'), 
-                            'telefono' => $request->input('telefono'),
-                            'correo' => $request->input('email'),
-                            'direccion' => $request->input('direccion'),
-                            'idCiudad' => $request->input('idciudad'),
-                            'idEstado' => $request->input('idestado')
-                        ];
+                        'telefono' => $request->input('tel'),
+                        'correo' => $request->input('email'),
+                        'direccion' => $request->input('direccion'),
+                        'idCiudad' => $request->input('idciudad'),
+                        'idEstado' => $request->input('idestado'),
+                    ];
 
             $updateCliente = $this->Clientes->updateCliente($id, $arrayCliente);
-            return redirect('/clientes')->with('status', 'cliente actualizado!'); //cambiar vista
+            
+
+            $arraySeguimiento = ['idClientes' => $nuevoCliente,
+                            'idMedioContacto' => $request->input('medio'),
+                            'descripcion' => $request->input('descripcion'),
+                            'metrosCuadrados' => $request->input('metrosC')
+                        ];
+
+            $nuevoSeguimiento = $this->Clientes->createSeguimientoCliente($arraySeguimiento);
+            DB::commit();
+            return redirect('/clientes')->with(['status' => 'cliente actualizado!','context' => 'success']);
         } catch (\Throwable $th) {
             return redirect()->route('clientes.clientes');
         }

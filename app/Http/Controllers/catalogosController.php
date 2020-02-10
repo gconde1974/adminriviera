@@ -16,9 +16,14 @@ class catalogosController extends Controller
 
     public function getCities(Request $request)
     {
-        $id = $request->input('id');
-        $ciudades = $this->Catalogos->getCiudadesByEstado($id);
+        try {
+            $id = $request->input('id');
+            $ciudades = $this->Catalogos->getCiudadesByEstado($id);
 
-        return response($ciudades, 200)->header('Content-Type', 'json');
+            return response($ciudades, 200)->header('Content-Type', 'json');
+        } catch (\Throwable $th) {
+            return response([], 200)->header('Content-Type', 'json');
+        }
+
     }
 }

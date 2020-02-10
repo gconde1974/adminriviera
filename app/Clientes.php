@@ -8,20 +8,25 @@ use Illuminate\Support\Facades\DB;
 class Clientes extends Model
 {
     public function getClientes(){
-        return $clientes = DB::table('clientes')
-                            ->join('estado', 'clientes.idEstado', '=', 'estado.idEstado')
-                            ->join('ciudad', 'clientes.idCiudad', '=', 'ciudad.idCiudad')
-                            ->select('clientes.*', 'estado.nombre', 'ciudad.nombre')
-                            ->get()->toArray();
+        $clientes = DB::table('clientes')
+                        ->join('estado', 'clientes.idEstado', '=', 'estado.idEstado')
+                        ->join('ciudad', 'clientes.idCiudad', '=', 'ciudad.idCiudad')
+                        ->select(DB::raw('clientes.*, estado.nombre as estado, ciudad.nombre as ciudad'))
+                        ->get();
+
+        foreach ($clientes as $key => $item) {
+            $primerSeg = $this->getPrimerSeguimiento($item->idClientes);
+            $collection = collect($item)->put('seguimiento', $primerSeg);
+            $clientes[$key] = $collection->toArray();
+        }
+        return $clientes;
     }
 
     public function getCliente($id){
-        // DB::enableQueryLog() : ->dd();
-        // dd(DB::getQueryLog());
         return $cliente = DB::table('clientes')->where('idClientes', $id)
                             ->join('estado', 'clientes.idEstado', '=', 'estado.idEstado')
                             ->join('ciudad', 'clientes.idCiudad', '=', 'ciudad.idCiudad')
-                            ->select('clientes.*', 'estado.nombre', 'ciudad.nombre')
+                            ->select(DB::raw('clientes.*, estado.nombre as estado, ciudad.nombre as ciudad'))
                             ->first();
     }
 
@@ -34,6 +39,15 @@ class Clientes extends Model
     {
         return $update = DB::table('clientes')->where('idClientes', $idCliente)
                             ->update($arrayCliente);
+    }
+
+    public function getPrimerSeguimiento($idCliente)
+    {
+        return $seguimiento = DB::table('clienteSeguimiento')
+                                ->join('medioContacto', 'clienteSeguimiento.idMedioContacto', '=', 'medioContacto.idMedioContacto')
+                                ->select('clienteSeguimiento.*', DB::raw('medioContacto.descripcion as medio'))
+                                ->where('idClientes', $idCliente)
+                                ->oldest('fecha')->first();
     }
 
     public function getSeguimientoCliente($idCliente)
