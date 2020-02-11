@@ -1,6 +1,6 @@
 $(function () {
     $('.js-basic-example').DataTable({
-        "language": {"url": "assets/data/Spanish.json"}    
+        "language": {"url": "../../../assets/data/Spanish.json"}    
     });
 
     //Exportable table

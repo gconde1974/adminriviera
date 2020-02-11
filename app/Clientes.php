@@ -63,5 +63,9 @@ class Clientes extends Model
         return $seguimientoCliente = DB::table('clienteSeguimiento')->insertGetId($arraySeguimiento);
     }
 
-
+    public function updateSeguimiento($idSeg, $arraySeguimiento)
+    {
+        return $update = DB::table('clienteSeguimiento')->where('idClienteSeguimiento', $idSeg)
+                            ->update($arraySeguimiento);
+    }
 }

@@ -27,7 +27,7 @@ Clientes | Admin AEPSA Riviera
                     <h2>ID: 1</h2>
                     <h2>Nombre: Misael sajaropulos</h2>
                     <br>
-                    <a href="{{ asset('/clientesSeguimientoIndEdicionFront') }}" class="btn btn-info">Nuevo seguimiento cliente</a>
+                    <a href="{{ route('cliente.nuevoseguimiento',$id) }}" class="btn btn-info">Nuevo seguimiento cliente</a>
                     <a href="{{ asset('/cotizacionIndFront') }}" class="btn btn-warning">Cotizacion</a>
                 </div>
                 <div class="body">

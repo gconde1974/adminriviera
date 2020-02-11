@@ -25,28 +25,27 @@ Clientes | Admin AEPSA Riviera
                     <h2>Seguimiento individual del cliente</h2>
                 </div>
                 <div class="body">
-                    <form id="basic-form" method="post" novalidate>
+                    <form id="basic-form" method="post" novalidate action="{{route('cliente.crearseguimiento',$cliente->idClientes)}}">
+                        @csrf
+                        <input type="hidden" class="form-control" value="{{$cliente->idClientes}}" name="id">
                         <div class="form-group">
                             <label>ID cliente</label>
-                            <input type="text" class="form-control" value="1" disabled>
+                        <input type="text" class="form-control" value="{{$cliente->idClientes}}" disabled>
                         </div>
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input type="text" class="form-control" value="Misael sajaropulos" disabled>
+                            <input type="text" class="form-control" value="{{$cliente->nombre}}" disabled>
                         </div>
                         <div class="form-group">
                             <label>Descripcion</label>
-                            <textarea class="form-control" rows="5" cols="30" required></textarea>
+                            <textarea class="form-control" name="descripcion" rows="5" cols="30" required></textarea>
                         </div>
                         <div class="form-group">
                             <label>Medio</label>
-                            <select class="form-control show-tick ms select2" data-placeholder="Select" required>
-                                <option></option>
-                                <option>Chat</option>
-                                <option>Telefono</option>
-                                <option>Correo</option>
-                                <option>Whatsapp</option>
-                                <option>Recomendacion</option>
+                            <select class="form-control show-tick ms select2" name="medio" data-placeholder="Select" required>
+                                @foreach($medios as $medio)
+                                    <option value="{{$medio->idMedioContacto}}">{{$medio->descripcion}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <br>

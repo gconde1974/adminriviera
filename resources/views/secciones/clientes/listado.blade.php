@@ -60,7 +60,7 @@ Clientes | Admin AEPSA Riviera
                                     <td>{{$cliente['seguimiento']->metrosCuadrados}}</td>
                                     <td>{{$cliente['seguimiento']->medio}}</td>
                                     <td>
-                                        <a href="{{ asset('/clientesSeguimientoIndEdicionFront') }}" class="btn btn-info">Seguimiento</a>
+                                        <a href="{{route('cliente.nuevoseguimiento',$cliente['idClientes'])}}" class="btn btn-info">Seguimiento</a>
                                         <a href="{{ asset('/cotizacionIndFront') }}" class="btn btn-warning">Cotizaciones</a>
                                         <a href="{{route('clientes.editar', $cliente['idClientes'])}}" class="btn btn-primary">Edicion</a>
                                     </td>
@@ -76,14 +76,5 @@ Clientes | Admin AEPSA Riviera
             </div>
         </div>
     </div>
-    
-
-    
 </div>
 @stop
-
-@section('scripts')
-<script>
-    
-</script>
-@endsection

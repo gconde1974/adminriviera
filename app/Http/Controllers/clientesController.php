@@ -22,7 +22,14 @@ class clientesController extends Controller
     {
         $Listadoclientes = $this->Clientes->getClientes();
         // dd($Listadoclientes);
-        return view('secciones.clientes.listado', ['clientes' => $Listadoclientes]); //cambiar vista
+        return view('secciones.clientes.listado', ['clientes' => $Listadoclientes]);
+    }
+
+    public function seguimiento()
+    {
+        $seguimientoclientes = $this->Clientes->getClientes();
+
+        return view('secciones.clientes.seguimiento', ['seguimiento' => $seguimientoclientes]);
     }
 
     public function create()
@@ -30,15 +37,13 @@ class clientesController extends Controller
         $paises = $this->Catalogos->getPaises();
         $idPais = 1; //México
         $estados = $this->Catalogos->getEstadosByPais($idPais);
-
         $mediosContacto = $this->Catalogos->getMediosContactos();
 
-        return view('secciones.clientes.nuevo', ['estados' => $estados, 'medios' => $mediosContacto]); //cambiar vista
+        return view('secciones.clientes.nuevo', ['estados' => $estados, 'medios' => $mediosContacto]);
     }
 
     public function store(Request $request)
     {
-        // dd($request->all());
         try {
             DB::beginTransaction();
             $arrayCliente = ['nombre' => $request->input('nombre'), 
@@ -60,10 +65,9 @@ class clientesController extends Controller
 
             $nuevoSeguimiento = $this->Clientes->createSeguimientoCliente($arraySeguimiento);
             DB::commit();
-            return redirect('/clientes')->with(['status' => 'cliente creado!','context' => 'success']);
+            return redirect('/clientes')->with(['status' => 'Cliente creado!','context' => 'success']);
         } catch (\Throwable $th) {
             DB::rollBack();
-            // dd($th);
             return redirect('/clientes')->with(['status' => 'No se ha creado el cliente!' ,'context' => 'error']);
         }
     }
@@ -92,23 +96,19 @@ class clientesController extends Controller
             $estados = $this->Catalogos->getEstadosByPais($idPais);
             $ciudades = $this->Catalogos->getCiudadesByEstado($cliente->idEstado);
             $mediosContacto = $this->Catalogos->getMediosContactos();
-            // dd($cliente);
+            
             if($cliente){
-                return view('secciones.clientes.edicion', ['id' => $id, 'cliente' => $cliente, 'seguimiento' => $primerSeguimiento, 'estados' => $estados, 'ciudades' => $ciudades, 'medios' => $mediosContacto]);
+                return view('secciones.clientes.edicion', ['cliente' => $cliente, 'seguimiento' => $primerSeguimiento, 'estados' => $estados, 'ciudades' => $ciudades, 'medios' => $mediosContacto]);
             }
             throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {
-            // return redirect()->route('clientes.clientes');
-            return redirect('/clientes')->with(['status' => 'no se pudo obtener la información','context' => 'error']);
+            return redirect('/clientes')->with(['status' => 'No se pudo obtener la información','context' => 'error']);
         }
     }
 
     public function update(Request $request, $id)
     {
         try {
-            dd($request->all());
-
-
             DB::beginTransaction();
             $arrayCliente = ['nombre' => $request->input('nombre'), 
                         'telefono' => $request->input('tel'),
@@ -119,48 +119,56 @@ class clientesController extends Controller
                     ];
 
             $updateCliente = $this->Clientes->updateCliente($id, $arrayCliente);
-            
 
-            $arraySeguimiento = ['idClientes' => $nuevoCliente,
+            $arraySeguimiento = ['idClientes' => $id,
                             'idMedioContacto' => $request->input('medio'),
                             'descripcion' => $request->input('descripcion'),
                             'metrosCuadrados' => $request->input('metrosC')
                         ];
-
-            $nuevoSeguimiento = $this->Clientes->createSeguimientoCliente($arraySeguimiento);
+            $idseguimiento = $request->input('idSeguimiento');
+            $nuevoSeguimiento = $this->Clientes->updateSeguimiento($idseguimiento, $arraySeguimiento);
             DB::commit();
-            return redirect('/clientes')->with(['status' => 'cliente actualizado!','context' => 'success']);
+            return redirect('/clientes')->with(['status' => 'Cliente actualizado!','context' => 'success']);
         } catch (\Throwable $th) {
-            return redirect()->route('clientes.clientes');
+            DB::rollBack();
+            return redirect('/clientes')->with(['status' => 'Cliente NO actualizado!','context' => 'error']);
         }
     }
 
     public function showSeguimientoCliente($id)
     {
-        $seguimiento = $this->Catalogos->getSeguimientoCliente($id);
-        return view('welcome', ['seguimiento' => $seguimiento]); //cambiar vista
+        $seguimiento = $this->Clientes->getSeguimientoCliente($id);
+        return view('secciones.clientes.seguimientoClienteGeneral', ['id' => $id, 'seguimiento' => $seguimiento]); //cambiar vista
     }
 
-    public function nuevoSeguimiento()
+    public function nuevoSeguimiento($id)
     {
-        $mediosContacto = $this->Catalogos->getMediosContactos();
-
-        return view('welcome', ['mediosContacto' => $mediosContacto]); //cambiar vista
+        $idCliente = $id;
+        try {
+            $cliente = $this->Clientes->getCliente($id);
+            $mediosContacto = $this->Catalogos->getMediosContactos();
+            
+            if($cliente){
+                return view('secciones.clientes.seguimientoIndEdicion', ['cliente' => $cliente, 'medios' => $mediosContacto]);
+            }
+            throw new \Exception("Error Processing Request", 1);
+        } catch (\Throwable $th) {
+            return redirect('/clientes')->with(['status' => 'No se pudo obtener la información','context' => 'error']);
+        }
     }
 
     public function createSeguimiento(Request $request, $id)
     {
         try {
-            $arraySeguimiento = ['idCliente' => $request->input('idCliente'),
-                            'fecha' => $request->input('fecha'),
-                            'idMedioContacto' => $request->input('idMedio'),
+            $arraySeguimiento = ['idClientes' => $request->input('id'),
+                            'fecha' => date('Y-m-d'),
+                            'idMedioContacto' => $request->input('medio'),
                             'descripcion' => $request->input('descripcion')
                         ];
-
             $nuevoSeguimiento = $this->Clientes->createSeguimientoCliente($arraySeguimiento);
-            return redirect('/clientes')->with('status', 'seguimiento creado!'); //cambiar vista
+            return redirect('/clientes/seguimiento/'.$id)->with(['status' => 'Seguimiento creado!', 'context' => 'success']); 
         } catch (\Throwable $th) {
-            return redirect()->route('clientes.seguimiento');
+            return redirect('/clientes/seguimiento/'.$id)->with(['status' => 'No se pudo crear el seguimiento','context' => 'error']);
         }
     }
 

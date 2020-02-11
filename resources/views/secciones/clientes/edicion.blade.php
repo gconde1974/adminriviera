@@ -25,7 +25,7 @@ Clientes | Admin AEPSA Riviera
                     <h2>Edicion de cliente</h2>
                 </div>
                 <div class="body">
-                    <form id="basic-form" method="post" novalidate action="{{route('clientes.actualizar',$id)}}">  
+                    <form id="basic-form" method="post" novalidate action="{{route('clientes.actualizar',$cliente->idClientes)}}">  
                         @csrf
                         <div class="form-group">
                             <label>Nombre</label>
@@ -83,7 +83,6 @@ Clientes | Admin AEPSA Riviera
             </div>
         </div>
     </div>
-    
 </div>
 @stop
 
