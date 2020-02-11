@@ -54,7 +54,7 @@ class Clientes extends Model
     {
         return $seguimiento = DB::table('clienteSeguimiento')->where('idClientes', $idCliente)
                                 ->join('medioContacto', 'clienteSeguimiento.idMedioContacto', '=', 'medioContacto.idMedioContacto')
-                                ->select('clienteSeguimiento.*', 'medioContacto.descripcion')
+                                ->select('clienteSeguimiento.*', DB::raw('medioContacto.descripcion as medio'))
                                 ->get()->toArray();
     }
 

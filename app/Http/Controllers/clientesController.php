@@ -137,8 +137,17 @@ class clientesController extends Controller
 
     public function showSeguimientoCliente($id)
     {
-        $seguimiento = $this->Clientes->getSeguimientoCliente($id);
-        return view('secciones.clientes.seguimientoClienteGeneral', ['id' => $id, 'seguimiento' => $seguimiento]); //cambiar vista
+        try {
+            $cliente = $this->Clientes->getCliente($id);
+            $seguimiento = $this->Clientes->getSeguimientoCliente($id);
+            // dd($seguimiento);
+            if($cliente)
+                return view('secciones.clientes.seguimientoClienteGeneral', ['cliente' => $cliente, 'seguimientos' => $seguimiento]); //cambiar vista
+            
+            throw new \Exception("Error Processing Request", 1);
+        } catch (\Throwable $th) {
+            return redirect('/clientes/seguimiento')->with(['status' => 'Información no disponible!','context' => 'error']);
+        }
     }
 
     public function nuevoSeguimiento($id)

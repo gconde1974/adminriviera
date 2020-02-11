@@ -24,10 +24,10 @@ Clientes | Admin AEPSA Riviera
                 <div class="header">
                     <h2>Lista individual de seguimientos <small>Basic example without any additional modification classes</small></h2>
                     <br>
-                    <h2>ID: 1</h2>
-                    <h2>Nombre: Misael sajaropulos</h2>
+                    <h2>ID: {{$cliente->idClientes}}</h2>
+                    <h2>Nombre: {{$cliente->nombre}}</h2>
                     <br>
-                    <a href="{{ route('cliente.nuevoseguimiento',$id) }}" class="btn btn-info">Nuevo seguimiento cliente</a>
+                    <a href="{{ route('cliente.nuevoseguimiento',$cliente->idClientes) }}" class="btn btn-info">Nuevo seguimiento cliente</a>
                     <a href="{{ asset('/cotizacionIndFront') }}" class="btn btn-warning">Cotizacion</a>
                 </div>
                 <div class="body">
@@ -41,26 +41,13 @@ Clientes | Admin AEPSA Riviera
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($seguimientos as $seguimiento)
                                 <tr>
-                                    <td>5-feb-20</td>
-                                    <td>se hablo por telefono pero no se localizo</td>
-                                    <td>telefono</td>
+                                    <td>{{$seguimiento->fecha}}</td>
+                                    <td>{{$seguimiento->descripcion}}</td>
+                                    <td>{{$seguimiento->medio}}</td>
                                 </tr>
-                                <tr>
-                                    <td>5-feb-20</td>
-                                    <td>se le envio cotizacion de poliuretano</td>
-                                    <td>correo</td>
-                                </tr>
-                                <tr>
-                                    <td>5-feb-20</td>
-                                    <td>se hablo con el cliente y se agendo una visita</td>
-                                    <td>telefono</td>
-                                </tr>
-                                <tr>
-                                    <td>2-feb-20</td>
-                                    <td>se hizo inspeccion del area y se encontraron los siguientes puntos.</td>
-                                    <td>visita</td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -68,9 +55,5 @@ Clientes | Admin AEPSA Riviera
             </div>
         </div>
     </div>
-    
-
-    
 </div>
 @stop
-
