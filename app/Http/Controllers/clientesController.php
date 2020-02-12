@@ -27,9 +27,9 @@ class clientesController extends Controller
 
     public function seguimiento()
     {
-        $seguimientoclientes = $this->Clientes->getClientes();
-
-        return view('secciones.clientes.seguimiento', ['seguimiento' => $seguimientoclientes]);
+        $seguimientoclientes = $this->Clientes->getSeguimientoClientes();
+        // dd($seguimientoclientes);
+        return view('secciones.clientes.seguimiento', ['seguimientos' => $seguimientoclientes]);
     }
 
     public function create()

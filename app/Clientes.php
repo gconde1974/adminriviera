@@ -68,4 +68,13 @@ class Clientes extends Model
         return $update = DB::table('clienteSeguimiento')->where('idClienteSeguimiento', $idSeg)
                             ->update($arraySeguimiento);
     }
+
+    public function getSeguimientoClientes()
+    {
+        return $seguimiento = DB::table('clienteSeguimiento')
+                                ->join('clientes', 'clienteSeguimiento.idClientes', '=', 'clientes.idClientes')
+                                ->join('medioContacto', 'clienteSeguimiento.idMedioContacto', '=', 'medioContacto.idMedioContacto')
+                                ->select('clienteSeguimiento.*','clientes.nombre', DB::raw('medioContacto.descripcion as medio'))
+                                ->get()->toArray();
+    }
 }

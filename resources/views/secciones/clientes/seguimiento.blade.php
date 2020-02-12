@@ -40,50 +40,19 @@ Clientes | Admin AEPSA Riviera
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($seguimientos as $seguimiento)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Misael sajaropulos</td>
-                                    <td>5-feb-20</td>
-                                    <td>se hablo por telefono pero no se localizo</td>
-                                    <td>telefono</td>
+                                    <td>{{$seguimiento->idClientes}}</td>
+                                    <td>{{$seguimiento->nombre}}</td>
+                                    <td>{{$seguimiento->fecha}}</td>
+                                    <td>{{$seguimiento->descripcion}}</td>
+                                    <td>{{$seguimiento->medio}}</td>
                                     <td>
-                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-info">Seguimiento cliente</a>
+                                        <a href="{{route('cliente.seguimiento',$seguimiento->idClientes)}}" class="btn btn-info">Seguimiento cliente</a>
                                         <a href="{{ asset('/cotizacionIndFront') }}" class="btn btn-warning">Cotizacion</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Sebastian</td>
-                                    <td>5-feb-20</td>
-                                    <td>se le envio cotizacion de poliuretano</td>
-                                    <td>correo</td>
-                                    <td>                                            
-                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-info">Seguimiento cliente</a>
-                                        <a href="{{ asset('/cotizacionIndFront') }}" class="btn btn-warning">Cotizacion</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Bernado Gonzalez</td>
-                                    <td>5-feb-20</td>
-                                    <td>se hablo con el cliente y se agendo una visita</td>
-                                    <td>telefono</td>
-                                    <td>                                            
-                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-info">Seguimiento cliente</a>
-                                        <a href="{{ asset('/cotizacionIndFront') }}" class="btn btn-warning">Cotizacion</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Nancy Bahena Delgado</td>
-                                    <td>2-feb-20</td>
-                                    <td>se hizo inspeccion del area y se encontraron los siguientes puntos.</td>
-                                    <td>visita</td>
-                                    <td>                                            
-                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-info">Seguimiento cliente</a>
-                                        <a href="{{ asset('/cotizacionIndFront') }}" class="btn btn-warning">Cotizacion</a>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
