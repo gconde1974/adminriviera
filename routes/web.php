@@ -123,5 +123,8 @@ Route::prefix('vehiculos')->group(function () {
 
 Route::prefix('api')->group(function () {
     Route::post('/cities', 'catalogosController@getCities')->name('catalogos.cities');
+    Route::get('/insert', 'catalogosController@inserts')->name('catalogos.insert');
+    Route::post('/insertcities', 'catalogosController@insertCities')->name('catalogos.insertcities');
+    
     
 });

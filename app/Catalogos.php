@@ -108,4 +108,9 @@ class Catalogos extends Model
     {
         return $unidadesMedida = DB::table('unidadMedida')->where('idUnidadMedida', '=', $id);
     }
+
+    public function insertCiudad($arrayCiudades)
+    {
+        return $detalles = DB::table('ciudad')->insert($arrayCiudades);
+    }
 }
