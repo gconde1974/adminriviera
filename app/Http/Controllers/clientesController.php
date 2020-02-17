@@ -52,7 +52,7 @@ class clientesController extends Controller
                         'direccion' => $request->input('direccion'),
                         'idCiudad' => $request->input('idciudad'),
                         'idEstado' => $request->input('idestado'),
-                        'fechaRegistro' => date("d-m-Y")];
+                        'fechaRegistro' => date("Y-m-d")];
 
             $nuevoCliente = $this->Clientes->createCliente($arrayCliente);
 
@@ -67,6 +67,7 @@ class clientesController extends Controller
             DB::commit();
             return redirect('/clientes')->with(['status' => 'Cliente creado!','context' => 'success']);
         } catch (\Throwable $th) {
+            dd($th);
             DB::rollBack();
             return redirect('/clientes')->with(['status' => 'No se ha creado el cliente!' ,'context' => 'error']);
         }
