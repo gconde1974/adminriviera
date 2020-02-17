@@ -9,8 +9,8 @@ class Clientes extends Model
 {
     public function getClientes(){
         $clientes = DB::table('clientes')
-                        ->join('estado', 'clientes.idEstado', '=', 'estado.idEstado')
-                        ->join('ciudad', 'clientes.idCiudad', '=', 'ciudad.idCiudad')
+                        ->leftJoin('estado', 'clientes.idEstado', '=', 'estado.idEstado')
+                        ->leftJoin('ciudad', 'clientes.idCiudad', '=', 'ciudad.idCiudad')
                         ->select(DB::raw('clientes.*, estado.nombre as estado, ciudad.nombre as ciudad'))
                         ->get();
 
@@ -24,8 +24,8 @@ class Clientes extends Model
 
     public function getCliente($id){
         return $cliente = DB::table('clientes')->where('idClientes', $id)
-                            ->join('estado', 'clientes.idEstado', '=', 'estado.idEstado')
-                            ->join('ciudad', 'clientes.idCiudad', '=', 'ciudad.idCiudad')
+                            ->leftJoin('estado', 'clientes.idEstado', '=', 'estado.idEstado')
+                            ->leftJoin('ciudad', 'clientes.idCiudad', '=', 'ciudad.idCiudad')
                             ->select(DB::raw('clientes.*, estado.nombre as estado, ciudad.nombre as ciudad'))
                             ->first();
     }
