@@ -20,6 +20,10 @@ Route::get('/blank', function () {
 });
 
 // PAGINA EN FRONT CLIENTES
+//revision
+Route::get('/login', function () {
+    return view('secciones.login.login');
+});
 //ok
 Route::get('/clientesFront', function () {
     return view('secciones.clientes.listado');
@@ -44,6 +48,13 @@ Route::get('/clientesSeguimientoIndEdicionFront', function () {
 Route::get('/seguimientoClienteGeneral', function () {
     return view('secciones.clientes.seguimientoClienteGeneral');
 });
+//revision
+Route::get('/cotizacionesCompletas', function () {
+    return view('secciones.cotizaciones.cotizacionesCompletas');
+});
+Route::get('/nuevaCotizacion', function () {
+    return view('secciones.cotizaciones.nuevaCotizacion');
+});   
 
 //Grupo de rutas para clientes
 Route::prefix('clientes')->group(function () {
