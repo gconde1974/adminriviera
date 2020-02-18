@@ -52,9 +52,14 @@ Route::get('/seguimientoClienteGeneral', function () {
 Route::get('/cotizacionesCompletas', function () {
     return view('secciones.cotizaciones.cotizacionesCompletas');
 });
+//revision
 Route::get('/nuevaCotizacion', function () {
     return view('secciones.cotizaciones.nuevaCotizacion');
-});   
+});
+//revision
+Route::get('/listaCotizacionInd', function () {
+    return view('secciones.cotizaciones.listaCotizacionInd');
+});
 
 //Grupo de rutas para clientes
 Route::prefix('clientes')->group(function () {

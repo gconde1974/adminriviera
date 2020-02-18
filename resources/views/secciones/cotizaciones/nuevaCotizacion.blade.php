@@ -47,33 +47,77 @@ Cotizaciones | Admin AEPSA Riviera
                             <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label>Concepto</label>
-                                    <textarea class="form-control" rows="5" required></textarea>
+                                    <textarea class="form-control" rows="3" required></textarea>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label>Cantidad</label>
-                                    <input type="text" class="form-control">
+                                    <textarea class="form-control" rows="3" required></textarea>
                                 </div>        
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label>P.U.</label>
-                                    <input type="text" class="form-control">
+                                    <textarea class="form-control" rows="3" required></textarea>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="form-group">
-                                    <label for="ssn" class="control-label">SSN</label>
-                                    <input type="text" id="ssn" class="form-control">
-                                    <span class="help-block">999-99-9999</span>
+                                    <label for="ssn" class="control-label">Total</label>
+                                    <textarea class="form-control" rows="3" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Concepto</label>
+                                    <textarea class="form-control" rows="3" required></textarea>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="form-group">
-                                    <label for="product-key" class="control-label">Product Key</label>
-                                    <input type="text" id="product-key" class="form-control">
-                                    <span class="help-block">a*-999-a999</span>
+                                    <label>Cantidad</label>
+                                    <textarea class="form-control" rows="3" required></textarea>
+                                </div>        
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>P.U.</label>
+                                    <textarea class="form-control" rows="3" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label for="ssn" class="control-label">Total</label>
+                                    <textarea class="form-control" rows="3" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Concepto</label>
+                                    <textarea class="form-control" rows="3" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Cantidad</label>
+                                    <textarea class="form-control" rows="3" required></textarea>
+                                </div>        
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>P.U.</label>
+                                    <textarea class="form-control" rows="3" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label for="ssn" class="control-label">Total</label>
+                                    <textarea class="form-control" rows="3" required></textarea>
                                 </div>
                             </div>
                         </div>
