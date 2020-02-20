@@ -60,6 +60,10 @@ Route::get('/nuevaCotizacion', function () {
 Route::get('/listaCotizacionInd', function () {
     return view('secciones.cotizaciones.listaCotizacionInd');
 });
+//revision
+Route::get('/listadoObras', function () {
+    return view('secciones.obras.listadoObras');
+});
 
 //Grupo de rutas para clientes
 Route::prefix('clientes')->group(function () {
