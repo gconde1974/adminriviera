@@ -10,6 +10,7 @@ class proveedoresController extends Controller
     protected $Proveedores;
     
     public function __construct(Proveedores $proveedores){
+        $this->middleware('auth');
         $this->Proveedores = $proveedores;
     }
 

@@ -11,6 +11,7 @@ class cotizacionesController extends Controller
 
     public function __construct(Cotizaciones $cotizaciones)
     {
+        $this->middleware('auth');
         $this->Cotizaciones = $cotizaciones;
     }
 

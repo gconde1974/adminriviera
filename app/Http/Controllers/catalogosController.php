@@ -11,6 +11,7 @@ class catalogosController extends Controller
 
     public function __construct(Catalogos $catalogos)
     {
+        $this->middleware('auth');
         $this->Catalogos = $catalogos;
     }
 

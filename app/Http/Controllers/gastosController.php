@@ -10,6 +10,7 @@ class gastosController extends Controller
     protected $Gastos;
 
     public function __construct(Gastos $gastos){
+        $this->middleware('auth');
         $this->Gastos = $gastos;
     }
 

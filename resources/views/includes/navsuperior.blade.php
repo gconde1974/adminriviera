@@ -12,7 +12,9 @@
                 <div id="navbar-menu">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="page-login.html" class="icon-menu"><i class="icon-login"></i></a>
+                            <a class="icon-menu" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();"><i class="icon-login"></i>
+                            </a>
                         </li>
                     </ul>
                 </div>

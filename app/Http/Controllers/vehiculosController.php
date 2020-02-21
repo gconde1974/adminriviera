@@ -10,6 +10,7 @@ class vehiculosController extends Controller
     protected $Vehiculos;
 
     public function __construct(Vehiculos $vehiculos){
+        $this->middleware('auth');
         $this->Vehiculos = $vehiculos;
     }
     

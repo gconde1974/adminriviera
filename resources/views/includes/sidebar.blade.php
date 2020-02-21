@@ -4,12 +4,19 @@
                 <img src="{{ asset('assets/images/user.png') }}" class="rounded-circle user-photo" alt="User Profile Picture">
                 <div class="dropdown">
                     <span>Bienvenido,</span>
-                    <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>Mariana Cervantes</strong></a>
+                    <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>{{ Auth::user()->name }}</strong></a>
                     <ul class="dropdown-menu dropdown-menu-right account">
                         <li><a href="page-profile2.html"><i class="icon-user"></i>Mi perfil</a></li>
                         <li><a href="javascript:void(0);"><i class="icon-settings"></i>Ajustes</a></li>
                         <li class="divider"></li>
-                        <li><a href="page-login.html"><i class="icon-power"></i>Cerrar Sesión</a></li>
+                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                                <i class="icon-power"></i>Cerrar Sesión
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
                     </ul>
                 </div>
                 <hr>

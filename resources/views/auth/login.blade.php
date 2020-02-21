@@ -24,7 +24,7 @@ Login | Admin AEPSA Riviera
                                 <div class="form-group">
                                     <label for="email" class="control-label sr-only">Email</label>
                                     {{-- <input type="email" class="form-control" id="email" value="user@domain.com" placeholder="Email"> --}}
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email" autofocus>
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@ Login | Admin AEPSA Riviera
                                 <div class="form-group">
                                     <label for="password" class="control-label sr-only">Password</label>
                                     {{-- <input type="password" class="form-control" id="password" value="thisisthepassword" placeholder="Password"> --}}
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="current-password">
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">

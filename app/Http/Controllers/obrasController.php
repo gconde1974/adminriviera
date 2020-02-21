@@ -13,6 +13,7 @@ class obrasController extends Controller
 
     public function __construct(Obras $obras, Catalogos $catalogos)
     {
+        $this->middleware('auth');
         $this->Obras = $obras;
         $this->Catalogos = $catalogos;
     }

@@ -14,6 +14,7 @@ class clientesController extends Controller
 
     public function __construct(Clientes $clientes, Catalogos $catalogos)
     {
+        $this->middleware('auth');
         $this->Clientes = $clientes;
         $this->Catalogos = $catalogos;
     }
@@ -28,7 +29,6 @@ class clientesController extends Controller
     public function seguimiento()
     {
         $seguimientoclientes = $this->Clientes->getSeguimientoClientes();
-        // dd($seguimientoclientes);
         return view('secciones.clientes.seguimiento', ['seguimientos' => $seguimientoclientes]);
     }
 

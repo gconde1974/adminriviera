@@ -13,6 +13,7 @@ class personalController extends Controller
 
     public function __construct(Personal $personal, Catalogos $catalogos)
     {
+        $this->middleware('auth');
         $this->Personal = $personal;
         $this->Catalogos = $catalogos;
     }

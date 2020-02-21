@@ -44,10 +44,6 @@ Clientes | Admin AEPSA Riviera
                             <input type="text" class="form-control" name="direccion" placeholder="Calle, No., Col.">
                         </div>
                         <div class="form-group">
-                            <label>Direccion</label>
-                            <input type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
                             <label>Estado</label>
                             <select class="form-control show-tick ms select2 states" name="idestado" data-placeholder="Select">
                                 @foreach($estados as $estado)

@@ -10,6 +10,7 @@ class inventariosController extends Controller
     protected $Inventarios;
 
     public function __construct(Inventarios $inventarios){
+        $this->middleware('auth');
         $this->Inventarios = $inventarios;
     }
     

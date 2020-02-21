@@ -14,16 +14,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// PAGINA EN BLANCO
-Route::get('/blank', function () {
-    return view('blank');
-});
+// // PAGINA EN BLANCO
+// Route::get('/blank', function () {
+//     return view('blank');
+// });
 
 // PAGINA EN FRONT CLIENTES
 //revision
-Route::get('/login', function () {
-    return view('secciones.login.login');
-});
+// Route::get('/logiin', function () {
+//     return view('secciones.login.login');
+// });
 //ok
 Route::get('/clientesFront', function () {
     return view('secciones.clientes.listado');
@@ -64,6 +64,7 @@ Route::get('/listaCotizacionInd', function () {
 Route::get('/listadoObras', function () {
     return view('secciones.obras.listadoObras');
 });
+
 
 //Grupo de rutas para clientes
 Route::prefix('clientes')->group(function () {
@@ -148,3 +149,6 @@ Route::prefix('api')->group(function () {
     
     
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
