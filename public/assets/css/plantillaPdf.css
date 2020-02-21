@@ -1,0 +1,10 @@
+#main-content {
+    width: 100%;
+    float: none;
+    position: unset;
+    margin-top: 20px;
+    padding: 0 0px;
+}
+
+.logo {display: block;}
+.alignment{margin:18px 0 0 0px !important;}
