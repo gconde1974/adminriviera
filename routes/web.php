@@ -64,6 +64,14 @@ Route::get('/listaCotizacionInd', function () {
 Route::get('/listadoObras', function () {
     return view('secciones.obras.listadoObras');
 });
+//revision
+Route::get('/detalleObra', function () {
+    return view('secciones.obras.detalleObra');
+});
+//revision
+Route::get('/pdfCotizacion', function () {
+    return view('pdf.pdfCotizacion');
+});
 
 
 //Grupo de rutas para clientes
