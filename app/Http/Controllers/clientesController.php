@@ -79,7 +79,7 @@ class clientesController extends Controller
             $cliente = $this->Clientes->getCliente($id);
             
             if($cliente){
-                return view('secciones.clientes.listado', ['cliente' => $cliente]); //cambiar vista
+                return view('secciones.clientes.listado', ['cliente' => $cliente]);
             }
             throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {
@@ -141,7 +141,6 @@ class clientesController extends Controller
         try {
             $cliente = $this->Clientes->getCliente($id);
             $seguimiento = $this->Clientes->getSeguimientoCliente($id);
-            // dd($seguimiento);
             if($cliente)
                 return view('secciones.clientes.seguimientoClienteGeneral', ['cliente' => $cliente, 'seguimientos' => $seguimiento]); //cambiar vista
             

@@ -21,14 +21,14 @@ class cotizacionesController extends Controller
         //getDetalles cot.
         //get archivos
         //get anticipos
-        return view('welcome', ['cotizaciones' => $cotizaciones]); //cambiar vista
+        return view('secciones.cotizaciones.listado', ['cotizaciones' => $cotizaciones]);
     }
 
-    public function create()
+    public function create($id)
     {
         $responsables = $this->Cotizaciones->getResponsables();
 
-        return view('welcome', ['responsables' => $responsables]); //cambiar vista
+        return view('secciones.cotizaciones.nuevaCotizacion', ['responsables' => $responsables]);
     }
 
     public function store(Request $request)
@@ -94,5 +94,12 @@ class cotizacionesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    
+    public function cotizacionesCliente($id)
+    {
+        $cotizaciones = [];
+        return view('secciones.cotizaciones.listaCotizacionInd', ['cotizaciones' => $cotizaciones, 'id' => $id]);
     }
 }
