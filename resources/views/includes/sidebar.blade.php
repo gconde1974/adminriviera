@@ -48,6 +48,7 @@
                         <ul id="main-menu" class="metismenu">
                             <li><a href="{{route('clientes.clientes')}}"><i class="icon-user"></i> <span>Clientes</span></a></li>
                             <li><a href="{{route('clientes.seguimiento')}}"><i class="icon-users"></i> <span>Seguimientos clientes</span></a></li>
+                            <li><a href="{{ route('cotizaciones.cotizaciones') }}"><i class="icon-calculator"></i> <span>Cotizaciones</span></a></li>
                             
                             <li><a href="{{ asset('/cotizacionesCompletas') }}"><i class="icon-calculator"></i> <span>Cotizaciones</span></a></li>
                             <li><a href="{{ asset('/listadoObras') }}"><i class="fa fa-legal"></i> <span>Obras</span></a></li>
