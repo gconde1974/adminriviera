@@ -50,7 +50,8 @@ Cotizaciones | Admin AEPSA Riviera
                                     <td>quisiera usar su productos en la proteccion de una area pequeña de 80M2</td>
                                     <td>$42,620</td>
                                     <td>
-                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-primary">Detalle cotizacion</a>
+                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-primary">Lista de cotizaciones</a>
+                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-warning">Crear Obra</a>
                                     </td>
                                     <td><a href="#" class="btn btn-outline-danger">Anticipo</a></td>
                                 </tr>
@@ -62,7 +63,8 @@ Cotizaciones | Admin AEPSA Riviera
                                     <td>quisiera usar su productos en la proteccion de una area pequeña de 80M2</td>
                                     <td>$42,620</td>
                                     <td>
-                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-primary">Detalle cotizacion</a>
+                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-primary">Lista de cotizaciones</a>
+                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-warning">Crear Obra</a>
                                     </td>
                                     <td><a href="#" class="btn btn-outline-danger">Anticipo</a></td>
                                 </tr>
@@ -74,7 +76,8 @@ Cotizaciones | Admin AEPSA Riviera
                                     <td>quisiera usar su productos en la proteccion de una area pequeña de 80M2</td>
                                     <td>$42,620</td>
                                     <td>
-                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-primary">Detalle cotizacion</a>
+                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-primary">Lista de cotizaciones</a>
+                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-warning">Crear Obra</a>
                                     </td>
                                     <td><a href="#" class="btn btn-outline-danger">Anticipo</a></td>
                                 </tr>
@@ -86,7 +89,8 @@ Cotizaciones | Admin AEPSA Riviera
                                     <td>quisiera usar su productos en la proteccion de una area pequeña de 80M2</td>
                                     <td>$42,620</td>
                                     <td>
-                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-primary">Detalle cotizacion</a>
+                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-primary">Lista de cotizaciones</a>
+                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-warning">Crear Obra</a>
                                     </td>
                                     <td><a href="#" class="btn btn-outline-danger">Anticipo</a></td>
                                 </tr>

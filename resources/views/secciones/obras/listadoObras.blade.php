@@ -54,7 +54,12 @@ Obras | Admin AEPSA Riviera
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><input type="radio" name="selectObra"></td>
+                                    <td>
+                                        <label class="fancy-radio">
+                                            <input type="radio" name="selectorObra" value="male" required="" data-parsley-errors-container="#error-radio" data-parsley-multiple="selectorObra">
+                                            <span><i></i></span>
+                                        </label>
+                                    </td>
                                     <td>2</td>
                                     <td>34</td>
                                     <td>Ing Zarate</td>
@@ -70,7 +75,12 @@ Obras | Admin AEPSA Riviera
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><input type="radio" name="selectObra"></td>
+                                    <td>
+                                        <label class="fancy-radio">
+                                            <input type="radio" name="selectorObra" value="male" required="" data-parsley-errors-container="#error-radio" data-parsley-multiple="selectorObra">
+                                            <span><i></i></span>
+                                        </label>
+                                    </td>
                                     <td>2</td>
                                     <td>34</td>
                                     <td>Ing Zarate</td>
@@ -86,7 +96,12 @@ Obras | Admin AEPSA Riviera
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><input type="radio" name="selectObra"></td>
+                                    <td>
+                                        <label class="fancy-radio">
+                                            <input type="radio" name="selectorObra" value="male" required="" data-parsley-errors-container="#error-radio" data-parsley-multiple="selectorObra">
+                                            <span><i></i></span>
+                                        </label>
+                                    </td>
                                     <td>2</td>
                                     <td>34</td>
                                     <td>Ing Zarate</td>
@@ -102,7 +117,12 @@ Obras | Admin AEPSA Riviera
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><input type="radio" name="selectObra"></td>
+                                    <td>
+                                        <label class="fancy-radio">
+                                            <input type="radio" name="selectorObra" value="male" required="" data-parsley-errors-container="#error-radio" data-parsley-multiple="selectorObra">
+                                            <span><i></i></span>
+                                        </label>
+                                    </td>
                                     <td>2</td>
                                     <td>34</td>
                                     <td>Ing Zarate</td>

@@ -22,6 +22,7 @@
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
 <!-- <script src="{{ asset('assets/js/pages/forms/advanced-form-elements.js') }}"></script> -->
+<script src="assets/js/pages/forms/dropify.js"></script>
 
 <script>
     $.ajaxSetup({

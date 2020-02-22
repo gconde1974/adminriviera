@@ -28,6 +28,7 @@ Cotizaciones | Admin AEPSA Riviera
                     <h2>Nombre: tercero-test</h2>
                     <br>
                     <a href="{{ asset('/clientesSeguimientoIndFront') }}" class="btn btn-primary">Nueva cotizacion</a>
+                    
                 </div>
             </div>
         </div>

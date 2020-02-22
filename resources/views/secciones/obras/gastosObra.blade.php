@@ -22,7 +22,7 @@ Obras | Admin AEPSA Riviera
         <div class="col-lg-12">
             <div class="card">
                 <div class="header">
-                    <h2>Detalle individual de la Obra<small>Basic example without any additional modification classes</small></h2>
+                    <h2>Gasto individual de la Obra<small>Basic example without any additional modification classes</small></h2>
                     <br>
                     <h2>ID cotizacion: 5</h2>
                     <h2>ID cliente: 1042</h2>
@@ -37,7 +37,7 @@ Obras | Admin AEPSA Riviera
                     <a href="#" class="btn btn-info">Herramientas</a>
                     <a href="#" class="btn btn-info">Vehiculos</a>
                     <br><br>
-                    <a href="#" class="btn btn-primary">Nuevo seguimiento de obra</a>
+                    <a href="#" class="btn btn-primary">Nuevo gasto de obra</a>
                 </div>
                
                 <div class="body">
@@ -46,8 +46,8 @@ Obras | Admin AEPSA Riviera
                             <thead>
                                 <tr>
                                     <th>Fecha</th>
-                                    <th>Observaciones</th>
-                                    <th>Fotos</th>
+                                    <th>Descripcion</th>
+                                    <th>Monto</th>
                                 </tr>
                             </thead>
                             <tbody>

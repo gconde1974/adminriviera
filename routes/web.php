@@ -61,6 +61,10 @@ Route::get('/listaCotizacionInd', function () {
     return view('secciones.cotizaciones.listaCotizacionInd');
 });
 //revision
+Route::get('/pdfCotizacion', function () {
+    return view('pdf.pdfCotizacion');
+});
+//revision
 Route::get('/listadoObras', function () {
     return view('secciones.obras.listadoObras');
 });
@@ -69,8 +73,12 @@ Route::get('/detalleObra', function () {
     return view('secciones.obras.detalleObra');
 });
 //revision
-Route::get('/pdfCotizacion', function () {
-    return view('pdf.pdfCotizacion');
+Route::get('/seguimientoObra', function () {
+    return view('secciones.obras.seguimientoObra');
+});
+//revision
+Route::get('/gastosObra', function () {
+    return view('secciones.obras.gastosObra');
 });
 
 
