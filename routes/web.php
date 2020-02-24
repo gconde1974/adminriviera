@@ -80,6 +80,18 @@ Route::get('/seguimientoObra', function () {
 Route::get('/gastosObra', function () {
     return view('secciones.obras.gastosObra');
 });
+//revision
+Route::get('/nuevoGastoObra', function () {
+    return view('secciones.obras.nuevoGastoObra');
+});
+//revision
+Route::get('/personalObra', function () {
+    return view('secciones.obras.personalObra');
+});
+//revision
+Route::get('/asignacionPersonalObra', function () {
+    return view('secciones.obras.asignacionPersonalObra');
+});
 
 
 //Grupo de rutas para clientes
