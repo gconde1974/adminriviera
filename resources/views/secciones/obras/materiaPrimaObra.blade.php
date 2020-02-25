@@ -22,7 +22,7 @@ Obras | Admin AEPSA Riviera
         <div class="col-lg-12">
             <div class="card">
                 <div class="header">
-                    <h2>Gasto individual de la Obra<small>Basic example without any additional modification classes</small></h2>
+                    <h2>Lista de materia prima de la Obra<small>Basic example without any additional modification classes</small></h2>
                     <br>
                     <h2>ID cotizacion: 5</h2>
                     <h2>ID cliente: 1042</h2>
@@ -37,7 +37,7 @@ Obras | Admin AEPSA Riviera
                     <a href="#" class="btn btn-info">Herramientas</a>
                     <a href="#" class="btn btn-info">Vehiculos</a>
                     <br><br>
-                    <a href="#" class="btn btn-primary">Nuevo gasto de obra</a>
+                    <a href="#" class="btn btn-primary">Agregar materia prima a la obra</a>
                 </div>
                
                 <div class="body">
@@ -46,43 +46,49 @@ Obras | Admin AEPSA Riviera
                             <thead>
                                 <tr>
                                     <th>Fecha</th>
-                                    <th>Descripcion</th>                                    
-                                    <th>Observaciones</th>
-                                    <th>Monto</th>
+                                    <th>Producto</th>                                    
+                                    <th>Cantidad</th>
+                                    <th>Unidad</th>
+                                    <th>Movimiento</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>2020-03-24</td>
-                                    <td>Se entrego dinero para hielo</td>
-                                    <td>Vestibulum nec metus volutpat, convallis felis at, iaculis lorem.</td>
-                                    <td>$150</td>
+                                    <td>ISO DE ESPUMA 101 (")</td>
+                                    <td>50</td>
+                                    <td>kgs</td>
+                                    <td>Entrada</td>
+                                </tr>
+                                <tr>
+                                    <td>2020-03-25</td>
+                                    <td>ESPUMA DE VACIADO (K)</td>
+                                    <td>50</td>
+                                    <td>kgs</td>
+                                    <td>Devolucion</td>
                                 </tr>
                                 <tr>
                                     <td>2020-03-24</td>
-                                    <td>Se entrego dinero para hielo</td>
-                                    <td>Vestibulum nec metus volutpat, convallis felis at, iaculis lorem.</td>
-                                    <td>$150</td>
+                                    <td>RESINA 3148 (")</td>
+                                    <td>50</td>
+                                    <td>kgs</td>
+                                    <td>Entrada</td>
+                                </tr>
+                                <tr>
+                                    <td>2020-03-26</td>
+                                    <td>RESINA 3139 (")</td>
+                                    <td>50</td>
+                                    <td>kgs</td>
+                                    <td>Devolucion</td>
                                 </tr>
                                 <tr>
                                     <td>2020-03-24</td>
-                                    <td>Se entrego dinero para hielo</td>
-                                    <td>Vestibulum nec metus volutpat, convallis felis at, iaculis lorem.</td>
-                                    <td>$150</td>
-                                </tr>
-                                <tr>
-                                    <td>2020-03-24</td>
-                                    <td>Se entrego dinero para hielo</td>
-                                    <td>Vestibulum nec metus volutpat, convallis felis at, iaculis lorem.</td>
-                                    <td>$150</td>
+                                    <td>ISO DE POLIUREA (")</td>
+                                    <td>50</td>
+                                    <td>kgs</td>
+                                    <td>Devolucion</td>
                                 </tr>
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="3" class="text-right">Total</td>
-                                    <td >$180</td>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>

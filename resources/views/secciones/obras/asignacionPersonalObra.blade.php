@@ -29,15 +29,6 @@ Obras | Admin AEPSA Riviera
                     <h2>ID cliente: 1042</h2>
                     <h2>Nombre: juan perez</h2>
                     <h2>Descripcion: espuma de poliuretano 1" en lamina para una nave</h2>
-                    <br>
-                    <!-- <a href="#" class="btn btn-primary">Nuevo cliente</a> -->
-                    <a href="#" class="btn btn-info">Detalle de obra</a>
-                    <a href="#" class="btn btn-info">Gastos de obra</a>
-                    <a href="#" class="btn btn-info">Personal asignado</a>
-                    <a href="#" class="btn btn-info">Materia prima</a>
-                    <a href="#" class="btn btn-info">Herramientas</a>
-                    <a href="#" class="btn btn-info">Vehiculos</a>
-                    <br>
                     <ul class="header-dropdown">
                         <li class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
@@ -58,22 +49,12 @@ Obras | Admin AEPSA Riviera
                                 <option value="02">Juanito perez(nombre) - aplicador(descripcion)</option>
                                 <option value="03">Juancho perez(nombre) - aplicador(descripcion)</option>
                                 <option value="04">Jeronimo perez(nombre) - aplicador(descripcion)</option>
-                                <option value="05">Joe perez(nombre) - aplicador(descripcion)</option>
-                                <option value="06">Jacinto perez(nombre) - aplicador(descripcion)</option>
-                                <option value="07">Julian perez(nombre) - aplicador(descripcion)</option>
-                                <option value="08">Juan carlos perez(nombre) - aplicador(descripcion)</option>
-                                <option value="09">Juan jose perez(nombre) - aplicador(descripcion)</option>
                             </optgroup>
                             <optgroup label="Personal de mexico">
                                 <option value="10">Juan perez(nombre) - aplicador(descripcion)</option>
                                 <option value="11">Juanito perez(nombre) - aplicador(descripcion)</option>
                                 <option value="12">Juancho perez(nombre) - aplicador(descripcion)</option>
                                 <option value="13">Jeronimo perez(nombre) - aplicador(descripcion)</option>
-                                <option value="14">Joe perez(nombre) - aplicador(descripcion)</option>
-                                <option value="15">Jacinto perez(nombre) - aplicador(descripcion)</option>
-                                <option value="16">Julian perez(nombre) - aplicador(descripcion)</option>
-                                <option value="17">Juan carlos perez(nombre) - aplicador(descripcion)</option>
-                                <option value="18">Juan jose perez(nombre) - aplicador(descripcion)</option>
                             </optgroup>
                         </select>
                         <br>
