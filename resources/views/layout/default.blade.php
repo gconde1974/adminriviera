@@ -18,9 +18,11 @@
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/vendor/sweetalert/sweetalert.css') }}"/>
+{{-- <link rel="stylesheet" href="{{ asset('assets/vendor/sweetalert/sweetalert.css') }}"/> --}}
 <link rel="stylesheet" href="{{ asset('assets/vendor/toastr/toastr.min.css') }}"/>
 <link rel="stylesheet" href="{{ asset('assets/vendor/dropify/css/dropify.min.css') }}">
+
+@yield('css')
 
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">

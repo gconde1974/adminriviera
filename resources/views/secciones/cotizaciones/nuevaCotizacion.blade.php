@@ -43,135 +43,43 @@ Cotizaciones | Admin AEPSA Riviera
                             <textarea class="form-control" rows="5" cols="30" required></textarea>
                         </div>
                         <!-- -->
-                        <div class="row clearfix">
-                            <div class="col-lg-4 col-md-6 col-sm-12">
-                                <div class="form-group">
-                                    <label>Concepto</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
+                        <div class="class detalleCotizacion">
+                            <div class="row clearfix concepto">
+                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Concepto</label>
+                                        <textarea class="form-control" rows="3" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Cantidad</label>
+                                        <textarea class="form-control" rows="3" required></textarea>
+                                    </div>        
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Unidad</label>
+                                        <textarea class="form-control" rows="3" required>mts2</textarea>
+                                    </div>        
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label>P.U.</label>
+                                        <textarea class="form-control" rows="3" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="ssn" class="control-label">Total</label>
+                                        <textarea class="form-control" rows="3" required></textarea>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-2 col-md-6 col-sm-12">
-                                <div class="form-group">
-                                    <label>Cantidad</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>        
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-12">
-                                <div class="form-group">
-                                    <label>Unidad</label>
-                                    <textarea class="form-control" rows="3" required>mts2</textarea>
-                                </div>        
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-12">
-                                <div class="form-group">
-                                    <label>P.U.</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-12">
-                                <div class="form-group">
-                                    <label for="ssn" class="control-label">Total</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row clearfix">
-                            <div class="col-lg-4 col-md-6 col-sm-12">
-                                <div class="form-group">
-                                    <label>Concepto</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-12">
-                                <div class="form-group">
-                                    <label>Cantidad</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>        
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-12">
-                                <div class="form-group">
-                                    <label>Unidad</label>
-                                    <textarea class="form-control" rows="3" required>mts2</textarea>
-                                </div>        
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-12">
-                                <div class="form-group">
-                                    <label>P.U.</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-12">
-                                <div class="form-group">
-                                    <label for="ssn" class="control-label">Total</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row clearfix">
-                            <div class="col-lg-4 col-md-6 col-sm-12">
-                                <div class="form-group">
-                                    <label>Concepto</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-12">
-                                <div class="form-group">
-                                    <label>Cantidad</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>        
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-12">
-                                <div class="form-group">
-                                    <label>Unidad</label>
-                                    <textarea class="form-control" rows="3" required>mts2</textarea>
-                                </div>        
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-12">
-                                <div class="form-group">
-                                    <label>P.U.</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-12">
-                                <div class="form-group">
-                                    <label for="ssn" class="control-label">Total</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row clearfix">
-                            <div class="col-lg-4 col-md-6 col-sm-12">
-                                <div class="form-group">
-                                    <label>Concepto</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-12">
-                                <div class="form-group">
-                                    <label>Cantidad</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>        
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-12">
-                                <div class="form-group">
-                                    <label>Unidad</label>
-                                    <textarea class="form-control" rows="3" required>mts2</textarea>
-                                </div>        
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-12">
-                                <div class="form-group">
-                                    <label>P.U.</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-12">
-                                <div class="form-group">
-                                    <label for="ssn" class="control-label">Total</label>
-                                    <textarea class="form-control" rows="3" required></textarea>
-                                </div>
-                            </div>
+
                         </div>
 
+                        <button type="button" class="btn btn-primary addconcepto">Agregar concepto</button>
 
                         <!-- -->
                         <div class="form-group">
@@ -228,3 +136,11 @@ Cotizaciones | Admin AEPSA Riviera
 </div>
 @stop
 
+@section('scripts')
+<script>
+    $('.addconcepto').click(function(){
+        console.log($('.concepto').clone())
+        // .appendTo('.detalleCotizacion');
+    });
+</script>
+@endsection
