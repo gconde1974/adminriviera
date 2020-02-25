@@ -24,7 +24,6 @@ Cotizaciones | Admin AEPSA Riviera
                 <div class="header">
                     <h2>Lista general de cotizaciones <small>Basic example without any additional modification classes</small></h2>
                     <br>
-                    <!-- <a href="{{ asset('/clientesSeguimientoIndFront') }}" class="btn btn-primary">Nuevo seguimiento de cliente</a> -->
                 </div>
                 <div class="body">
                     <div class="table-responsive">
@@ -42,6 +41,7 @@ Cotizaciones | Admin AEPSA Riviera
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($cotizaciones as $item)
                                 <tr>
                                     <td>1</td>
                                     <td>Misael sajaropulos</td>
@@ -50,46 +50,12 @@ Cotizaciones | Admin AEPSA Riviera
                                     <td>quisiera usar su productos en la proteccion de una area pequeña de 80M2</td>
                                     <td>$42,620</td>
                                     <td>
-                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-primary">Detalle cotizacion</a>
+                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-primary">Lista de cotizaciones</a>
+                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-warning">Crear Obra</a>
                                     </td>
                                     <td><a href="#" class="btn btn-outline-danger">Anticipo</a></td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Sebastian</td>
-                                    <td>5-feb-20</td>
-                                    <td>35</td>
-                                    <td>quisiera usar su productos en la proteccion de una area pequeña de 80M2</td>
-                                    <td>$42,620</td>
-                                    <td>
-                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-primary">Detalle cotizacion</a>
-                                    </td>
-                                    <td><a href="#" class="btn btn-outline-danger">Anticipo</a></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Bernado Gonzalez</td>
-                                    <td>5-feb-20</td>
-                                    <td>37</td>
-                                    <td>quisiera usar su productos en la proteccion de una area pequeña de 80M2</td>
-                                    <td>$42,620</td>
-                                    <td>
-                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-primary">Detalle cotizacion</a>
-                                    </td>
-                                    <td><a href="#" class="btn btn-outline-danger">Anticipo</a></td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Nancy Bahena Delgado</td>
-                                    <td>2-feb-20</td>
-                                    <td>38</td>
-                                    <td>quisiera usar su productos en la proteccion de una area pequeña de 80M2</td>
-                                    <td>$42,620</td>
-                                    <td>
-                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-primary">Detalle cotizacion</a>
-                                    </td>
-                                    <td><a href="#" class="btn btn-outline-danger">Anticipo</a></td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -97,6 +63,6 @@ Cotizaciones | Admin AEPSA Riviera
             </div>
         </div>
     </div>
-
+    
 </div>
 @stop

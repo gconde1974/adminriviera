@@ -16,6 +16,15 @@ class Cotizaciones extends Model
                             ->get()->toArray();
     }
 
+    public function getCotizacionesCliente($id)
+    {
+        return $cotizaciones = DB::table('cotizaciones')->where('cotizaciones.idClientes', $id)
+                            ->join('clientes', 'cotizaciones.idClientes', '=', 'clientes.idClientes')
+                            ->join('responsablesCotizacion', 'cotizaciones.idResponsableCotizacion', '=', 'responsablesCotizacion.idResponsablesCotizacion')
+                            ->select('cotizaciones.*', 'clientes.nombre', 'responsablesCotizacion.nombre')
+                            ->get()->toArray();
+    }
+
     public function getCotizacion($idCotizacion)
     {
         return $cotizaciones = DB::table('cotizaciones')->where('idCotizaciones',$idCotizacion)

@@ -99,7 +99,8 @@ class cotizacionesController extends Controller
     
     public function cotizacionesCliente($id)
     {
-        $cotizaciones = [];
+        $cotizaciones = $this->Cotizaciones->getCotizacionesCliente($id);
+        dd($cotizaciones);
         return view('secciones.cotizaciones.listaCotizacionInd', ['cotizaciones' => $cotizaciones, 'id' => $id]);
     }
 }
