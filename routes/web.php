@@ -14,40 +14,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// // PAGINA EN BLANCO
-// Route::get('/blank', function () {
-//     return view('blank');
-// });
-
-// PAGINA EN FRONT CLIENTES
-//revision
-// Route::get('/logiin', function () {
-//     return view('secciones.login.login');
-// });
-//ok
-// Route::get('/clientesFront', function () {
-//     return view('secciones.clientes.listado');
-// });
-// //ok
-// Route::get('/clientesNuevoFront', function () {
-//     return view('secciones.clientes.nuevo');
-// });
-// //ok
-// Route::get('/clientesEdicionFront', function () {
-//     return view('secciones.clientes.edicion');
-// });
-// //ok
-// Route::get('/clientesSeguimientoFront', function () {
-//     return view('secciones.clientes.seguimiento');
-// });
-// //ok
-// Route::get('/clientesSeguimientoIndEdicionFront', function () {
-//     return view('secciones.clientes.seguimientoIndEdicion');
-// });
-//ok
-// Route::get('/seguimientoClienteGeneral', function () {
-//     return view('secciones.clientes.seguimientoClienteGeneral');
-// });
 //revision
 Route::get('/cotizacionesCompletas', function () {
     return view('secciones.cotizaciones.cotizacionesCompletas');
@@ -91,6 +57,14 @@ Route::get('/personalObra', function () {
 //revision
 Route::get('/asignacionPersonalObra', function () {
     return view('secciones.obras.asignacionPersonalObra');
+});
+//revision
+Route::get('/materiaPrimaObra', function () {
+    return view('secciones.obras.materiaPrimaObra');
+});
+//revision
+Route::get('/asignacionMateriaPrimaObra', function () {
+    return view('secciones.obras.asignacionMateriaPrimaObra');
 });
 
 
