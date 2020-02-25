@@ -98,9 +98,9 @@ Route::prefix('clientes')->group(function () {
 
 //Grupo de rutas para cotizaciones
 Route::prefix('cotizaciones')->group(function () {
-    Route::get('/', 'cotizacionesController@index')->name('cotizaciones.cotizaciones');
-    Route::get('/cliente/{id}', 'cotizacionesController@cotizacionesCliente')->name('cotizaciones.cliente');
-    Route::get('/nueva/{id}', 'cotizacionesController@create')->name('cotizaciones.nueva');
+    Route::get('/', 'cotizacionesController@index')->name('cotizaciones.cotizaciones')->middleware('rol.op'); 
+    Route::get('/cliente/{id}', 'cotizacionesController@cotizacionesCliente')->name('cotizaciones.cliente')->middleware('rol.admin');
+    Route::get('/nueva/{id}', 'cotizacionesController@create')->name('cotizaciones.nueva'); 
     Route::post('/crear', 'cotizacionesController@store')->name('cotizaciones.crear');
     Route::get('/ver/{id}', 'cotizacionesController@show')->name('cotizaciones.ver');
 });

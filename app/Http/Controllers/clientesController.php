@@ -14,7 +14,7 @@ class clientesController extends Controller
 
     public function __construct(Clientes $clientes, Catalogos $catalogos)
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'rol.admin']);
         $this->Clientes = $clientes;
         $this->Catalogos = $catalogos;
     }
@@ -22,7 +22,7 @@ class clientesController extends Controller
     public function index()
     {
         $Listadoclientes = $this->Clientes->getClientes();
-        // dd($Listadoclientes);
+        // dd(auth()->user()->rol);
         return view('secciones.clientes.listado', ['clientes' => $Listadoclientes]);
     }
 
