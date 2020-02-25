@@ -24,10 +24,10 @@ Cotizaciones | Admin AEPSA Riviera
                 <div class="header">
                     <h2>Lista individual de cotizaciones <small>Basic example without any additional modification classes</small></h2>
                     <br>
-                    <h2>ID: 4</h2>
-                    <h2>Nombre: tercero-test</h2>
+                <h2>ID Cliente: 1</h2>
+                    <h2>Nombre: test- test</h2>
                     <br>
-                    <a href="{{ route('cotizaciones.nueva', $id) }}" class="btn btn-primary">Nueva cotizacion</a>
+                    <a href="{{ route('cotizaciones.nueva', 1) }}" class="btn btn-primary">Nueva cotizacion</a>
                 </div>
             </div>
         </div>

@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cotizaciones;
+use App\Clientes;
 
 class cotizacionesController extends Controller
 {
     protected $Cotizaciones;
+    protected $Clientes;
 
-    public function __construct(Cotizaciones $cotizaciones)
+    public function __construct(Cotizaciones $cotizaciones, Clientes $clientes)
     {
         $this->middleware(['auth']);
         $this->Cotizaciones = $cotizaciones;
+        $this->Clientes = $clientes;
     }
 
     public function index()
@@ -26,9 +29,19 @@ class cotizacionesController extends Controller
 
     public function create($id)
     {
-        $responsables = $this->Cotizaciones->getResponsables();
+        try {
+            $cliente = $this->Clientes->getCliente($id);
+            $responsables = $this->Cotizaciones->getResponsables();
 
-        return view('secciones.cotizaciones.nuevaCotizacion', ['responsables' => $responsables]);
+            $cotizaciones = $this->Cotizaciones->getCotizacionesCliente($id);
+            if($cliente){
+                return view('secciones.cotizaciones.nuevaCotizacion', ['cliente' => $cliente, 'responsables' => $responsables]);
+            }
+            throw new \Exception("Error Processing Request", 1);
+        } catch (\Throwable $th) {
+            return redirect('/clientes')->with(['status' => 'No se pudo obtener la información','context' => 'error']);
+        }
+
     }
 
     public function store(Request $request)
@@ -99,8 +112,15 @@ class cotizacionesController extends Controller
     
     public function cotizacionesCliente($id)
     {
-        $cotizaciones = $this->Cotizaciones->getCotizacionesCliente($id);
-        // dd($cotizaciones);
-        return view('secciones.cotizaciones.listaCotizacionInd', ['cotizaciones' => $cotizaciones, 'id' => $id]);
+        try {
+            $cliente = $this->Clientes->getCliente($id);
+            $cotizaciones = $this->Cotizaciones->getCotizacionesCliente($id);
+            if($cliente){
+                return view('secciones.cotizaciones.listadoCliente', ['cotizaciones' => $cotizaciones, 'cliente' => $cliente]);
+            }
+            throw new \Exception("Error Processing Request", 1);
+        } catch (\Throwable $th) {
+            return redirect('/cotizaciones')->with(['status' => 'No se pudo obtener la información','context' => 'error']);
+        }
     }
 }

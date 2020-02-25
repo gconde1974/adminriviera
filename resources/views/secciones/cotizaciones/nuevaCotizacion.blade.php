@@ -28,15 +28,15 @@ Cotizaciones | Admin AEPSA Riviera
                     <form id="basic-form" method="post" novalidate>
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input type="text" class="form-control" value="Misael sajaropulos" disabled>
+                            <input type="text" class="form-control" value="{{$cliente->nombre}}" disabled>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control" value="m.sajaropulos@hotmail.com" disabled>
+                        <input type="email" class="form-control" value="{{$cliente->correo}}" disabled>
                         </div>
                         <div class="form-group">
                             <label>Telefono</label>
-                            <input type="text" class="form-control" value="9841355905" disabled>
+                            <input type="text" class="form-control" value="{{$cliente->telefono}}" disabled>
                         </div>
                         <div class="form-group">
                             <label>Descripcion general</label>
