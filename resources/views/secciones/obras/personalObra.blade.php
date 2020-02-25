@@ -22,7 +22,7 @@ Obras | Admin AEPSA Riviera
         <div class="col-lg-12">
             <div class="card">
                 <div class="header">
-                    <h2>Gasto individual de la Obra<small>Basic example without any additional modification classes</small></h2>
+                    <h2>Lista de personal en Obra<small>Basic example without any additional modification classes</small></h2>
                     <br>
                     <h2>ID cotizacion: 5</h2>
                     <h2>ID cliente: 1042</h2>
@@ -37,7 +37,7 @@ Obras | Admin AEPSA Riviera
                     <a href="#" class="btn btn-info">Herramientas</a>
                     <a href="#" class="btn btn-info">Vehiculos</a>
                     <br><br>
-                    <a href="#" class="btn btn-primary">Nuevo gasto de obra</a>
+                    <a href="#" class="btn btn-primary">Asignacion de personal para obra</a>
                 </div>
                
                 <div class="body">
@@ -45,44 +45,38 @@ Obras | Admin AEPSA Riviera
                         <table class="table table-bordered table-hover js-basic-example dataTable table-custom">
                             <thead>
                                 <tr>
-                                    <th>Fecha</th>
-                                    <th>Descripcion</th>                                    
-                                    <th>Obsservaciones</th>
-                                    <th>Monto</th>
+                                    <th>Dia laborado</th>
+                                    <th>ID personal</th>                                    
+                                    <th>Nombre</th>
+                                    <th>Puesto</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>2020-03-24</td>
-                                    <td>Se entrego dinero para hielo</td>
-                                    <td>Vestibulum nec metus volutpat, convallis felis at, iaculis lorem.</td>
-                                    <td>$150</td>
+                                    <td>56</td>
+                                    <td>Juan perez</td>
+                                    <td>Aplicador</td>
                                 </tr>
                                 <tr>
-                                    <td>2020-03-24</td>
-                                    <td>Se entrego dinero para hielo</td>
-                                    <td>Vestibulum nec metus volutpat, convallis felis at, iaculis lorem.</td>
-                                    <td>$150</td>
+                                    <td>2020-03-25</td>
+                                    <td>57</td>
+                                    <td>Juan perez</td>
+                                    <td>Aplicador</td>
                                 </tr>
                                 <tr>
-                                    <td>2020-03-24</td>
-                                    <td>Se entrego dinero para hielo</td>
-                                    <td>Vestibulum nec metus volutpat, convallis felis at, iaculis lorem.</td>
-                                    <td>$150</td>
+                                    <td>2020-03-26</td>
+                                    <td>58</td>
+                                    <td>Juan perez</td>
+                                    <td>Aplicador</td>
                                 </tr>
                                 <tr>
-                                    <td>2020-03-24</td>
-                                    <td>Se entrego dinero para hielo</td>
-                                    <td>Vestibulum nec metus volutpat, convallis felis at, iaculis lorem.</td>
-                                    <td>$150</td>
+                                    <td>2020-03-27</td>
+                                    <td>59</td>
+                                    <td>Juan perez</td>
+                                    <td>Aplicador</td>
                                 </tr>
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="3" class="text-right">Total</td>
-                                    <td >$180</td>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>
