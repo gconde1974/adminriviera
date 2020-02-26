@@ -41,14 +41,13 @@ class cotizacionesController extends Controller
         } catch (\Throwable $th) {
             return redirect('/clientes')->with(['status' => 'No se pudo obtener la información','context' => 'error']);
         }
-
     }
 
     public function store(Request $request)
     {
         try {
-            // dd($request->all());
-            $arrayCotizacion = ['descripcionGeneral' => $request->input('descripcion'),
+            dd($request->all());
+            $arrayCotizacion = ['descripcionGeneral' => $request->input('desgeneral'),
                             'subtotal' => $request->input('subtotal'),
                             'iva' => $request->input('iva'),
                             'total' => $request->input('total'),
@@ -64,10 +63,10 @@ class cotizacionesController extends Controller
                         ];
             $idCotizacion = $this->Cotizaciones->createCotizacion($arrayCotizacion);
             $arrayDetalle = []; //revisar el request para llenar el arreglo.
-            $descripcionArray = $request->has('descripciones') ? $request->input('descripciones') : [];
+            $descripcionArray = $request->has('concepto') ? $request->input('descripciones') : [];
             foreach ($descripcionArray as $key => $value) {
                 $arrayDetalle[] = ['descripcion' => $value,
-                            'cantidad' => $request->input('cantidad1'),
+                            'cantidad' => $request->input('cantidad'),
                             'precioUnitario' => $request->input('pu1'),
                             'total' => $request->input('total1'),
                             'idCotizaciones' => $idCotizacion,

@@ -16,11 +16,10 @@
 
 <!-- css -->
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css') }}">
+{{-- <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css') }}"> --}}
 {{-- <link rel="stylesheet" href="{{ asset('assets/vendor/sweetalert/sweetalert.css') }}"/> --}}
 <link rel="stylesheet" href="{{ asset('assets/vendor/toastr/toastr.min.css') }}"/>
-<link rel="stylesheet" href="{{ asset('assets/vendor/dropify/css/dropify.min.css') }}">
 
 @yield('css')
 
@@ -61,8 +60,22 @@
     </div>
     
 </div>
-
 @include('includes.js')
+
+<!-- Javascripts que son necesarios cargar en todas las paginas -->
+{{-- <script src="{{ asset('assets/bundles/libscripts.bundle.js') }}"></script>
+<script src="{{ asset('assets/bundles/vendorscripts.bundle.js') }}"></script>
+
+<script src="{{ asset('assets/bundles/datatablescripts.bundle.js') }}"></script>
+
+<script src="{{ asset('assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js') }}"></script>
+<script src="{{ asset('assets/vendor/parsleyjs/js/parsley.min.js') }}"></script>
+
+<script src="{{ asset('assets/vendor/toastr/toastr.js') }}"></script> <!-- Select2 Js -->
+<script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
+<script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script> --}}
+
 @yield('scripts')
+
 </body>
 </html>

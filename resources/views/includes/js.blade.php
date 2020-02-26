@@ -1,29 +1,29 @@
-<!-- Javascript -->
+<!-- Javascript  depurando js-->
 <script src="{{ asset('assets/bundles/libscripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/bundles/vendorscripts.bundle.js') }}"></script>
 
 <script src="{{ asset('assets/bundles/datatablescripts.bundle.js') }}"></script>
-<script src="{{ asset('assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js') }}"></script>
+{{-- <script src="{{ asset('assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery-datatable/buttons/buttons.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery-datatable/buttons/buttons.colVis.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery-datatable/buttons/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('assets/vendor/jquery-datatable/buttons/buttons.print.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/jquery-datatable/buttons/buttons.print.min.js') }}"></script> --}}
 
-<script src="{{ asset('assets/vendor/dropify/js/dropify.min.js') }}"></script>
+{{-- <script src="{{ asset('assets/vendor/dropify/js/dropify.min.js') }}"></script> --}}
 
-<script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script> <!-- SweetAlert Plugin Js --> 
+{{-- <script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script> <!-- SweetAlert Plugin Js -->  --}}
 
-<script src="../assets/vendor/multi-select/js/jquery.multi-select.js"></script> <!-- Multi Select Plugin Js -->
-<script src="{{ asset('assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js') }}"></script>
+{{-- <script src="{{ asset('assets/vendor/multi-select/js/jquery.multi-select.js')}}"></script> <!-- Multi Select Plugin Js --> --}}
+{{-- <script src="{{ asset('assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js') }}"></script> --}}
 <script src="{{ asset('assets/vendor/parsleyjs/js/parsley.min.js') }}"></script>
 
-<script src="{{ asset('assets/vendor/select2/select2.min.js') }}"></script> <!-- Select2 Js -->
+{{-- <script src="{{ asset('assets/vendor/select2/select2.min.js') }}"></script> <!-- Select2 Js --> --}}
 <script src="{{ asset('assets/vendor/toastr/toastr.js') }}"></script> <!-- Select2 Js -->
 
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
-<!-- <script src="{{ asset('assets/js/pages/forms/advanced-form-elements.js') }}"></script> -->
-<script src="assets/js/pages/forms/dropify.js"></script>
+{{-- <script src="{{ asset('assets/js/pages/forms/advanced-form-elements.js') }}"></script> --}}
+{{-- <script src="{{ asset('assets/js/pages/forms/dropify.js')}}"></script> --}}
 
 <script>
     $.ajaxSetup({
@@ -34,7 +34,7 @@
     
     $(function() {
         // validation needs name of the element
-        $('#food').multiselect();
+        // $('#food').multiselect();
 
         // initialize after multiselect
         $('#basic-form').parsley();

@@ -4,6 +4,11 @@
 Obras | Admin AEPSA Riviera
 @stop
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('assets/vendor/dropify/css/dropify.min.css') }}">
+
+@endsection
+
 @section('contenido')
 <div class="container-fluid">
         <div class="block-header">
@@ -46,3 +51,8 @@ Obras | Admin AEPSA Riviera
 </div>
 
 @stop
+
+@section('scripts')
+<script src="{{ asset('assets/vendor/dropify/js/dropify.min.js') }}"></script>
+<script src="{{ asset('assets/js/pages/forms/dropify.js')}}"></script>
+@endsection
