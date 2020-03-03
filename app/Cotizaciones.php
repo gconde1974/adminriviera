@@ -12,7 +12,7 @@ class Cotizaciones extends Model
         return $cotizaciones = DB::table('cotizaciones')
                             ->join('clientes', 'cotizaciones.idClientes', '=', 'clientes.idClientes')
                             ->join('responsablesCotizacion', 'cotizaciones.idResponsableCotizacion', '=', 'responsablesCotizacion.idResponsablesCotizacion')
-                            ->select('cotizaciones.*', 'clientes.nombre', 'responsablesCotizacion.nombre')
+                            ->select(DB::raw('cotizaciones.*, clientes.nombre as cliente, responsablesCotizacion.nombre'))
                             ->get()->toArray();
     }
 
@@ -21,7 +21,7 @@ class Cotizaciones extends Model
         return $cotizaciones = DB::table('cotizaciones')->where('cotizaciones.idClientes', $id)
                             ->join('clientes', 'cotizaciones.idClientes', '=', 'clientes.idClientes')
                             ->join('responsablesCotizacion', 'cotizaciones.idResponsableCotizacion', '=', 'responsablesCotizacion.idResponsablesCotizacion')
-                            ->select('cotizaciones.*', 'clientes.nombre', 'responsablesCotizacion.nombre')
+                            ->select(DB::raw('cotizaciones.*, clientes.nombre as cliente, responsablesCotizacion.nombre'))
                             ->get()->toArray();
     }
 
@@ -30,7 +30,7 @@ class Cotizaciones extends Model
         return $cotizaciones = DB::table('cotizaciones')->where('idCotizaciones',$idCotizacion)
                             ->join('clientes', 'cotizaciones.idClientes', '=', 'clientes.idClientes')
                             ->join('responsablesCotizacion', 'cotizaciones.idResponsableCotizacion', '=', 'responsablesCotizacion.idResponsablesCotizacion')
-                            ->select('cotizaciones.*', 'clientes.nombre', 'responsablesCotizacion.nombre')
+                            ->select(DB::raw('cotizaciones.*, clientes.nombre as cliente, responsablesCotizacion.nombre'))
                             ->first();
     }
 

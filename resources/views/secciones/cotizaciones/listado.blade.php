@@ -43,12 +43,12 @@ Cotizaciones | Admin AEPSA Riviera
                             <tbody>
                                 @foreach ($cotizaciones as $item)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Misael sajaropulos</td>
-                                    <td>5-feb-20</td>
-                                    <td>34</td>
-                                    <td>quisiera usar su productos en la proteccion de una area pequeña de 80M2</td>
-                                    <td>$42,620</td>
+                                    <td>{{$item->idClientes}}</td>
+                                    <td>{{$item->cliente}}</td>
+                                    <td>{{$item->fecha}}</td>
+                                    <td>{{$item->idCotizaciones}}</td>
+                                    <td>{{$item->descripcionGeneral}}</td>
+                                    <td>{{$item->total}}</td>
                                     <td>
                                         <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-primary">Lista de cotizaciones</a>
                                         <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-warning">Crear Obra</a>

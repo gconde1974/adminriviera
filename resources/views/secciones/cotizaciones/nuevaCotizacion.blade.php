@@ -80,6 +80,7 @@ Cotizaciones | Admin AEPSA Riviera
                             </div>
                         </div>
                         <button type="button" class="btn btn-primary addconcepto">Agregar concepto</button>
+                        <button type="button" class="btn btn-danger removeConcepto">Eliminar concepto</button>
                         <br>
                         <!-- -->
                         <div class="form-group mt-4">
@@ -178,10 +179,22 @@ Cotizaciones | Admin AEPSA Riviera
     }
 
     $(document).ready(function() {
+        $('.removeConcepto').prop('disabled', true);
+
         $('.addconcepto').click(function(){
             let clonar = $('.concepto').clone();
             clonar = clonar[0];
             $('.detalleCotizacion').append(clonar);
+            $('.removeConcepto').prop('disabled', false);
+        });
+
+        $('.removeConcepto').click(function(){
+            if(document.getElementsByClassName('concepto').length > 1){
+                $('.concepto:last').remove();
+                if(document.getElementsByClassName('concepto').length == 1){
+                    $('.removeConcepto').prop('disabled', true);
+                }
+            } 
         });
 
     })

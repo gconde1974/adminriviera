@@ -32,28 +32,30 @@ Cotizaciones | Admin AEPSA Riviera
             </div>
         </div>
     </div>
-
+    
     <div class="row clearfix">
+        @foreach ($cotizaciones as $item)
         <div class="col-lg-3 col-md-4 col-sm-12">
             <div class="card">
                 <div class="file">
                     <a href="javascript:void(0);">
                         <div class="hover">
-                            <button type="button" class="btn btn-icon btn-danger">
+                            {{-- <button type="button" class="btn btn-icon btn-danger">
                                 <i class="fa fa-trash"></i>
-                            </button>
+                            </button> --}}
                         </div>
                         <div class="icon">
                             <i class="fa fa-file text-success"></i>
                         </div>
                         <div class="file-name">
-                            <p class="m-b-5 text-muted">asdf  hhkj.pdf</p>
-                            <small>Size: 3MB <span class="date text-muted">Aug 18, 2017</span></small>
+                            <p class="m-b-5 text-muted">{{$item->idCotizaciones}}.pdf</p>
+                            <small>Size: 3MB <span class="date text-muted">{{$item->fecha}}</span></small>
                         </div>
                     </a>
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
 </div>
 @stop
