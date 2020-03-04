@@ -48,10 +48,15 @@ Cotizaciones | Admin AEPSA Riviera
                                     <td>{{$item->fecha}}</td>
                                     <td>{{$item->idCotizaciones}}</td>
                                     <td>{{$item->descripcionGeneral}}</td>
-                                    <td>{{$item->total}}</td>
+                                    <td>${{$item->total}}</td>
                                     <td>
                                         <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-primary">Lista de cotizaciones</a>
-                                        <a href="{{ asset('/seguimientoClienteGeneral') }}" class="btn btn-warning">Crear Obra</a>
+                                        <a href="{{ route('obras.crear') }}" class="btn btn-warning" onclick="event.preventDefault();
+                                        document.getElementById('obras-form').submit();">Crear Obra</a>
+                                        <form id="obras-form" action="{{ route('obras.crear') }}" method="POST" style="display: none;">
+                                            @csrf
+                                            <input type="hidden" name="idCotizacion" value="{{$item->idCotizaciones}}">
+                                        </form>
                                     </td>
                                     <td><a href="#" class="btn btn-outline-danger">Anticipo</a></td>
                                 </tr>

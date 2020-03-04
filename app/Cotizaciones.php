@@ -81,4 +81,11 @@ class Cotizaciones extends Model
     {
         return $responsables = DB::select('select * from responsablesCotizacion');
     }
+
+    public function updateObraCotizacion($idCotizacion, $idObra)
+    {
+        return $update = DB::table('cotizaciones')
+                            ->where('idCotizaciones', $idCotizacion)
+                            ->update(['idObras' => $idObra]);
+    }
 }

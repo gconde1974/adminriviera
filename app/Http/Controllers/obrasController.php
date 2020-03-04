@@ -3,26 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Obras;
+use App\Cotizaciones;
 use App\Catalogos;
 
 class obrasController extends Controller
 {
     protected $Obras;
+    protected $Cotizaciones;
     protected $Catalogos;
 
-    public function __construct(Obras $obras, Catalogos $catalogos)
+    public function __construct(Obras $obras, Cotizaciones $cotizaciones, Catalogos $catalogos)
     {
         $this->middleware('auth');
         $this->Obras = $obras;
+        $this->Cotizaciones = $cotizaciones;
         $this->Catalogos = $catalogos;
     }
 
     public function index()
     {
         $obras = $this->Obras->getObras();
-
-        return view('obras', ['obras' => $obras]);
+        // dd($obras);
+        return view('secciones.obras.listadoObras', ['obras' => $obras]);
     }
 
     public function create()
@@ -37,17 +41,28 @@ class obrasController extends Controller
     public function store(Request $request)
     {
         try {
-            $arrayObra = ['fechaInicioObra' => $request->input('fechaInicio'),
-                        'fechaFinalObra' => $request->input('fechaFinal'),
-                        'direccion' => $request->input('direccion'),
-                        'idCiudad' => $request->input('idciudad'),
-                        'idEstado' => $request->input('idestado'),
-                        'referencia' => $request->input('ref')
-                    ];
+            DB::beginTransaction();
 
-            $nuevaObra = $this->Obras->createObra($arrayObra);
-            return redirect('/obras')->with('status', 'obra creada!'); //cambiar vista
+            // dd($request->all());
+            $idCotizacion = $request->input('idCotizacion');
+            // $arrayObra = ['fechaInicioObra' => $request->input('fechaInicio'),
+            //             'fechaFinalObra' => $request->input('fechaFinal'),
+            //             'direccion' => $request->input('direccion'),
+            //             'idCiudad' => $request->input('idciudad'),
+            //             'idEstado' => $request->input('idestado'),
+            //             'referencia' => $request->input('ref')
+            //         ];
+            $arrayObra = ['fechaInicioObra' => date('Y-m-d')];
+
+            $idObra = $this->Obras->createObra($arrayObra);
+
+            $update = $this->Cotizaciones->updateObraCotizacion($idCotizacion, $idObra);
+            DB::commit();
+
+            return redirect('/obras')->with('status', 'Obra creada!'); //cambiar vista
         } catch (\Throwable $th) {
+            DB::rollBack();
+            dd($th);
             return redirect()->route('obras.obras');
         }
     }

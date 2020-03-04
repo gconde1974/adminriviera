@@ -9,17 +9,19 @@ class Obras extends Model
 {
     public function getObras(){
         return $obras = DB::table('obras')
-                            ->join('estado', 'obras.idEstado', '=', 'estado.idEstado')
-                            ->join('ciudad', 'obras.idCiudad', '=', 'ciudad.idCiudad')
-                            ->select('obras.*', 'estado.nombre', 'ciudad.nombre')
+                            ->join('cotizaciones', 'cotizaciones.idObras', '=', 'obras.idObras')
+                            ->join('clientes', 'cotizaciones.idClientes', '=', 'clientes.idClientes')
+                            ->leftJoin('estado', 'obras.idEstado', '=', 'estado.idEstado')
+                            ->leftJoin('ciudad', 'obras.idCiudad', '=', 'ciudad.idCiudad')
+                            ->select(DB::raw('obras.*, cotizaciones.*, clientes.nombre, clientes.telefono, clientes.correo, estado.nombre as estado, ciudad.nombre as ciudad'))
                             ->get()->toArray();
     }
 
     public function getObra($idObra)
     {
         return $obra = DB::table('obras')->where('idObras', $idObra)
-                            ->join('estado', 'obras.idEstado', '=', 'estado.idEstado')
-                            ->join('ciudad', 'obras.idCiudad', '=', 'ciudad.idCiudad')
+                            ->leftJoin('estado', 'obras.idEstado', '=', 'estado.idEstado')
+                            ->leftJoin('ciudad', 'obras.idCiudad', '=', 'ciudad.idCiudad')
                             ->select('obras.*', 'estado.nombre', 'ciudad.nombre')
                             ->first();
     }

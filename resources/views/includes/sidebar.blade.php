@@ -50,8 +50,8 @@
                             <li><a href="{{route('clientes.seguimiento')}}"><i class="icon-users"></i> <span>Seguimientos clientes</span></a></li>
                             <li><a href="{{ route('cotizaciones.cotizaciones') }}"><i class="icon-calculator"></i> <span>Cotizaciones</span></a></li>
                             
-                            <li><a href="{{ asset('/cotizacionesCompletas') }}"><i class="icon-calculator"></i> <span>Cotizaciones</span></a></li>
-                            <li><a href="{{ asset('/listadoObras') }}"><i class="fa fa-legal"></i> <span>Obras</span></a></li>
+                            {{-- <li><a href="{{ asset('/cotizacionesCompletas') }}"><i class="icon-calculator"></i> <span>Cotizaciones</span></a></li> --}}
+                            <li><a href="{{ route('obras.obras') }}"><i class="fa fa-legal"></i> <span>Obras</span></a></li>
                             <li><a href="#Dashboard"><i class="fa fa-money"></i> <span>Gastos</span></a></li>
                             <li><a href="#Dashboard"><i class="fa fa-users"></i> <span>Personal</span></a></li>
                             <li><a href="#Dashboard"><i class="fa fa-truck"></i> <span>Vehiculos</span></a></li>

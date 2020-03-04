@@ -53,90 +53,29 @@ Obras | Admin AEPSA Riviera
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($obras as $item)
                                 <tr>
                                     <td>
                                         <label class="fancy-radio">
-                                            <input type="radio" name="selectorObra" value="male" required="" data-parsley-errors-container="#error-radio" data-parsley-multiple="selectorObra">
+                                            <input type="radio" name="selectorObra" value="{{$item->idObras}}" data-target="{{$item->idCotizaciones}}" required="" data-parsley-errors-container="#error-radio" data-parsley-multiple="selectorObra">
                                             <span><i></i></span>
                                         </label>
                                     </td>
-                                    <td>2</td>
-                                    <td>34</td>
-                                    <td>Ing Zarate</td>
-                                    <td>Calle 46 nte, El Pedregal</td>
-                                    <td>9982916916</td>
-                                    <td>Playa del Carmen</td>
-                                    <td>Quintana Roo</td>
-                                    <td>descripcion general de la cotizacion</td>
-                                    <td>2020-02-17</td>
-                                    <td>2020-02-27</td>
+                                    <td>{{$item->idCotizaciones}}</td>
+                                    <td>{{$item->idClientes}}</td>
+                                    <td>{{$item->nombre}}</td>
+                                    <td>{{$item->direccion}}</td>
+                                    <td>{{$item->telefono}}</td>
+                                    <td>{{$item->ciudad}}</td>
+                                    <td>{{$item->estado}}</td>
+                                    <td>{{$item->descripcionGeneral}}</td>
+                                    <td>{{$item->fechaInicioObra}}</td>
+                                    <td>{{$item->fechaFinalObra}}</td>
                                     <td>
                                         <a href="#" class="btn btn-outline-danger">Anticipo</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <label class="fancy-radio">
-                                            <input type="radio" name="selectorObra" value="male" required="" data-parsley-errors-container="#error-radio" data-parsley-multiple="selectorObra">
-                                            <span><i></i></span>
-                                        </label>
-                                    </td>
-                                    <td>3</td>
-                                    <td>34</td>
-                                    <td>Ing Zarate</td>
-                                    <td>Calle 46 nte, El Pedregal</td>
-                                    <td>9982916916</td>
-                                    <td>Playa del Carmen</td>
-                                    <td>Quintana Roo</td>
-                                    <td>descripcion general de la cotizacion</td>
-                                    <td>2020-02-17</td>
-                                    <td>2020-02-27</td>
-                                    <td>
-                                        <a href="#" class="btn btn-outline-danger">Anticipo</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label class="fancy-radio">
-                                            <input type="radio" name="selectorObra" value="male" required="" data-parsley-errors-container="#error-radio" data-parsley-multiple="selectorObra">
-                                            <span><i></i></span>
-                                        </label>
-                                    </td>
-                                    <td>4</td>
-                                    <td>34</td>
-                                    <td>Ing Zarate</td>
-                                    <td>Calle 46 nte, El Pedregal</td>
-                                    <td>9982916916</td>
-                                    <td>Playa del Carmen</td>
-                                    <td>Quintana Roo</td>
-                                    <td>descripcion general de la cotizacion</td>
-                                    <td>2020-02-17</td>
-                                    <td>2020-02-27</td>
-                                    <td>
-                                        <a href="#" class="btn btn-outline-danger">Anticipo</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label class="fancy-radio">
-                                            <input type="radio" name="selectorObra" value="male" required="" data-parsley-errors-container="#error-radio" data-parsley-multiple="selectorObra">
-                                            <span><i></i></span>
-                                        </label>
-                                    </td>
-                                    <td>5</td>
-                                    <td>34</td>
-                                    <td>Ing Zarate</td>
-                                    <td>Calle 46 nte, El Pedregal</td>
-                                    <td>9982916916</td>
-                                    <td>Playa del Carmen</td>
-                                    <td>Quintana Roo</td>
-                                    <td>descripcion general de la cotizacion</td>
-                                    <td>2020-02-17</td>
-                                    <td>2020-02-27</td>
-                                    <td>
-                                        <a href="#" class="btn btn-outline-danger">Anticipo</a>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
