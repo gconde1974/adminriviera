@@ -21,7 +21,7 @@ class Cotizaciones extends Model
         return $cotizaciones = DB::table('cotizaciones')->where('cotizaciones.idClientes', $id)
                             ->join('clientes', 'cotizaciones.idClientes', '=', 'clientes.idClientes')
                             ->join('responsablesCotizacion', 'cotizaciones.idResponsableCotizacion', '=', 'responsablesCotizacion.idResponsablesCotizacion')
-                            ->select(DB::raw('cotizaciones.*, clientes.nombre as cliente, responsablesCotizacion.nombre'))
+                            ->select(DB::raw('cotizaciones.*, clientes.*, responsablesCotizacion.nombre as responsable'))
                             ->get()->toArray();
     }
 
@@ -29,8 +29,9 @@ class Cotizaciones extends Model
     {
         return $cotizaciones = DB::table('cotizaciones')->where('idCotizaciones',$idCotizacion)
                             ->join('clientes', 'cotizaciones.idClientes', '=', 'clientes.idClientes')
+                            ->leftJoin('ciudad', 'clientes.idCiudad', '=', 'ciudad.idCiudad')
                             ->join('responsablesCotizacion', 'cotizaciones.idResponsableCotizacion', '=', 'responsablesCotizacion.idResponsablesCotizacion')
-                            ->select(DB::raw('cotizaciones.*, clientes.nombre as cliente, responsablesCotizacion.nombre'))
+                            ->select(DB::raw('cotizaciones.*, clientes.*, responsablesCotizacion.nombre as responsable, ciudad.nombre as ciudad'))
                             ->first();
     }
 

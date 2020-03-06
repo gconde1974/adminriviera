@@ -108,10 +108,16 @@ class cotizacionesController extends Controller
                                 'anticipos' => $anticiposCotizacion
                             ];
             if($cotizacion){
-                return view('welcome', $arrayCotizacion); //cambiar vista
+                // dd($arrayCotizacion);
+                // return view('pdf.cotizacion', $arrayCotizacion); //cambiar vista
+
+                $pdf = \PDF::loadView('pdf.pdfCotizacion', $arrayCotizacion);
+                return $pdf->download('cotizacion.pdf');
             }
+
             throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {
+            // dd($th);
             return redirect()->route('cotizaciones.cotizaciones');
         }
     }

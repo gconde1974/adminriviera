@@ -6,5 +6,10 @@
     padding: 0 0px;
 }
 
+body{
+    background-color: white;
+}
+
 .logo {display: block;}
 .alignment{margin:18px 0 0 0px !important;}
+

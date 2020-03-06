@@ -38,7 +38,7 @@ Cotizaciones | Admin AEPSA Riviera
         <div class="col-lg-3 col-md-4 col-sm-12">
             <div class="card">
                 <div class="file">
-                    <a href="javascript:void(0);">
+                    <a href="{{route('cotizaciones.ver',$item->idCotizaciones)}}">
                         <div class="hover">
                             {{-- <button type="button" class="btn btn-icon btn-danger">
                                 <i class="fa fa-trash"></i>
