@@ -48,7 +48,7 @@
                                     <h3 class="alignment">AEPSA Riviera S.A. de C.V.</h3>
                                     <h2>Playa del Carmen</h2>
                                 </div>
-                                <ul class="header-dropdown">
+                                <ul class="header-dropdown d-print-none">
                                     <li class="dropdown">
                                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                                         <ul class="dropdown-menu dropdown-menu-right">
@@ -163,7 +163,7 @@
                                         </div>                                    
                                         <div class="hidden-print col-md-12 text-right">
                                             <hr>
-                                            <button class="btn btn-primary"><i class="icon-printer"></i> Imprimir</button>
+                                            <button class="btn btn-primary d-print-none" onclick="imprimir();"><i class="icon-printer"></i> Imprimir</button>
                                         </div>
                                     </div>                                    
                                 </div>                        
@@ -236,5 +236,10 @@
 <script src="{{ asset('assets/bundles/vendorscripts.bundle.js') }}"></script>
 
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
+<script>
+    function imprimir() {
+        window.print();
+    }
+</script>
 </body>
 </html>
