@@ -82,6 +82,16 @@ class cotizacionesController extends Controller
             }
 
             $detalle = $this->Cotizaciones->createDetalleCotizacion($arrayDetalle); //insertDetalles cot.
+            
+            // $cotizacion = $this->Cotizaciones->getCotizacion($idCotizacion);
+            // $detalleCotizacion = $this->Cotizaciones->getDetalleCotizacion($idCotizacion);
+            // //guardar pdf al crear cotizacion
+            // $arrayCotizacion = ['cotizacion' => $cotizacion, 
+            //                     'detalle' => $detalleCotizacion,
+            //                 ];
+            // $pdf = \PDF::loadView('pdf.cotizacion', $arrayCotizacion);
+            // $pdf->save(storage_path('app/public/pdf/').'cotizacion'.$id.'.pdf');
+            
             DB::commit();
             return redirect('/cotizaciones')->with(['status' => 'Cotización creada!','context' => 'success']);
 
@@ -109,9 +119,29 @@ class cotizacionesController extends Controller
                             ];
             if($cotizacion){
                 // dd($arrayCotizacion);
-                // return view('pdf.cotizacion', $arrayCotizacion); //cambiar vista
+                $pdf=  \PDF::loadView('pdf.cotizacion', $arrayCotizacion);
+                return $pdf->download('cotizacion'.$id.'.pdf');
 
-                $pdf = \PDF::loadView('pdf.pdfCotizacion', $arrayCotizacion);
+                // return view('pdf.pdfCotizacion', $arrayCotizacion); //cambiar vista
+            }
+            throw new \Exception("Error Processing Request", 1);
+        } catch (\Throwable $th) {
+            // dd($th);
+            return redirect()->route('cotizaciones.cotizaciones');
+        }
+    }
+
+    public function exportPdf($id)
+    {
+        try {
+            $cotizacion = $this->Cotizaciones->getCotizacion($id);
+            $detalleCotizacion = $this->Cotizaciones->getDetalleCotizacion($id);
+
+            $arrayCotizacion = ['cotizacion' => $cotizacion, 
+                                'detalle' => $detalleCotizacion,
+                            ];
+            if($cotizacion){
+                $pdf = \PDF::loadView('pdf.cotizacion', $arrayCotizacion);
                 return $pdf->download('cotizacion.pdf');
             }
 

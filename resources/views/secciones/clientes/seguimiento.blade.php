@@ -49,7 +49,7 @@ Clientes | Admin AEPSA Riviera
                                     <td>{{$seguimiento->medio}}</td>
                                     <td>
                                         <a href="{{route('cliente.seguimiento',$seguimiento->idClientes)}}" class="btn btn-info">Seguimiento cliente</a>
-                                        <a href="{{ asset('/cotizacionIndFront') }}" class="btn btn-warning">Cotizacion</a>
+                                        <a href="{{route('cotizaciones.cliente', $seguimiento->idClientes) }}" class="btn btn-warning">Cotizaciones</a>
                                     </td>
                                 </tr>
                                 @endforeach
