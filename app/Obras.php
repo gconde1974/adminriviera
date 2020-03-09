@@ -19,10 +19,12 @@ class Obras extends Model
 
     public function getObra($idObra)
     {
-        return $obra = DB::table('obras')->where('idObras', $idObra)
+        return $obra = DB::table('obras')->where('obras.idObras', $idObra)
+                            ->join('cotizaciones', 'cotizaciones.idObras', '=', 'obras.idObras')
+                            ->join('clientes', 'cotizaciones.idClientes', '=', 'clientes.idClientes')
                             ->leftJoin('estado', 'obras.idEstado', '=', 'estado.idEstado')
                             ->leftJoin('ciudad', 'obras.idCiudad', '=', 'ciudad.idCiudad')
-                            ->select('obras.*', 'estado.nombre', 'ciudad.nombre')
+                            ->select(DB::raw('obras.*, cotizaciones.*, clientes.nombre, clientes.telefono, clientes.correo, estado.nombre as estado, ciudad.nombre as ciudad'))
                             ->first();
     }
 
@@ -45,6 +47,11 @@ class Obras extends Model
     public function createBitacora($arrayBitacora)
     {
         return $bitacora = DB::table('bitacora')->insertGetId($arrayBitacora);
+    }
+
+    public function createBitacoraArchivos($arrayBitacoraFile)
+    {
+        return $bitacora = DB::table('bitacoraArchivos')->insert($arrayBitacoraFile);
     }
 
     public function createObraPersonal($arrayObraPersonal)

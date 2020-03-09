@@ -25,12 +25,12 @@ Obras | Admin AEPSA Riviera
                     <h2>Listado general de Obras<small>Basic example without any additional modification classes</small></h2>
                     <br>
                     <!-- <a href="#" class="btn btn-primary">Nuevo cliente</a> -->
-                    <a href="#" class="btn btn-info">Detalle de obra</a>
-                    <a href="#" class="btn btn-info">Gastos de obra</a>
-                    <a href="#" class="btn btn-info">Personal asignado</a>
-                    <a href="#" class="btn btn-info">Materia prima</a>
-                    <a href="#" class="btn btn-info">Herramientas</a>
-                    <a href="#" class="btn btn-info">Vehiculos</a>
+                    <a href="javascript:void(0)" class="btn btn-info detalleObra">Detalle de obra</a>
+                    <a href="javascript:void(0)" class="btn btn-info gastosObra">Gastos de obra</a>
+                    <a href="javascript:void(0)" class="btn btn-info personalObra">Personal asignado</a>
+                    <a href="javascript:void(0)" class="btn btn-info materialObra">Materia prima</a>
+                    <a href="javascript:void(0)" class="btn btn-info herramientasObra">Herramientas</a>
+                    <a href="javascript:void(0)" class="btn btn-info vehiculosObra">Vehiculos</a>
                 </div>
                
                 <div class="body">
@@ -85,3 +85,46 @@ Obras | Admin AEPSA Riviera
     </div>
 </div>
 @stop
+@section('scripts')
+<script>
+    $(document).ready(function(){
+        var url = '';
+
+        $('.detalleObra').click(function(){
+            var idObra = $("input[name=selectorObra]:checked" ).val();
+            url = '{{ route('obras.detalle', 1) }}';
+            url = url.replace('1', idObra);
+            if(idObra !== undefined)
+                window.location.href = url
+        });
+
+        $('.gastosObra').click(function(){
+            var idObra = $("input[name=selectorObra]:checked" ).val();
+            url = '{{ route('obras.gastos', 1) }}';
+            url = url.replace('1', idObra);
+
+            if(idObra !== undefined)
+                window.location.href = url
+        });
+
+        $('.personalObra').click(function(){
+            var idObra = $("input[name=selectorObra]:checked" ).val();
+            url = '{{ route('obras.personal', 1) }}';
+            url = url.replace('1', idObra);
+
+            if(idObra !== undefined)
+                window.location.href = url
+        });
+
+        $('.materialObra').click(function(){
+            var idObra = $("input[name=selectorObra]:checked" ).val();
+            url = '{{ route('obras.materiales', 1) }}';
+            url = url.replace('1', idObra);
+
+            if(idObra !== undefined)
+                window.location.href = url
+        });
+        
+    });
+</script>
+@endsection

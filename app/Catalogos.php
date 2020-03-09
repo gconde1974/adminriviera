@@ -113,4 +113,10 @@ class Catalogos extends Model
     {
         return $detalles = DB::table('ciudad')->insert($arrayCiudades);
     }
+
+    public function insertArchivo($arrayArchivo)
+    {
+        return $detalles = DB::table('archivos')->insertGetId($arrayArchivo);
+    }
+
 }

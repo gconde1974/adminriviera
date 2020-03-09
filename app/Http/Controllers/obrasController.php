@@ -29,7 +29,7 @@ class obrasController extends Controller
         return view('secciones.obras.listadoObras', ['obras' => $obras]);
     }
 
-    public function create()
+    public function create() // se crea la obra desde el boton crear obra en cotizaciones
     {
         $paises = $this->Catalogos->getPaises();
         $idPais = 1; //México
@@ -43,7 +43,6 @@ class obrasController extends Controller
         try {
             DB::beginTransaction();
 
-            // dd($request->all());
             $idCotizacion = $request->input('idCotizacion');
             // $arrayObra = ['fechaInicioObra' => $request->input('fechaInicio'),
             //             'fechaFinalObra' => $request->input('fechaFinal'),
@@ -62,17 +61,18 @@ class obrasController extends Controller
             return redirect('/obras')->with('status', 'Obra creada!'); //cambiar vista
         } catch (\Throwable $th) {
             DB::rollBack();
-            dd($th);
             return redirect()->route('obras.obras');
         }
     }
 
-    public function show($id)
+    public function showDetalle($id)
     {
         try {
             $obra = $this->Obras->getObra($id);
+            // dd($obra);
+            $bitacora = $this->getBitacoraObra($id);
             if($obra){
-                return view('secciones.obras.ver', ['obra' => $obra]);
+                return view('secciones.obras.detalleObra', ['obra' => $obra, 'bitacora' => $bitacora]);
             }
             throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {
@@ -80,6 +80,56 @@ class obrasController extends Controller
         }
     }
 
+    public function showPersonal($id)
+    {
+        try {
+            $obra = $this->Obras->getObra($id);
+            $personal = $this->getObraPersonal($id);
+            if($obra){
+                return view('secciones.obras.personalObra', ['obra' => $obra, 'personal' => $personal]);
+            }
+            throw new \Exception("Error Processing Request", 1);
+        } catch (\Throwable $th) {
+            return redirect()->route('obras.obras');
+        }
+    }
+
+    public function showGastos($id)
+    {
+        try {
+            $obra = $this->Obras->getObra($id);
+            $gastos = $this->getBitacoraObra($id);
+            if($obra){
+                return view('secciones.obras.gastosObra', ['obra' => $obra, 'gastos' => $gastos]);
+            }
+            throw new \Exception("Error Processing Request", 1);
+        } catch (\Throwable $th) {
+            return redirect()->route('obras.obras');
+        }
+    }
+
+    public function showMateriales($id)
+    {
+        try {
+            $obra = $this->Obras->getObra($id);
+            $materiales = $this->getBitacoraObra($id); //cambiar
+            if($obra){
+                return view('secciones.obras.materiaPrimaObra', ['obra' => $obra, 'materiales' => $materiales]);
+            }
+            throw new \Exception("Error Processing Request", 1);
+        } catch (\Throwable $th) {
+            return redirect()->route('obras.obras');
+        }
+    }
+
+    public function showHerramientas($id)
+    {
+    }
+
+    public function showVehiculos($id)
+    {
+    }
+    
     public function edit($id)
     {
         try {
@@ -120,6 +170,53 @@ class obrasController extends Controller
     {
         $bitacora = $this->Obras->getBitacoraObra($id);
         return $bitacora;
+    }
+
+    public function createBitacoraObra($id)
+    {
+        // $bitacora = $this->Obras->getBitacoraObra($id);
+        return view('secciones.obras.seguimientoObra', ['id' => $id]);
+    }
+
+    public function saveBitacora(Request $request)
+    {
+        $idObra = $request->input('idObra');
+        try {
+            DB::beginTransaction();
+            dd($request->all());
+
+            $arrayBitacora = ['fecha' => date('Y-m-d'),
+                            'observaciones' => $request->input('observaciones'),
+                            'idObras' => $idObra
+                            ];
+
+            $idBitacora = $this->Obras->createBitacora($arrayBitacora);
+
+            $arrayBitacoraArchivos = []; 
+            $archivosArray = $request->hasFile('file') ? $request->file('theFile') : [];//revisar el request para llenar el arreglo.
+            foreach ($archivosArray as $key => $value) {
+                $arrayArchivo = ['nombre' => '',
+                            'tipo' => '',
+                            'url' => '',
+                            'fecha' => date('Y-m-d'),
+                        ];
+
+                $idArchivo = $this->Catalogos->insertArchivo($arrayArchivo);
+
+                $arrayBitacoraArchivos[] = ['idBitacora' => $idBitacora,
+                                            'idArchivos' => $idArchivo,
+                                        ];
+            }
+
+            $BitacoraArchivos = $this->Obras->createBitacoraArchivos($arrayBitacoraArchivos);
+            DB::commit();
+
+            return redirect('/obras')->with('status', 'Obra creada!'); //cambiar vista
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            dd($th);
+            return redirect()->route('obras.detalle', $idObra);
+        }
     }
 
     public function getObraPersonal($id)

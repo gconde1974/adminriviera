@@ -96,7 +96,13 @@ Route::prefix('obras')->group(function () {
     Route::get('/', 'obrasController@index')->name('obras.obras');
     Route::get('/nuevo', 'obrasController@create')->name('obras.nuevo');
     Route::post('/crear', 'obrasController@store')->name('obras.crear');
-    Route::get('/ver/{id}', 'obrasController@show')->name('obras.ver');
+    Route::get('/detalle/{id}', 'obrasController@showDetalle')->name('obras.detalle');
+    Route::get('/detalle/nuevo/{id}', 'obrasController@createBitacoraObra')->name('obras.bitacora');
+    Route::get('/personal/{id}', 'obrasController@showPersonal')->name('obras.personal');
+    Route::get('/gastos/{id}', 'obrasController@showGastos')->name('obras.gastos');
+    Route::get('/materiales/{id}', 'obrasController@showMateriales')->name('obras.materiales');
+    Route::get('/herramientas/{id}', 'obrasController@showHerramientas')->name('obras.herramientas');
+    Route::get('/vehiculos/{id}', 'obrasController@showVehiculos')->name('obras.vehiculos');
     Route::get('/editar/{id}', 'obrasController@edit')->name('obras.editar');
     Route::post('/actualizar/{id}', 'obrasController@update')->name('obras.actualizar');
 });
@@ -149,7 +155,6 @@ Route::prefix('api')->group(function () {
     Route::post('/cities', 'catalogosController@getCities')->name('catalogos.cities');
     Route::get('/insert', 'catalogosController@inserts')->name('catalogos.insert');
     Route::post('/insertcities', 'catalogosController@insertCities')->name('catalogos.insertcities');
-    
     
 });
 Auth::routes();
