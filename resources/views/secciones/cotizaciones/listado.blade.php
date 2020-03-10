@@ -51,14 +51,11 @@ Cotizaciones | Admin AEPSA Riviera
                                     <td>${{$item->total}}</td>
                                     <td>
                                         <a href="{{ route('cotizaciones.cliente', $item->idClientes) }}" class="btn btn-primary">Lista de cotizaciones</a>
-                                        <a href="{{ route('obras.crear') }}" class="btn btn-warning" onclick="event.preventDefault();
-                                        document.getElementById('obras-form').submit();">Crear Obra</a>
-                                        <form id="obras-form" action="{{ route('obras.crear') }}" method="POST" style="display: none;">
-                                            @csrf
-                                            <input type="hidden" name="idCotizacion" value="{{$item->idCotizaciones}}">
-                                        </form>
+                                        @if($item->idObras == null)
+                                        <a href="javascript:void(0)" data-target="{{$item->idCotizaciones}}" class="btn btn-warning saveObra">Crear Obra</a>
+                                        @endif
                                     </td>
-                                    <td><a href="#" class="btn btn-outline-danger">Anticipo</a></td>
+                                    <td><a href="javascript:void(0)" class="btn btn-outline-danger">Anticipo</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -68,6 +65,20 @@ Cotizaciones | Admin AEPSA Riviera
             </div>
         </div>
     </div>
-    
+    <form id="obras-form" action="{{ route('obras.crear') }}" method="POST" style="display: none;">
+        @csrf
+        <input type="hidden" name="idCotizacion" id="idCotizacion" value="">
+    </form>
 </div>
 @stop
+
+@section('scripts')
+<script>
+    $(document).ready(function(){
+        $('.saveObra').on('click', function(){
+            $('#idCotizacion').val($(this).data('target'));
+            document.getElementById("obras-form").submit();
+        })
+    });
+</script>
+@endsection

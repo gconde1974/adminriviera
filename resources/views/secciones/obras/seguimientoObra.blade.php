@@ -24,29 +24,30 @@ Obras | Admin AEPSA Riviera
         </div>
     
         <div class="row clearfix">
-            
             <div class="col-lg-12 col-md-12">
                 <div class="card">
                     <div class="header">
                         <h2>Nuevo seguimiento de obra</h2>
                     </div>
                     <div class="body">
-                        <div class="form-group">
-                            <label>Observaciones</label>
-                            <textarea class="form-control" rows="5" cols="30" required></textarea>
-                            </div>
-                        <label>Subir fotos</label>
-                        <input type="file" class="dropify">
-                        <br>
-                        <a href="#" class="btn btn-warning">Agregar más fotos</a>
-                        <br><br>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <form id="basic-form" method="post" novalidate enctype="multipart/form-data" action="{{route('obras.bitacora.guardar')}}">  
+                            @csrf
+                            <input type="hidden" class="form-control" value="{{$id}}" name="idObra">
+                            <div class="form-group">
+                                <label>Observaciones</label>
+                                <textarea class="form-control" rows="5" cols="30" name="observaciones" required></textarea>
+                                </div>
+                            <label>Subir fotos</label>
+                            <input type="file" class="dropify" name="files[]" multiple/>
+                            <br>
+                            {{-- <a href="#" class="btn btn-warning">Agregar más fotos</a> --}}
+                            <br><br>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </form>
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 </div>
 

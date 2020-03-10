@@ -190,18 +190,19 @@ class obrasController extends Controller
                             'idObras' => $idObra
                             ];
 
-            $idBitacora = $this->Obras->createBitacora($arrayBitacora);
+            // $idBitacora = $this->Obras->createBitacora($arrayBitacora);
 
             $arrayBitacoraArchivos = []; 
-            $archivosArray = $request->hasFile('file') ? $request->file('theFile') : [];//revisar el request para llenar el arreglo.
+            $archivosArray = $request->hasFile('files') ? $request->file('files') : [];//revisar el request para llenar el arreglo.
             foreach ($archivosArray as $key => $value) {
+                
                 $arrayArchivo = ['nombre' => '',
                             'tipo' => '',
-                            'url' => '',
+                            'url' => $value->getPathName(),
                             'fecha' => date('Y-m-d'),
                         ];
-
-                $idArchivo = $this->Catalogos->insertArchivo($arrayArchivo);
+                        dd($arrayArchivo);
+                // $idArchivo = $this->Catalogos->insertArchivo($arrayArchivo);
 
                 $arrayBitacoraArchivos[] = ['idBitacora' => $idBitacora,
                                             'idArchivos' => $idArchivo,
@@ -225,8 +226,5 @@ class obrasController extends Controller
         return $bitacora;
     }
 
-    public function destroy($id)
-    {
-        //
-    }
+    
 }
