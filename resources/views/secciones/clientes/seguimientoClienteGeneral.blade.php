@@ -28,7 +28,7 @@ Clientes | Admin AEPSA Riviera
                     <h2>Nombre: {{$cliente->nombre}}</h2>
                     <br>
                     <a href="{{ route('cliente.nuevoseguimiento',$cliente->idClientes) }}" class="btn btn-info">Nuevo seguimiento cliente</a>
-                    <a href="{{ asset('/cotizacionIndFront') }}" class="btn btn-warning">Cotizacion</a>
+                    <a href="{{ route('cotizaciones.nueva', $cliente->idClientes) }}" class="btn btn-warning">Cotizacion</a>
                 </div>
                 <div class="body">
                     <div class="table-responsive">
