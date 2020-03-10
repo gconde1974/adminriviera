@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use App\Obras;
 use App\Cotizaciones;
 use App\Catalogos;
@@ -58,9 +59,11 @@ class obrasController extends Controller
             $update = $this->Cotizaciones->updateObraCotizacion($idCotizacion, $idObra);
             DB::commit();
 
-            return redirect('/obras')->with('status', 'Obra creada!'); //cambiar vista
+            return redirect('/obras')->with(['status' => 'Obra creada!', 'context' => 'success']); 
         } catch (\Throwable $th) {
             DB::rollBack();
+            return redirect('/obras')->with(['status' => 'Error al crear la obra!', 'context' => 'error']);
+
             return redirect()->route('obras.obras');
         }
     }
@@ -69,8 +72,8 @@ class obrasController extends Controller
     {
         try {
             $obra = $this->Obras->getObra($id);
-            // dd($obra);
             $bitacora = $this->getBitacoraObra($id);
+            // dd($bitacora);
             if($obra){
                 return view('secciones.obras.detalleObra', ['obra' => $obra, 'bitacora' => $bitacora]);
             }
@@ -160,7 +163,7 @@ class obrasController extends Controller
                     ];
 
             $updateObra = $this->Obras->updateObra($id, $arrayObra);
-            return redirect('/obras')->with('status', 'obra actualizada!'); //cambiar vista
+            return redirect('/obras')->with(['status' => 'obra actualizada!', 'context' => 'success']); //cambiar vista
         } catch (\Throwable $th) {
             return redirect()->route('obras.obras');
         }
@@ -183,26 +186,28 @@ class obrasController extends Controller
         $idObra = $request->input('idObra');
         try {
             DB::beginTransaction();
-            dd($request->all());
 
             $arrayBitacora = ['fecha' => date('Y-m-d'),
                             'observaciones' => $request->input('observaciones'),
                             'idObras' => $idObra
                             ];
 
-            // $idBitacora = $this->Obras->createBitacora($arrayBitacora);
+            $idBitacora = $this->Obras->createBitacora($arrayBitacora);
 
             $arrayBitacoraArchivos = []; 
-            $archivosArray = $request->hasFile('files') ? $request->file('files') : [];//revisar el request para llenar el arreglo.
+            $archivosArray = $request->hasFile('files') ? $request->file('files') : [];
             foreach ($archivosArray as $key => $value) {
-                
-                $arrayArchivo = ['nombre' => '',
-                            'tipo' => '',
-                            'url' => $value->getPathName(),
+                $name = 'bit-'.$idObra.$key.$value->getClientOriginalName();
+                $path = $value->storeAs(
+                     'bitacora', $name, 'public'
+                );
+
+                $arrayArchivo = ['nombre' => $value->getClientOriginalName(),
+                            'tipo' => $value->extension(),
+                            'url' => $path,
                             'fecha' => date('Y-m-d'),
                         ];
-                        dd($arrayArchivo);
-                // $idArchivo = $this->Catalogos->insertArchivo($arrayArchivo);
+                $idArchivo = $this->Catalogos->insertArchivo($arrayArchivo);
 
                 $arrayBitacoraArchivos[] = ['idBitacora' => $idBitacora,
                                             'idArchivos' => $idArchivo,
@@ -212,11 +217,10 @@ class obrasController extends Controller
             $BitacoraArchivos = $this->Obras->createBitacoraArchivos($arrayBitacoraArchivos);
             DB::commit();
 
-            return redirect('/obras')->with('status', 'Obra creada!'); //cambiar vista
+            return redirect('/obras/detalle/'.$idObra)->with(['status' => 'Bitacora creada!', 'context' => 'success']);
         } catch (\Throwable $th) {
             DB::rollBack();
-            dd($th);
-            return redirect()->route('obras.detalle', $idObra);
+            return redirect('/obras/detalle/'.$idObra)->with(['status' => 'Error al crear la Bitacora!', 'context' => 'error']); 
         }
     }
 

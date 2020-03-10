@@ -42,7 +42,7 @@ Cotizaciones | Admin AEPSA Riviera
                         </div>
                         <div class="form-group">
                             <label>Descripcion general</label>
-                            <textarea class="form-control" rows="5" cols="30" name="desgeneral" required></textarea>
+                            <textarea class="form-control" rows="5" cols="30" name="desgeneral" required>Nos permitimos poner a su consideración la siguiente Cotización para el trabajo de Suministro y aplicación de Poliurea Espreada a 2mm de espesor para planta de tratamiento.</textarea>
                         </div>
                         <!-- -->
                         <div class="class detalleCotizacion">
@@ -50,13 +50,13 @@ Cotizaciones | Admin AEPSA Riviera
                                 <div class="col-lg-4 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label>Concepto</label>
-                                        <textarea class="form-control" rows="3" name="concepto[]" required></textarea>
+                                        <textarea class="form-control" rows="3" name="concepto[]" required>1) Preparación de superficie con escalificadora para abrir perfil de anclaje y retirar desmoldante utilizado en cimbra</textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-2 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label>Cantidad</label>
-                                        <textarea class="form-control" rows="3" name="cantidad[]" required></textarea>
+                                        <textarea class="form-control" rows="3" name="cantidad[]" required>3,001.00</textarea>
                                     </div>        
                                 </div>
                                 <div class="col-lg-2 col-md-6 col-sm-12">
@@ -68,13 +68,13 @@ Cotizaciones | Admin AEPSA Riviera
                                 <div class="col-lg-2 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label>P.U.</label>
-                                        <textarea class="form-control" rows="3" name="pu[]" required></textarea>
+                                        <textarea class="form-control" rows="3" name="pu[]" required>3.00</textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-2 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label for="ssn" class="control-label">Total</label>
-                                        <textarea class="form-control total" rows="3" name="totalConcepto[]" onkeyup="sumar()" required></textarea>
+                                        <textarea class="form-control total" rows="3" name="totalConcepto[]" onkeyup="sumar()" required>9003.00</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -83,20 +83,36 @@ Cotizaciones | Admin AEPSA Riviera
                         <button type="button" class="btn btn-danger removeConcepto">Eliminar concepto</button>
                         <br>
                         <!-- -->
+                        
                         <div class="form-group mt-4">
                             <label>Subtotal</label>
-                            <input type="text" id="subtotal" class="form-control" value="" disabled>
-                            <input type="hidden" id="subtotal2" name="subtotal" class="form-control" value="">
+                            <input type="hidden" id="subtotal2" name="subtotal" class="form-control" value="" >
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" id="subtotal" class="form-control" value="" disabled>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>IVA</label>
-                            <input type="text" id="iva" class="form-control" value="" disabled>
                             <input type="hidden" id="iva2" name="iva" class="form-control" value="">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" id="iva" class="form-control" value="" disabled>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Total</label>
-                            <input type="text" id="totalCot" class="form-control" value="0" disabled>
                             <input type="hidden" id="totalCot2" name="total" class="form-control" value="">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" id="totalCot" class="form-control" value="0" disabled>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Moneda</label>
@@ -107,19 +123,20 @@ Cotizaciones | Admin AEPSA Riviera
                         </div>
                         <div class="form-group">
                             <label>Forma de pago</label>
-                            <input type="text" class="form-control" name="formaPago">
+                            <input type="text" class="form-control" name="formaPago" value="60% AL INICIAR 40% AL FINALIZAR">
                         </div>
                         <div class="form-group">
                             <label>Tiempo de entrega</label>
-                            <input type="text" class="form-control" name="tiempoEntrega">
+                            <input type="text" class="form-control" name="tiempoEntrega" value="30 días aproximadamente">
                         </div>
                         <div class="form-group">
                             <label>Observaciones</label>
-                            <textarea class="form-control" name="observaciones" rows="5" cols="30"></textarea>
+                            <textarea class="form-control" name="observaciones" rows="5" cols="30">Esta cotización puede variar dependiendo de las dimensiones exactas de la obra y de los requerimientos en campo, este trabajo esta cotizado para su realización de dia. Sin otro particular y agradeciendo la atención que a la presente se sirva dar, quedo de usted para cualquier aclaración.
+                            </textarea>
                         </div>
                         <div class="form-group">
                             <label>Garantia</label>
-                            <textarea class="form-control" name="garantia" rows="5" cols="30"></textarea>
+                            <textarea class="form-control" name="garantia" rows="5" cols="30">20 años por escrito</textarea>
                         </div>
                         <div class="form-group">
                             <label>Aprobado por</label>

@@ -29,10 +29,10 @@ Obras | Admin AEPSA Riviera
                     <h2>Nombre: {{$obra->nombre}}</h2>
                     <h2>Descripcion: {{$obra->descripcionGeneral}}</h2>
                     <br>
-                    <a href="#" class="btn btn-info">Detalle de obra</a>
-                    <a href="#" class="btn btn-info">Gastos de obra</a>
-                    <a href="#" class="btn btn-info">Personal asignado</a>
-                    <a href="#" class="btn btn-info">Materia prima</a>
+                    {{-- <a href="#" class="btn btn-info">Detalle de obra</a> --}}
+                    <a href="{{ route('obras.gastos', $obra->idObras) }}" class="btn btn-info">Gastos de obra</a>
+                    <a href="{{ route('obras.personal', $obra->idObras) }}" class="btn btn-info">Personal asignado</a>
+                    <a href="{{ route('obras.materiales', $obra->idObras) }}" class="btn btn-info">Materia prima</a>
                     <a href="#" class="btn btn-info">Herramientas</a>
                     <a href="#" class="btn btn-info">Vehiculos</a>
                     <br><br>
@@ -50,114 +50,38 @@ Obras | Admin AEPSA Riviera
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($bitacora as $item)
                                 <tr>
-                                    <td>2020-03-24</td>
-                                    <td>Se completaron 150 mts2 de poliurea</td>
+                                    <td>{{$item->fecha}}</td>
+                                    <td>{{$item->observaciones}}</td>
                                     <td>
                                         <div class="row clearfix file_manager">
+                                            @foreach ($item->archivos as $archivo)
                                             <div class="col-lg-3 col-md-4 col-sm-12">
                                                 <div class="card">
                                                     <div class="file">
-                                                        <a href="javascript:void(0);">
-                                                            <div class="hover">
+                                                        <a href="{{ asset('storage/'.$archivo->url) }}" target="_blank">
+                                                            {{-- <div class="hover">
                                                                 <button type="button" class="btn btn-icon btn-danger">
                                                                     <i class="fa fa-trash"></i>
                                                                 </button>
-                                                            </div>
+                                                            </div> --}}
                                                             <div class="image">
-                                                                <img src="{{ asset('assets/images/image-gallery/5.jpg') }}" alt="img" class="img-fluid">
+                                                                <img src="{{ asset('storage/'.$archivo->url) }}" alt="img" class="img-fluid">
                                                             </div>
                                                             <div class="file-name">
-                                                                <p class="m-b-5 text-muted">img21545ds.jpg</p>
-                                                                <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                                                <p class="m-b-5 text-muted">{{$archivo->nombre}}</p>
+                                                                <small>-- <span class="date text-muted">{{$archivo->fecha}}</span></small>
                                                             </div>
                                                         </a>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-12">
-                                                <div class="card">
-                                                    <div class="file">
-                                                        <a href="javascript:void(0);">
-                                                            <div class="hover">
-                                                                <button type="button" class="btn btn-icon btn-danger">
-                                                                    <i class="fa fa-trash"></i>
-                                                                </button>
-                                                            </div>
-                                                            <div class="image">
-                                                                <img src="{{ asset('assets/images/image-gallery/5.jpg') }}" alt="img" class="img-fluid">
-                                                            </div>
-                                                            <div class="file-name">
-                                                                <p class="m-b-5 text-muted">img21545ds.jpg</p>
-                                                                <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-12">
-                                                <div class="card">
-                                                    <div class="file">
-                                                        <a href="javascript:void(0);">
-                                                            <div class="hover">
-                                                                <button type="button" class="btn btn-icon btn-danger">
-                                                                    <i class="fa fa-trash"></i>
-                                                                </button>
-                                                            </div>
-                                                            <div class="image">
-                                                                <img src="{{ asset('assets/images/image-gallery/5.jpg') }}" alt="img" class="img-fluid">
-                                                            </div>
-                                                            <div class="file-name">
-                                                                <p class="m-b-5 text-muted">img21545ds.jpg</p>
-                                                                <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-12">
-                                                <div class="card">
-                                                    <div class="file">
-                                                        <a href="javascript:void(0);">
-                                                            <div class="hover">
-                                                                <button type="button" class="btn btn-icon btn-danger">
-                                                                    <i class="fa fa-trash"></i>
-                                                                </button>
-                                                            </div>
-                                                            <div class="image">
-                                                                <img src="{{ asset('assets/images/image-gallery/5.jpg') }}" alt="img" class="img-fluid">
-                                                            </div>
-                                                            <div class="file-name">
-                                                                <p class="m-b-5 text-muted">img21545ds.jpg</p>
-                                                                <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-12">
-                                                <div class="card">
-                                                    <div class="file">
-                                                        <a href="javascript:void(0);">
-                                                            <div class="hover">
-                                                                <button type="button" class="btn btn-icon btn-danger">
-                                                                    <i class="fa fa-trash"></i>
-                                                                </button>
-                                                            </div>
-                                                            <div class="image">
-                                                                <img src="{{ asset('assets/images/image-gallery/5.jpg') }}" alt="img" class="img-fluid">
-                                                            </div>
-                                                            <div class="file-name">
-                                                                <p class="m-b-5 text-muted">img21545ds.jpg</p>
-                                                                <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

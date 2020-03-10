@@ -41,7 +41,12 @@ class Obras extends Model
 
     public function getBitacoraObra($idObra)
     {
-        return $bitacora = DB::table('bitacora')->where('idObras', $idObra)->get()->toArray();
+        $bitacora = DB::table('bitacora')->where('idObras', $idObra)->get()->toArray();
+        foreach ($bitacora as $key => $value) {
+            $archivos = $this->getArchivosBitacora($value->idBitacora);
+            $bitacora[$key]->archivos = $archivos;
+        }
+        return $bitacora;
     }
 
     public function createBitacora($arrayBitacora)
@@ -72,5 +77,12 @@ class Obras extends Model
     public function getObraVehiculos($idObra)
     {
         return $vehiculosObra = DB::table('obrasVehiculos')->where('idObras', $idObra)->get()->toArray();
+    }
+
+    public function getArchivosBitacora($idBitacora)
+    {
+        return $archivos = DB::table('bitacoraArchivos')->where('idBitacora', $idBitacora)
+                                ->join('archivos', 'archivos.idArchivos', '=', 'bitacoraArchivos.idArchivos')
+                                ->get()->toArray();
     }
 }
