@@ -36,15 +36,17 @@ class clientesController extends Controller
     {
         $paises = $this->Catalogos->getPaises();
         $idPais = 1; //México
+        $idDefaultEdo = 23; //Quintana roo
         $estados = $this->Catalogos->getEstadosByPais($idPais);
+        $ciudades = $this->Catalogos->getCiudadesByEstado($idDefaultEdo); 
         $mediosContacto = $this->Catalogos->getMediosContactos();
 
-        return view('secciones.clientes.nuevo', ['estados' => $estados, 'medios' => $mediosContacto]);
+        return view('secciones.clientes.nuevo', ['iddefault' =>$idDefaultEdo,'estados' => $estados, 'ciudades' => $ciudades, 'medios' => $mediosContacto]);
     }
 
     public function store(Request $request)
     {
-        try {
+        try { 
             DB::beginTransaction();
             $arrayCliente = ['nombre' => $request->input('nombre'), 
                         'telefono' => $request->input('tel'),
@@ -67,7 +69,6 @@ class clientesController extends Controller
             DB::commit();
             return redirect('/clientes')->with(['status' => 'Cliente creado!','context' => 'success']);
         } catch (\Throwable $th) {
-            dd($th);
             DB::rollBack();
             return redirect('/clientes')->with(['status' => 'No se ha creado el cliente!' ,'context' => 'error']);
         }

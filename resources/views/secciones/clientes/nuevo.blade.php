@@ -47,14 +47,16 @@ Clientes | Admin AEPSA Riviera
                             <label>Estado</label>
                             <select class="form-control show-tick ms select2 states" name="idestado" data-placeholder="Select">
                                 @foreach($estados as $estado)
-                                <option value="{{$estado->idEstado}}">{{$estado->nombre}}</option>
+                                <option value="{{$estado->idEstado}}" {{$estado->idEstado == $iddefault ? 'selected' : ''}}>{{$estado->nombre}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Ciudad</label>
                             <select class="form-control show-tick ms select2 cities" name="idciudad" data-placeholder="Select">
-                                
+                                @foreach($ciudades as $ciudad)
+                                <option value="{{$ciudad->idCiudad}}">{{$ciudad->nombre}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
