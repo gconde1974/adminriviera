@@ -66,6 +66,34 @@ Route::get('/materiaPrimaObra', function () {
 Route::get('/asignacionMateriaPrimaObra', function () {
     return view('secciones.obras.asignacionMateriaPrimaObra');
 });
+//revision
+Route::get('/listaGenealPersonal', function () {
+    return view('secciones.personal.listaGenealPersonal');
+});
+//revision
+Route::get('/nuevoPersonal', function () {
+    return view('secciones.personal.nuevoPersonal');
+});
+//revision
+Route::get('/edicionPersonal', function () {
+    return view('secciones.personal.edicionPersonal');
+});
+//revision
+Route::get('/datoIndivPersonal', function () {
+    return view('secciones.personal.datoIndivPersonal');
+});
+//revision
+Route::get('/listaHerramienta', function () {
+    return view('secciones.herramienta.listaHerramienta');
+});
+//revision
+Route::get('/listaMateriaPrima', function () {
+    return view('secciones.materiaprima.listaMateriaPrima');
+});
+//revision
+Route::get('/listaGeneralInvent', function () {
+    return view('secciones.inventario.listaGeneralInvent');
+});
 
 
 //Grupo de rutas para clientes
@@ -107,6 +135,7 @@ Route::prefix('obras')->group(function () {
     Route::get('/editar/{id}', 'obrasController@edit')->name('obras.editar');
     Route::post('/actualizar/{id}', 'obrasController@update')->name('obras.actualizar');
 });
+
 
 //Grupo de rutas para personal
 Route::prefix('personal')->group(function () {
