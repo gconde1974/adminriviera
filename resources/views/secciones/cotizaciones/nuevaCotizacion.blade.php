@@ -117,8 +117,8 @@ Cotizaciones | Admin AEPSA Riviera
                         <div class="form-group">
                             <label>Moneda</label>
                             <select class="form-control show-tick ms select2" name="moneda" data-placeholder="Select" required>
-                                <option value="Pesos">Pesos</option>
-                                <option value="Dolares">Dolares</option>
+                                <option value="MXN">MXN</option>
+                                <option value="USD">USD</option>
                             </select>
                         </div>
                         <div class="form-group">
