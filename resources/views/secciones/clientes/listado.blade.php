@@ -61,7 +61,7 @@ Clientes | Admin AEPSA Riviera
                                     <td>{{$cliente['seguimiento']->medio}}</td>
                                     <td>
                                         <a href="{{route('cliente.nuevoseguimiento', $cliente['idClientes'])}}" class="btn btn-info">Seguimiento</a>
-                                        <a href="{{route('cotizaciones.cliente', $cliente['idClientes']) }}" class="btn btn-warning">Cotizaciones</a>
+                                        <!-- <a href="{{route('cotizaciones.cliente', $cliente['idClientes']) }}" class="btn btn-warning">Cotizaciones</a> -->
                                         <a href="{{route('clientes.editar', $cliente['idClientes'])}}" class="btn btn-primary">Edicion</a>
                                     </td>
                                     <td>
