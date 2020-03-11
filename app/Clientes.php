@@ -16,7 +16,8 @@ class Clientes extends Model
 
         foreach ($clientes as $key => $item) {
             $primerSeg = $this->getPrimerSeguimiento($item->idClientes);
-            $collection = collect($item)->put('seguimiento', $primerSeg);
+            $ultimoSeg = $this->getUltimoSeguimiento($item->idClientes);
+            $collection = collect($item)->put('seguimiento', $primerSeg)->put('ultimoContacto', $ultimoSeg);
             $clientes[$key] = $collection->toArray();
         }
         return $clientes;
@@ -48,6 +49,15 @@ class Clientes extends Model
                                 ->select('clienteSeguimiento.*', DB::raw('medioContacto.descripcion as medio'))
                                 ->where('idClientes', $idCliente)
                                 ->oldest('fecha')->first();
+    }
+
+    public function getUltimoSeguimiento($idCliente)
+    {
+        return $seguimiento = DB::table('clienteSeguimiento')
+                                ->join('medioContacto', 'clienteSeguimiento.idMedioContacto', '=', 'medioContacto.idMedioContacto')
+                                ->select('clienteSeguimiento.*', DB::raw('medioContacto.descripcion as medio'))
+                                ->where('idClientes', $idCliente)
+                                ->latest('fecha')->first();
     }
 
     public function getSeguimientoCliente($idCliente)

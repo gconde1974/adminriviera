@@ -33,7 +33,8 @@ Clientes | Admin AEPSA Riviera
                             <thead>
                                 <tr>
                                     <th>ID Cliente</th>
-                                    <th>Fecha</th>
+                                    <th>Fecha registro</th>
+                                    <th>Ultima fecha de contacto</th>
                                     <th>Nombre</th>
                                     <th>Correo</th>
                                     <th>Telefono</th>
@@ -51,6 +52,7 @@ Clientes | Admin AEPSA Riviera
                                 <tr>
                                     <td>{{$cliente['idClientes']}}</td>
                                     <td>{{$cliente['fechaRegistro']}}</td>
+                                    <td>{{$cliente['ultimoContacto']->fecha}}</td>
                                     <td>{{$cliente['nombre']}}</td>
                                     <td>{{$cliente['correo']}}</td>
                                     <td>{{$cliente['telefono']}}</td>
@@ -60,7 +62,7 @@ Clientes | Admin AEPSA Riviera
                                     <td>{{$cliente['seguimiento']->metrosCuadrados}}</td>
                                     <td>{{$cliente['seguimiento']->medio}}</td>
                                     <td>
-                                        <a href="{{route('cliente.nuevoseguimiento', $cliente['idClientes'])}}" class="btn btn-info">Seguimiento</a>
+                                        <a href="{{route('cliente.seguimiento', $cliente['idClientes'])}}" class="btn btn-info">Seguimientos</a>
                                         <a href="{{route('cotizaciones.cliente', $cliente['idClientes']) }}" class="btn btn-warning">Cotizaciones</a>
                                         <a href="{{route('clientes.editar', $cliente['idClientes'])}}" class="btn btn-primary">Edicion</a>
                                     </td>

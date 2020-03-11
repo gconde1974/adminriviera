@@ -67,7 +67,7 @@ class clientesController extends Controller
 
             $nuevoSeguimiento = $this->Clientes->createSeguimientoCliente($arraySeguimiento);
             DB::commit();
-            return redirect('/clientes')->with(['status' => 'Cliente creado!','context' => 'success']);
+            return redirect('/clientes/seguimiento/'.$nuevoCliente)->with(['status' => 'Cliente creado!','context' => 'success']);
         } catch (\Throwable $th) {
             DB::rollBack();
             return redirect('/clientes')->with(['status' => 'No se ha creado el cliente!' ,'context' => 'error']);
