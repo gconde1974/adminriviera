@@ -48,13 +48,13 @@
                         <ul id="main-menu" class="metismenu">
                             <li><a href="{{route('clientes.clientes')}}"><i class="icon-user"></i> <span>Clientes</span></a></li>
                             <li><a href="{{route('clientes.seguimiento')}}"><i class="icon-users"></i> <span>Seguimientos clientes</span></a></li>
-                            <li><a href="{{ route('cotizaciones.cotizaciones') }}"><i class="icon-calculator"></i> <span>Cotizaciones</span></a></li>
+                            <li><a href="{{route('cotizaciones.cotizaciones')}}"><i class="icon-calculator"></i> <span>Cotizaciones</span></a></li>
                             
-                            <li><a href="{{ route('obras.obras') }}"><i class="fa fa-legal"></i> <span>Obras</span></a></li>
+                            <li><a href="{{route('obras.obras')}}"><i class="fa fa-legal"></i> <span>Obras</span></a></li>
                             <li><a href="#Dashboard"><i class="fa fa-money"></i> <span>Gastos</span></a></li>
-                            <li><a href="{{ route('personal.personal') }}"><i class="fa fa-users"></i> <span>Personal</span></a></li>
+                            <li><a href="{{route('personal.personal')}}"><i class="fa fa-users"></i> <span>Personal</span></a></li>
                             <li><a href="#Dashboard"><i class="fa fa-truck"></i> <span>Vehiculos</span></a></li>
-                            <li><a href="#Dashboard"><i class="fa fa-cubes"></i> <span>Proveedores</span></a></li>
+                            <li><a href="{{route('proveedores.proveedores')}}"><i class="fa fa-cubes"></i> <span>Proveedores</span></a></li>
                             <li>
                                 <a href="#Dashboard" class="has-arrow"><i class="fa fa-sitemap"></i> <span>Inventario</span></a>
                                 <ul>

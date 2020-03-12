@@ -29,7 +29,7 @@ Personal | Admin AEPSA Riviera
                         @csrf
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input type="text" class="form-control" name="nombre" required>
+                            <input type="text" class="form-control" name="nombre" value="{{$personal->nombre}}" required>
                         </div>
                         <div class="form-group">
                             <label>Sueldo (diario)</label>
@@ -37,7 +37,7 @@ Personal | Admin AEPSA Riviera
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input type="number" step="0.01" class="form-control" name="sueldo">
+                                <input type="number" step="0.01" class="form-control" name="sueldo" value="{{$personal->sueldoDiario}}">
                             </div>
                         </div>
                         <div class="form-group">
@@ -46,14 +46,14 @@ Personal | Admin AEPSA Riviera
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input type="number" step="0.01" class="form-control" name="imss">
+                                <input type="number" step="0.01" class="form-control" name="imss" value="{{$personal->imssDiario}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Puesto</label>
                             <select class="form-control show-tick ms select2 states" name="puesto" data-placeholder="Select">
                                 @foreach($puestos as $puesto)
-                                    <option value="{{$puesto->idPuestos}}">{{$puesto->descripcion}}</option>
+                                    <option value="{{$puesto->idPuestos}}" {{$puesto->idPuestos == $personal->idPuestos ? 'selected' : ''}}>{{$puesto->descripcion}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -61,7 +61,7 @@ Personal | Admin AEPSA Riviera
                             <label>Estatus</label>
                             <select class="form-control show-tick ms select2 states" name="estatus" data-placeholder="Select">
                                 @foreach($estatus as $item)
-                                    <option value="{{$item->idStatusPersonal}}">{{$item->descripcion}}</option>
+                                    <option value="{{$item->idStatusPersonal}}" {{$item->idStatusPersonal == $personal->status ? 'selected' : ''}}>{{$item->descripcion}}</option>
                                 @endforeach
                             </select>
                         </div>
