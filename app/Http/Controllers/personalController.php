@@ -21,7 +21,7 @@ class personalController extends Controller
     public function index()
     {
         $ListadoPersonal = $this->Personal->getListadoPersonal();
-        return view('welcome', ['personal' => $ListadoPersonal]); //cambiar vista
+        return view('secciones.personal.listado', ['listado' => $ListadoPersonal]);
     }
 
     public function create()
@@ -29,22 +29,22 @@ class personalController extends Controller
         $estatus = $this->Catalogos->getStatusPersonal();
         $puestos = $this->Catalogos->getPuestosPersonal();
 
-        return view('welcome', ['estatus' => $estatus, 'puestos' => $puestos]); //cambiar vista
+        return view('secciones.personal.nuevo', ['estatus' => $estatus, 'puestos' => $puestos]);
     }
 
     public function store(Request $request)
     {
-        try {
+        try { 
             $arrayPersonal = ['nombre' => $request->input('nombre'),
-                        'sueldoDiario' => $request->input('sueldodiario'),
-                        'immsDiario' => $request->input('immsdiario'),
-                        'status' => $request->input('idStatus'),
-                        'idPuestos' => $request->input('idPuesto')
+                        'sueldoDiario' => $request->input('sueldo'),
+                        'imssDiario' => $request->input('imss'),
+                        'status' => $request->input('estatus'),
+                        'idPuestos' => $request->input('puesto')
                     ];
             $nuevoPersonal = $this->Personal->createPersonal($arrayPersonal);
-            return redirect('/personal')->with('status', 'Personal creado!'); //cambiar vista
+            return redirect('/personal')->with(['status' => 'personal creado!','context' => 'success']);
         } catch (\Throwable $th) {
-            return redirect()->route('personal.personal');
+            return redirect('/personal')->with(['status' => 'No se ha creado el personal!','context' => 'error']);
         }
     }
 
@@ -65,12 +65,11 @@ class personalController extends Controller
     {
         try {
             $personal = $this->Personal->getPersonal($id);
-
             $estatus = $this->Catalogos->getStatusPersonal();
             $puestos = $this->Catalogos->getPuestosPersonal();
             
             if($personal){
-                return view('welcome', ['personal' => $personal, 'estatus' => $estatus, 'puestos' => $puestos]); //cambiar vista
+                return view('secciones.personal.edicion', ['personal' => $personal, 'estatus' => $estatus, 'puestos' => $puestos]); //cambiar vista
             }
             throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {
@@ -82,18 +81,17 @@ class personalController extends Controller
     {
         try {
             $arrayPersonal = ['nombre' => $request->input('nombre'),
-                        'sueldoDiario' => $request->input('sueldodiario'),
-                        'immsDiario' => $request->input('immsdiario'),
-                        'status' => $request->input('idStatus'),
-                        'idPuestos' => $request->input('idPuesto')
+                        'sueldoDiario' => $request->input('sueldo'),
+                        'imssDiario' => $request->input('imss'),
+                        'status' => $request->input('estatus'),
+                        'idPuestos' => $request->input('puesto')
                     ];
             $updatePersonal = $this->Personal->updatePersonal($id, $arrayPersonal);
-            return redirect('/personal')->with('status', 'Personal actualizado!'); //cambiar vista
+            return redirect('/personal')->with(['status' => 'Personal actualizado!','context' => 'success']);
         } catch (\Throwable $th) {
-            return redirect()->route('personal.personal');
+            return redirect('/personal')->with(['status' => 'No se ha actualizado el personal!','context' => 'error']);
         }
     }
-
 
     public function destroy($id)
     {

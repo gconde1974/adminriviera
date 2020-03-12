@@ -1,4 +1,4 @@
-@extends('layout.default-sin')
+@extends('layout.default')
 
 @section('titulo')
 Personal | Admin AEPSA Riviera
@@ -24,7 +24,7 @@ Personal | Admin AEPSA Riviera
                 <div class="header">
                     <h2>Detalle general de personal<small>Basic example without any additional modification classes</small></h2>
                     <br>
-                    <a href="#" class="btn btn-primary">Agregar personal</a>
+                    <a href="{{ route('personal.nuevo') }}" class="btn btn-primary">Agregar personal</a>
                 </div>
                
                 <div class="body">
@@ -33,7 +33,7 @@ Personal | Admin AEPSA Riviera
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
-                                    <th>Sueldo</th>
+                                    <th>Sueldo diario</th>
                                     <th>IMSS</th>
                                     <th>Puesto</th>
                                     <th>Estatus</th>
@@ -41,17 +41,19 @@ Personal | Admin AEPSA Riviera
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($listado as $personal)
                                 <tr>
-                                    <td>Juan perez</td>
-                                    <td>$280</td>
-                                    <td>$120</td>
-                                    <td>Aplicador</td>
-                                    <td>Activo</td>
+                                    <td>{{$personal->nombre}}</td>
+                                    <td>${{$personal->sueldoDiario}}</td>
+                                    <td>${{$personal->imssDiario}}</td>
+                                    <td>{{$personal->puesto}}</td>
+                                    <td>{{$personal->estatus}}</td>
                                     <td>
-                                        <a href="#" class="btn btn-warning">Detalle</a>
-                                        <a href="#" class="btn btn-info">Edicion</a>
+                                        <a href="{{route('personal.ver',$personal->idPersonal)}}" class="btn btn-warning">Detalle</a>
+                                        <a href="{{route('personal.editar',$personal->idPersonal)}}" class="btn btn-info">Edicion</a>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

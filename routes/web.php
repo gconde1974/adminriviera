@@ -14,18 +14,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//revision
-Route::get('/cotizacionesCompletas', function () {
-    return view('secciones.cotizaciones.cotizacionesCompletas');
-});
-//revision
-Route::get('/nuevaCotizacion', function () {
-    return view('secciones.cotizaciones.nuevaCotizacion');
-});
-//revision
-Route::get('/listaCotizacionInd', function () {
-    return view('secciones.cotizaciones.listaCotizacionInd');
-});
+
 //revision
 Route::get('/pdfCotizacion', function () {
     return view('pdf.pdfCotizacion');

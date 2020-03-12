@@ -12,7 +12,7 @@ class Personal extends Model
         return $personal = DB::table('personal')
                             ->join('statusPersonal', 'personal.status', '=', 'statusPersonal.idStatusPersonal')
                             ->join('puestos', 'personal.idPuestos', '=', 'puestos.idPuestos')
-                            ->select('personal.*', 'statusPersonal.descripcion', 'puestos.descripcion')
+                            ->select('personal.*', DB::raw('statusPersonal.descripcion as estatus, puestos.descripcion as puesto'))
                             ->get()->toArray();
     }
 
@@ -21,7 +21,7 @@ class Personal extends Model
         return $personal = DB::table('personal')->where('idPersonal', $idPersonal)
                             ->join('statusPersonal', 'personal.status', '=', 'statusPersonal.idStatusPersonal')
                             ->join('puestos', 'personal.idPuestos', '=', 'puestos.idPuestos')
-                            ->select('personal.*', 'statusPersonal.descripcion', 'puestos.descripcion')
+                            ->select('personal.*', DB::raw('statusPersonal.descripcion as estatus, puestos.descripcion as puesto'))
                             ->first();
     }
 
