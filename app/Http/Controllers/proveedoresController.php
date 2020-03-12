@@ -45,7 +45,7 @@ class proveedoresController extends Controller
             $proveedor = $this->Proveedores->getProveedor($id);
             
             if($proveedor){
-                return view('welcome', ['proveedor' => $proveedor]); //cambiar vista
+                return view('secciones.proveedores.listaProductos', ['proveedor' => $proveedor]);
             }
             throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {
@@ -59,7 +59,7 @@ class proveedoresController extends Controller
             $proveedor = $this->Proveedores->getProveedor($id);
             
             if($proveedor){
-                return view('welcome', ['proveedor' => $proveedor]); //cambiar vista
+                return view('secciones.proveedores.editar', ['proveedor' => $proveedor]);
             }
             throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {
@@ -74,11 +74,11 @@ class proveedoresController extends Controller
                         'direccion' => $request->input('direccion')
                     ];
 
-            $updateProveedor = $this->Proveedores->updateProveedor($arrayProveedor);
-            return redirect('/proveedores')->with('status', 'proveedor actualizado!'); //cambiar vista
+            $updateProveedor = $this->Proveedores->updateProveedor($id, $arrayProveedor);
+            return redirect('/proveedores')->with(['status' => 'Proveedor actualizado!', 'context' => 'success']);
 
         } catch (\Throwable $th) {
-            return redirect()->route('proveedores.proveedores');
+            return redirect('/proveedores')->with(['status' => 'Proveedor no actualizado!', 'context' => 'error']);
         }
     }
 

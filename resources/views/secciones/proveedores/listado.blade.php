@@ -43,7 +43,7 @@ Proveedores | Admin AEPSA Riviera
                                     <td>{{$proveedor->nombre}}</td>
                                     <td>{{$proveedor->direccion}}</td>
                                     <td>
-                                        <a href="#" class="btn btn-warning">Lista de productos</a>
+                                        <a href="{{route('proveedores.productos',$proveedor->idProveedores)}}" class="btn btn-warning">Lista de productos</a>
                                         <a href="{{route('proveedores.editar',$proveedor->idProveedores)}}" class="btn btn-info">Edicion</a>
                                     </td>
                                 </tr>

@@ -25,14 +25,15 @@ Proveedores | Admin AEPSA Riviera
                     <h2>Nuevo proveedor</h2>
                 </div>
                 <div class="body">
-                    <form id="basic-form" method="post" novalidate action="#">  
+                    <form id="basic-form" method="post" novalidate action="{{route('proveedores.actualizar',$proveedor->idProveedores)}}">  
+                        @csrf
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input type="text" class="form-control" name="nombre" value="herramientas victsing" required>
+                            <input type="text" class="form-control" name="nombre" value="{{$proveedor->nombre}}" required>
                         </div>
                         <div class="form-group">
                             <label>Direccion</label>
-                            <input type="text" class="form-control" name="direccion" value="Av. Tankah, 26, 77509 Cancún, Q.R" required>
+                            <input type="text" class="form-control" name="direccion" value="{{$proveedor->direccion}}" required>
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Guardar</button>

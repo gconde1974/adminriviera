@@ -57,18 +57,7 @@ Route::get('/asignacionMateriaPrimaObra', function () {
 });
 
 /* PERSONAL */
-//revision
-Route::get('/listaGenealPersonal', function () {
-    return view('secciones.personal.listaGenealPersonal');
-});
-//revision
-Route::get('/nuevoPersonal', function () {
-    return view('secciones.personal.nuevoPersonal');
-});
-//revision
-Route::get('/edicionPersonal', function () {
-    return view('secciones.personal.edicionPersonal');
-});
+
 //revision
 Route::get('/datoIndivPersonal', function () {
     return view('secciones.personal.datoIndivPersonal');
@@ -88,24 +77,6 @@ Route::get('/listaMateriaPrima', function () {
 //revision
 Route::get('/listaGeneralInvent', function () {
     return view('secciones.inventario.listaGeneralInvent');
-});
-
-/* PROVEEDORES */
-//revision
-Route::get('/listaGeneralProvedores', function () {
-    return view('secciones.provedores.listaGeneralProvedores');
-});
-//revision
-Route::get('/nuevoProvedor', function () {
-    return view('secciones.provedores.nuevoProvedor');
-});
-//revision
-Route::get('/editarProvedor', function () {
-    return view('secciones.provedores.editarProvedor');
-});
-//revision
-Route::get('/listaProductosIndiv', function () {
-    return view('secciones.provedores.listaProductosIndiv');
 });
 
 
@@ -168,7 +139,7 @@ Route::prefix('proveedores')->group(function () {
     Route::get('/', 'proveedoresController@index')->name('proveedores.proveedores');
     Route::get('/nuevo', 'proveedoresController@create')->name('proveedores.nuevo');
     Route::post('/crear', 'proveedoresController@store')->name('proveedores.crear');
-    Route::get('/ver/{id}', 'proveedoresController@show')->name('proveedores.ver');
+    Route::get('/productos/{id}', 'proveedoresController@show')->name('proveedores.productos');
     Route::get('/editar/{id}', 'proveedoresController@edit')->name('proveedores.editar');
     Route::post('/actualizar/{id}', 'proveedoresController@update')->name('proveedores.actualizar');
 });
