@@ -55,6 +55,8 @@ Route::get('/materiaPrimaObra', function () {
 Route::get('/asignacionMateriaPrimaObra', function () {
     return view('secciones.obras.asignacionMateriaPrimaObra');
 });
+
+/* PERSONAL */
 //revision
 Route::get('/listaGenealPersonal', function () {
     return view('secciones.personal.listaGenealPersonal');
@@ -71,10 +73,14 @@ Route::get('/edicionPersonal', function () {
 Route::get('/datoIndivPersonal', function () {
     return view('secciones.personal.datoIndivPersonal');
 });
+
+/* INVENTARIO HERRAMIENTAS */
 //revision
 Route::get('/listaHerramienta', function () {
     return view('secciones.herramienta.listaHerramienta');
 });
+
+/* INVENTARIO MATERIA PRIMA */
 //revision
 Route::get('/listaMateriaPrima', function () {
     return view('secciones.materiaprima.listaMateriaPrima');
@@ -83,6 +89,25 @@ Route::get('/listaMateriaPrima', function () {
 Route::get('/listaGeneralInvent', function () {
     return view('secciones.inventario.listaGeneralInvent');
 });
+
+/* PROVEEDORES */
+//revision
+Route::get('/listaGeneralProvedores', function () {
+    return view('secciones.provedores.listaGeneralProvedores');
+});
+//revision
+Route::get('/nuevoProvedor', function () {
+    return view('secciones.provedores.nuevoProvedor');
+});
+//revision
+Route::get('/editarProvedor', function () {
+    return view('secciones.provedores.editarProvedor');
+});
+//revision
+Route::get('/listaProductosIndiv', function () {
+    return view('secciones.provedores.listaProductosIndiv');
+});
+
 
 
 //Grupo de rutas para clientes
