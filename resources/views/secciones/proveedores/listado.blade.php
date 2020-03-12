@@ -24,7 +24,7 @@ Proveedores | Admin AEPSA Riviera
                 <div class="header">
                     <h2>Detalle general de proveedores<small>Basic example without any additional modification classes</small></h2>
                     <br>
-                    <a href="#" class="btn btn-primary">Agregar proveedor</a>
+                    <a href="{{route('proveedores.nuevo')}}" class="btn btn-primary">Agregar proveedor</a>
                 </div>
                
                 <div class="body">
@@ -38,14 +38,16 @@ Proveedores | Admin AEPSA Riviera
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($proveedores as $proveedor)
                                 <tr>
-                                    <td>Materiales Hernandez</td>
-                                    <td>Av Reforma 106 col. Agricola oriental Mex</td>
+                                    <td>{{$proveedor->nombre}}</td>
+                                    <td>{{$proveedor->direccion}}</td>
                                     <td>
                                         <a href="#" class="btn btn-warning">Lista de productos</a>
-                                        <a href="#" class="btn btn-info">Edicion</a>
+                                        <a href="{{route('proveedores.editar',$proveedor->idProveedores)}}" class="btn btn-info">Edicion</a>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

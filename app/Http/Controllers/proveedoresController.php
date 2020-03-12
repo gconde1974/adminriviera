@@ -17,7 +17,7 @@ class proveedoresController extends Controller
     public function index()
     {
         $ListadoProveedores = $this->Proveedores->getProveedores();
-        return view('welcome', ['proveedores' => $ListadoProveedores]); //cambiar vista
+        return view('secciones.proveedores.listado', ['proveedores' => $ListadoProveedores]);
     }
 
     public function create()
