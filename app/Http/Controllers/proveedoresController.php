@@ -22,7 +22,7 @@ class proveedoresController extends Controller
 
     public function create()
     {
-        return view('welcome', []); //cambiar vista
+        return view('secciones.proveedores.nuevo', []);
     }
 
     public function store(Request $request)
@@ -33,9 +33,9 @@ class proveedoresController extends Controller
                     ];
 
             $nuevoProveedor = $this->Proveedores->createProveedor($arrayProveedor);
-            return redirect('/proveedores')->with('status', 'proveedor creado!'); //cambiar vista
+            return redirect('/proveedores')->with(['status' => 'Proveedor creado!','context' => 'success']);
         } catch (\Throwable $th) {
-            return redirect()->route('proveedores.proveedores');
+            return redirect('/proveedores')->with(['status' => 'No se ha creado el proveedor!','context' => 'error']);
         }
     }
 
@@ -82,8 +82,4 @@ class proveedoresController extends Controller
         }
     }
 
-    public function destroy($id)
-    {
-        //
-    }
 }

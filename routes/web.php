@@ -109,6 +109,8 @@ Route::get('/listaProductosIndiv', function () {
 });
 
 
+//middleware del rol en controlador si el modulo aplica solo para administrador 'rol.admin', 
+//en cada route si algunas funciones estan disponibles para rol operativo 'rol.op', 'rol.admin' para las que no.
 
 //Grupo de rutas para clientes
 Route::prefix('clientes')->group(function () {

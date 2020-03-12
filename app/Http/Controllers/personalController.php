@@ -42,7 +42,7 @@ class personalController extends Controller
                         'idPuestos' => $request->input('puesto')
                     ];
             $nuevoPersonal = $this->Personal->createPersonal($arrayPersonal);
-            return redirect('/personal')->with(['status' => 'personal creado!','context' => 'success']);
+            return redirect('/personal')->with(['status' => 'Personal creado!','context' => 'success']);
         } catch (\Throwable $th) {
             return redirect('/personal')->with(['status' => 'No se ha creado el personal!','context' => 'error']);
         }
@@ -93,8 +93,4 @@ class personalController extends Controller
         }
     }
 
-    public function destroy($id)
-    {
-        //
-    }
 }

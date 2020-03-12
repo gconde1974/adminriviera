@@ -25,7 +25,8 @@ Proveedor | Admin AEPSA Riviera
                     <h2>Nuevo proveedor</h2>
                 </div>
                 <div class="body">
-                    <form id="basic-form" method="post" novalidate action="#">  
+                    <form id="basic-form" method="post" novalidate action="{{route('proveedores.crear',)}}">  
+                        @csrf
                         <div class="form-group">
                             <label>Nombre</label>
                             <input type="text" class="form-control" name="nombre" required>
