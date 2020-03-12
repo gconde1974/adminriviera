@@ -19,6 +19,8 @@ Route::get('/', function () {
 Route::get('/pdfCotizacion', function () {
     return view('pdf.pdfCotizacion');
 });
+
+/* OBRAS */
 //revision
 Route::get('/listadoObras', function () {
     return view('secciones.obras.listadoObras');
@@ -71,17 +73,38 @@ Route::get('/listaHerramienta', function () {
 
 /* INVENTARIO MATERIA PRIMA */
 //revision
-Route::get('/listaMateriaPrima', function () {
-    return view('secciones.materiaprima.listaMateriaPrima');
+Route::get('/listaGeneralMateriaInvent', function () {
+    return view('secciones.inventario.materiaprima.listaGeneralMateriaInvent');
 });
 //revision
-Route::get('/listaGeneralInvent', function () {
-    return view('secciones.inventario.listaGeneralInvent');
+Route::get('/nuevoMateriaInvent', function () {
+    return view('secciones.inventario.materiaprima.nuevoMateriaInvent');
+});
+//revision
+Route::get('/entradaMateriaInvent', function () {
+    return view('secciones.inventario.materiaprima.entradaMateriaInvent');
+});
+//revision
+Route::get('/salidaMateriaInvent', function () {
+    return view('secciones.inventario.materiaprima.salidaMateriaInvent');
+});
+//revision
+Route::get('/devolucionMateriaInvent', function () {
+    return view('secciones.inventario.materiaprima.devolucionMateriaInvent');
+});
+//revision
+Route::get('/listaIndvMateriaPrima', function () {
+    return view('secciones.materiaprima.materiaprima.listaIndvMateriaPrima');
 });
 
 
+/* GASTOS */
+Route::get('/listaGastosGenerales', function () {
+    return view('secciones.gastos.listaGastosGenerales');
+});
 //middleware del rol en controlador si el modulo aplica solo para administrador 'rol.admin', 
 //en cada route si algunas funciones estan disponibles para rol operativo 'rol.op', 'rol.admin' para las que no.
+
 
 //Grupo de rutas para clientes
 Route::prefix('clientes')->group(function () {

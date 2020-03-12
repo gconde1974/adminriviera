@@ -15,10 +15,12 @@
 <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
 
 <!-- css -->
+<link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/multi-select/css/multi-select.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/nouislider/nouislider.min.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
 
 <!-- Select2 -->
 <link rel="stylesheet" href="{{ asset('assets/vendor/select2/select2.css') }}" />
