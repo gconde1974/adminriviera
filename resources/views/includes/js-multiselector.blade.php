@@ -11,6 +11,8 @@
 <script src="{{ asset('assets/vendor/nouislider/nouislider.js') }}"></script> <!-- noUISlider Plugin Js --> 
 
 <script src="{{ asset('assets/vendor/select2/select2.min.js') }}"></script> <!-- Select2 Js -->
-    
+<script src="{{ asset('assets/bundles/datatablescripts.bundle.js') }}"></script>
+<script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
+
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/pages/forms/advanced-form-elements.js') }}"></script>
