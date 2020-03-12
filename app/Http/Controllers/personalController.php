@@ -69,7 +69,7 @@ class personalController extends Controller
             $puestos = $this->Catalogos->getPuestosPersonal();
             
             if($personal){
-                return view('secciones.personal.edicion', ['personal' => $personal, 'estatus' => $estatus, 'puestos' => $puestos]); //cambiar vista
+                return view('secciones.personal.edicion', ['personal' => $personal, 'estatus' => $estatus, 'puestos' => $puestos]);
             }
             throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {

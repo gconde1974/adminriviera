@@ -30,7 +30,7 @@ class Personal extends Model
         return $personal = DB::table('personal')->insertGetId($arrayPersonal);
     }
 
-    public function uptadePersonal($idPersonal, $arrayPersonal)
+    public function updatePersonal($idPersonal, $arrayPersonal)
     {
         return $update = DB::table('personal')->where('idPersonal', $idPersonal)
                             ->update($arrayPersonal);
