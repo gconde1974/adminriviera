@@ -12,6 +12,16 @@ class Inventarios extends Model
         return $inventario = DB::select('select * from producto');
     }
 
+    public function getMateriales()
+    {
+        return $inventario = DB::select('select * from materiales');
+    }
+
+    public function getHerramientas()
+    {
+        return $inventario = DB::select('select * from herramientas');
+    }
+
     public function getMovimientosInventario()
     {
         return $movimientosInv = DB::select('select * from movimientoInventario');

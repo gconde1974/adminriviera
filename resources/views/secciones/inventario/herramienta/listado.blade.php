@@ -24,7 +24,7 @@ Inventario - Herramienta | Admin AEPSA Riviera
                 <div class="header">
                     <h2>Detalle General de Herramientas<small>Basic example without any additional modification classes</small></h2>
                     <br>
-                    <a href="#" class="btn btn-primary">Agregar Herramientas</a>
+                    <a href="{{route('inventario.herramientas.nuevo')}}" class="btn btn-primary">Agregar Herramientas</a>
                 </div>
                
                 <div class="body">

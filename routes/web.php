@@ -192,6 +192,10 @@ Route::prefix('proveedores')->group(function () {
 Route::prefix('inventario')->group(function () {
     Route::get('/', 'inventariosController@index')->name('inventario.inventario');
     Route::get('/materiales', 'inventariosController@materiales')->name('inventario.materiales');
+    Route::get('/materiales/nuevo', 'inventariosController@createMaterial')->name('inventario.materiales.nuevo');
+
+    Route::get('/herramientas', 'inventariosController@herramientas')->name('inventario.herramientas');
+    Route::get('/herramientas/nuevo', 'inventariosController@herramientas')->name('inventario.herramientas.nuevo');
     
 });
 

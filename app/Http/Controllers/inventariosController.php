@@ -22,11 +22,28 @@ class inventariosController extends Controller
 
     public function materiales()
     {
-        $Listado = $this->Inventarios->getInventario();
-        return view('secciones.inventario.materiaprima.listaGeneralMateriaInvent', ['Listado' => $Listado]);
+        $Listado = $this->Inventarios->getMateriales();
+        return view('secciones.inventario.materiaprima.listado', ['Listado' => $Listado]);
     }
 
- 
+    public function createMaterial()
+    {
+        $proveedores = [];
+        return view('secciones.inventario.materiaprima.nuevo', ['proveedores' => $proveedores]);
+    }
+
+    public function herramientas()
+    {
+        $Listado = $this->Inventarios->getHerramientas();
+        return view('secciones.inventario.herramienta.listado', ['Listado' => $Listado]);
+    }
+
+    public function createHerramientas()
+    {
+        $proveedores = [];
+        return view('secciones.inventario.herramienta.nuevo', ['proveedores' => $proveedores]);
+    }
+
     public function create()
     {
         //

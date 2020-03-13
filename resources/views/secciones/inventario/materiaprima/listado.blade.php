@@ -24,7 +24,7 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                 <div class="header">
                     <h2>Detalle General de Materia Prima<small>Basic example without any additional modification classes</small></h2>
                     <br>
-                    <a href="#" class="btn btn-primary">Agregar Materia Prima</a>
+                    <a href="{{route('inventario.materiales.nuevo')}}" class="btn btn-primary">Agregar Materia Prima</a>
                 </div>
                
                 <div class="body">
