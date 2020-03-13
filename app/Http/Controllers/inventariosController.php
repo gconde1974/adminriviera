@@ -20,6 +20,12 @@ class inventariosController extends Controller
         return view('secciones.inventario.listado', ['Listado' => $Listado]);
     }
 
+    public function materiales()
+    {
+        $Listado = $this->Inventarios->getInventario();
+        return view('secciones.inventario.materiaprima.listaGeneralMateriaInvent', ['Listado' => $Listado]);
+    }
+
  
     public function create()
     {

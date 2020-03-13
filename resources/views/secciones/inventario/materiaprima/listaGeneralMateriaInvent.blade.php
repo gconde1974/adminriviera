@@ -1,4 +1,4 @@
-@extends('layout.default-sin')
+@extends('layout.default')
 
 @section('titulo')
 Inventario - Materia Prima | Admin AEPSA Riviera

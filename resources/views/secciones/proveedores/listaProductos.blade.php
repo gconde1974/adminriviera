@@ -1,4 +1,4 @@
-@extends('layout.default-sin')
+@extends('layout.default')
 
 @section('titulo')
 Proveedores | Admin AEPSA Riviera

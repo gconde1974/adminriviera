@@ -94,7 +94,7 @@ Route::get('/devolucionMateriaInvent', function () {
 });
 //revision
 Route::get('/listaIndvMateriaPrima', function () {
-    return view('secciones.materiaprima.materiaprima.listaIndvMateriaPrima');
+    return view('secciones.inventario.materiaprima.listaIndvMateriaPrima');
 });
 
 
@@ -102,9 +102,10 @@ Route::get('/listaIndvMateriaPrima', function () {
 Route::get('/listaGastosGenerales', function () {
     return view('secciones.gastos.listaGastosGenerales');
 });
+
+
 //middleware del rol en controlador si el modulo aplica solo para administrador 'rol.admin', 
 //en cada route si algunas funciones estan disponibles para rol operativo 'rol.op', 'rol.admin' para las que no.
-
 
 //Grupo de rutas para clientes
 Route::prefix('clientes')->group(function () {
@@ -168,8 +169,9 @@ Route::prefix('proveedores')->group(function () {
 });
 
 //Grupo de rutas para inventarios
-Route::prefix('inventarios')->group(function () {
-    // Route::get('/', 'inventariosController@index')->name('inventarios');
+Route::prefix('inventario')->group(function () {
+    Route::get('/', 'inventariosController@index')->name('inventario.inventario');
+    Route::get('/materiales', 'inventariosController@materiales')->name('inventario.materiales');
     
 });
 

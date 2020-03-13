@@ -9,7 +9,7 @@ class Inventarios extends Model
 {
     public function getInventario()
     {
-        return $inventario = DB::select('select * from productos');
+        return $inventario = DB::select('select * from producto');
     }
 
     public function getMovimientosInventario()
