@@ -31,7 +31,7 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <label>Cliente</label>
-                                    <select class="form-control show-tick ms select2" data-placeholder="Selecciona proveedor">
+                                    <select class="form-control show-tick ms select2" data-placeholder="Selecciona cliente">
                                         <option></option>
                                         <option>Juan Perez</option>
                                         <option>Ernesto</option>
@@ -41,7 +41,7 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                                 </div>
                                 <div class="mb-3">
                                     <label>Id Obra - Descripcion - Direccion</label>
-                                    <select class="form-control show-tick ms select2" data-placeholder="Selecciona proveedor">
+                                    <select class="form-control show-tick ms select2" data-placeholder="Selecciona ID obra - Descripcion - direccion">
                                         <option></option>
                                         <option>4 - Espuma de poliuretano - av central cancun</option>
                                         <option>6 - Poliurea - av central cancun</option>
@@ -65,15 +65,6 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                                 <div class="form-group">
                                     <label>Medida</label>
                                     <input type="text" class="form-control" name="" value="Kg" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label>Costo unitario</label>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">$</span>
-                                        </div>
-                                        <input type="text" id="" class="form-control" value="">
-                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Observaciones</label>

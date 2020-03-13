@@ -67,8 +67,28 @@ Route::get('/datoIndivPersonal', function () {
 
 /* INVENTARIO HERRAMIENTAS */
 //revision
-Route::get('/listaHerramienta', function () {
-    return view('secciones.herramienta.listaHerramienta');
+Route::get('/listaGeneralHerramInvent', function () {
+    return view('secciones.inventario.herramienta.listaGeneralHerramInvent');
+});
+//revision
+Route::get('/nuevoHerramInvent', function () {
+    return view('secciones.inventario.herramienta.nuevoHerramInvent');
+});
+//revision
+Route::get('/entradaHerramInvent', function () {
+    return view('secciones.inventario.herramienta.entradaHerramInvent');
+});
+//revision
+Route::get('/salidaHerramInvent', function () {
+    return view('secciones.inventario.herramienta.salidaHerramInvent');
+});
+//revision
+Route::get('/devolucionHerramInvent', function () {
+    return view('secciones.inventario.herramienta.devolucionHerramInvent');
+});
+//revision
+Route::get('/listaIndvHerramPrima', function () {
+    return view('secciones.inventario.herramienta.listaIndvHerramPrima');
 });
 
 /* INVENTARIO MATERIA PRIMA */

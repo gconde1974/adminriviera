@@ -1,7 +1,7 @@
 @extends('layout.multiselector')
 
 @section('titulo')
-Inventario - Materia Prima | Admin AEPSA Riviera
+Inventario - Herramienta | Admin AEPSA Riviera
 @stop
 
 @section('contenido')
@@ -17,41 +17,42 @@ Inventario - Materia Prima | Admin AEPSA Riviera
             </div>
         </div>
     </div>
-    
+
+    <!-- Advanced Select2 -->
     <div class="row clearfix">
-        <div class="col-md-12">
+        <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="card">
                 <div class="header">
-                    <h2>Devolucion de Materia Prima</h2>
+                    <h2>Entrada de Herramienta</h2>
+                    <ul class="header-dropdown">
+                        <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="javascript:void(0);">Action</a></li>
+                                <li><a href="javascript:void(0);">Another action</a></li>
+                                <li><a href="javascript:void(0);">Something else</a></li>
+                            </ul>
+                        </li>
+                        <li class="remove">
+                            <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
+                        </li>
+                    </ul>
                 </div>
-
                 <div class="body">
                     <form id="basic-form" method="post" novalidate action="#">
                         <div class="row clearfix">
                             <div class="col-lg-12">
                                 <div class="mb-3">
-                                    <label>Cliente</label>
-                                    <select class="form-control show-tick ms select2" data-placeholder="Selecciona cliente">
+                                    <label>Proveedor</label>
+                                    <select class="form-control show-tick ms select2" data-placeholder="Selecciona proveedor">
                                         <option></option>
-                                        <option>Juan Perez</option>
-                                        <option>Ernesto</option>
-                                        <option>Rodrigo</option>
-                                        <option>Alberto</option>
+                                        <option>dfgdsfg</option>
+                                        <option>bvnmvbnmbm</option>
+                                        <option>wsxedcdec</option>
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label>Id Obra - Descripcion - Direccion</label>
-                                    <select class="form-control show-tick ms select2" data-placeholder="Selecciona Id obra - descripcion - direccion">
-                                        <option></option>
-                                        <option>4 - Espuma de poliuretano - av central cancun</option>
-                                        <option>6 - Poliurea - av central cancun</option>
-                                        <option>8 - Cementicio - av central cancun</option>
-                                        <option>15 - Intumescente - av central cancun</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label>Nombre de materia prima</label>
-                                    <select class="form-control show-tick ms select2" data-placeholder="Selecciona materia prima">
+                                    <label>Nombre de herramienta</label>
+                                    <select class="form-control show-tick ms select2" data-placeholder="Selecciona herramienta">
                                         <option></option>
                                         <option>dfgdsfg</option>
                                         <option>bvnmvbnmbm</option>
@@ -64,7 +65,7 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                                 </div>
                                 <div class="form-group">
                                     <label>Medida</label>
-                                    <input type="text" class="form-control" name="" value="Kg" disabled>
+                                    <input type="text" class="form-control" name="" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label>Costo unitario</label>
@@ -96,10 +97,10 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                     </div>
                     <!-- fin, sin esta seccion el selector multiple no funciona -->
                 </div>
-                
             </div>
         </div>
     </div>
+    <!-- #END# Select2 -->  
     
 </div>
 @stop
