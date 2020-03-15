@@ -23,7 +23,7 @@ Obras | Admin AEPSA Riviera
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="card">
                 <div class="header">
-                    <h2>Lista de personal en Obra<small>Basic example without any additional modification classes</small></h2>
+                    <h2>Asignacion de personal a Obra<small>Basic example without any additional modification classes</small></h2>
                     <br>
                     <h2>ID cotizacion: 5</h2>
                     <h2>ID cliente: 1042</h2>

@@ -54,8 +54,16 @@ Route::get('/materiaPrimaObra', function () {
     return view('secciones.obras.materiaPrimaObra');
 });
 //revision
-Route::get('/asignacionMateriaPrimaObra', function () {
-    return view('secciones.obras.asignacionMateriaPrimaObra');
+Route::get('/usoMateriaPrima', function () {
+    return view('secciones.obras.usoMateriaPrima');
+});
+//revision
+Route::get('/herramientaObra', function () {
+    return view('secciones.obras.herramientaObra');
+});
+//revision
+Route::get('/usoHerramienta', function () {
+    return view('secciones.obras.usoHerramienta');
 });
 
 /* PERSONAL */

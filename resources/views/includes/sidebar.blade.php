@@ -58,7 +58,7 @@
                             <li>
                                 <a href="javascript:void(0)" class="has-arrow"><i class="fa fa-sitemap"></i> <span>Inventario</span></a>
                                 <ul>
-                                    <li><a href="{{route('inventario.inventario')}}"><i class="fa fa-sitemap"></i> Lista general</a></li>
+                                    <!-- <li><a href="{{route('inventario.inventario')}}"><i class="fa fa-sitemap"></i> Lista general</a></li> -->
                                     <li><a href="{{route('inventario.herramientas')}}"><i class="fa fa-wrench"></i> Herramientas</a></li>
                                     <li><a href="{{route('inventario.materiales')}}"><i class="fa fa-database"></i> Materia prima</a></li>
                                 </ul>
