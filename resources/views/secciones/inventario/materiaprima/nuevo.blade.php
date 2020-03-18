@@ -25,8 +25,10 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                     <h2>Agregar Materia Prima</h2>
                 </div>
                 <div class="body">
-                    <form id="basic-form" method="post" novalidate action="{{route('inventario.materiales.guardar')}}"> 
+                    <form id="basic-form" method="post" novalidate action="{{route('inventario.producto.guardar')}}"> 
                         @csrf 
+                        <input type="hidden" name="idTipoMovimiento" value="1"/>
+                        <input type="hidden" name="tipoProducto" value="1"/>
                         <div class="form-group">
                             <label>Proveedor</label>
                             <select class="form-control show-tick ms select2" name="idProveedor" data-placeholder="Select">                                

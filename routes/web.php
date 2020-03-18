@@ -201,10 +201,10 @@ Route::prefix('inventario')->group(function () {
     Route::get('/', 'inventariosController@index')->name('inventario.inventario');
     Route::get('/materiales', 'inventariosController@materiales')->name('inventario.materiales');
     Route::get('/materiales/nuevo', 'inventariosController@createMaterial')->name('inventario.materiales.nuevo');
-    Route::post('/materiales/guardar', 'inventariosController@storeMaterial')->name('inventario.materiales.guardar');
+    Route::post('/productos/guardar', 'inventariosController@storeProducto')->name('inventario.producto.guardar');
     
     Route::get('/herramientas', 'inventariosController@herramientas')->name('inventario.herramientas');
-    Route::get('/herramientas/nuevo', 'inventariosController@herramientas')->name('inventario.herramientas.nuevo');
+    Route::get('/herramientas/nuevo', 'inventariosController@createHerramientas')->name('inventario.herramientas.nuevo');
     
 });
 

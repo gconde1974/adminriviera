@@ -24,7 +24,12 @@ class Inventarios extends Model
 
     public function getHerramientas()
     {
-        return $inventario = DB::select('select * from herramientas');
+        return $inventario = DB::table('producto')->where('tipoProducto', 1)
+                ->join('herramientas', 'herramientas.idProducto', '=', 'producto.idProducto')
+                ->join('productoProveedores', 'productoProveedores.idProducto', '=', 'producto.idProducto')
+                ->join('proveedores', 'productoProveedores.idProveedores', '=', 'proveedores.idProveedores')
+                ->select('producto.*','herramientas.*', DB::raw('proveedores.nombre as proveedor'))
+                ->get()->toArray();
     }
 
     public function getMovimientosInventario()
@@ -55,6 +60,11 @@ class Inventarios extends Model
         return $material = DB::table('materiales')->insert($arrayMaterial);
     }
 
+    public function createHerramientas($arrayHerramienta)
+    {
+        return $material = DB::table('herramientas')->insert($arrayHerramienta);
+    }
+    
     public function createMovimiento($arrayMovimiento)
     {
         return $movimiento = DB::table('movimientoInventario')->insertGetId($arrayMovimiento);

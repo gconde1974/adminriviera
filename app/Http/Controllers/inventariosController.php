@@ -37,34 +37,25 @@ class inventariosController extends Controller
         return view('secciones.inventario.materiaprima.nuevo', ['proveedores' => $proveedores]);
     }
 
-    public function storeMaterial(Request $request)
+    public function storeProducto(Request $request)
     {
         try {
-            // dd($request->all());
+            $tipoProducto = $request->input('tipoProducto');
             DB::beginTransaction();
             //insert producto
             $arrayProducto = ['nombre' => $request->input('nombre'), 
-                'tipoProducto' => 1, //1 = materiales, 2 = herramientas
-                'nombreTipoProducto' => 'Materiales',
+                'tipoProducto' => $tipoProducto, //1 = materiales, 2 = herramientas
+                'nombreTipoProducto' => $tipoProducto == 1 ? 'Materiales' : 'Herramientas',
                 'stockInicial' => $request->input('stockinicial'),
                 'stockActual' => $request->input('stockinicial'),
                 'costo' => $request->input('costoUnitario'),
             ];
 
             $idProducto = $this->Inventarios->createProducto($arrayProducto);
-
-            //insert materiales
-            $arrayMaterial = ['idProducto' => $idProducto, 
-                'nombre' => $request->input('nombre'),
-                'descripcion' => $request->input('descripcion'),
-                'observaciones' => $request->input('observaciones'),
-            ];
-
-            $insertMaterial = $this->Inventarios->createMaterial($arrayMaterial);
-
+            
             //insert movimiento inventario = entrada
             $arrayMovimiento = ['idProducto' => $idProducto, 
-                'idTipoMovimiento' => 1, //entrada
+                'idTipoMovimiento' => $request->input('idTipoMovimiento'), //1 = entrada
                 'cantidad' => $request->input('stockinicial'),
                 'stockActual' => $request->input('stockinicial'),
                 'idUnidadMedida' => $request->input('idUnidadMedida'),
@@ -82,15 +73,34 @@ class inventariosController extends Controller
             ];
 
             $insertProductoProveedor = $this->Inventarios->createProductoProveedor($arrayProductoProvee);
+            
+            if($tipoProducto == 1) {
+                //insert materiales
+                $arrayMaterial = ['idProducto' => $idProducto, 
+                    'nombre' => $request->input('nombre'),
+                    'descripcion' => $request->input('descripcion'),
+                    'observaciones' => $request->input('observaciones'),
+                ];
 
-            DB::commit();
+                $insertMaterial = $this->Inventarios->createMaterial($arrayMaterial);
+                DB::commit();
+                return redirect('/inventario/materiales')->with(['status' => 'Material creado!', 'context' => 'success']);
+            } else {
+                //insert herramientas
+                $arrayHerramientas = ['idProducto' => $idProducto, 
+                    'nombre' => $request->input('nombre'),
+                    'descripcion' => $request->input('descripcion'),
+                    'observaciones' => $request->input('observaciones'),
+                ];
 
-            return redirect('/inventario/materiales')->with(['status' => 'Material creado!', 'context' => 'success']); 
-
+                $insertHerramientas = $this->Inventarios->createHerramientas($arrayHerramientas);
+                DB::commit();
+                return redirect('/inventario/herramientas')->with(['status' => 'Herramienta creada!', 'context' => 'success']);
+            }
         } catch (\Throwable $th) {
             DB::rollBack();
-            dd($th);
-            return redirect('/inventario/materiales')->with(['status' => 'No se pudo crear el material','context' => 'error']);
+            // dd($th);
+            return redirect('/inventario/herramientas')->with(['status' => 'No se pudo crear la herramienta','context' => 'error']);
         }
     }
 
@@ -102,9 +112,10 @@ class inventariosController extends Controller
 
     public function createHerramientas()
     {
-        $proveedores = [];
+        $proveedores = $this->Proveedores->getProveedores();
         return view('secciones.inventario.herramienta.nuevo', ['proveedores' => $proveedores]);
     }
+
 
     public function create()
     {

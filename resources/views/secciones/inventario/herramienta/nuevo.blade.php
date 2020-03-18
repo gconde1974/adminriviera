@@ -25,20 +25,25 @@ Inventario - Herramienta | Admin AEPSA Riviera
                     <h2>Agregar Herramienta</h2>
                 </div>
                 <div class="body">
-                    <form id="basic-form" method="post" novalidate action="#">  
+                    <form id="basic-form" method="post" novalidate action="{{route('inventario.producto.guardar')}}"> 
+                        @csrf 
+                        <input type="hidden" name="idTipoMovimiento" value="1"/>
+                        <input type="hidden" name="tipoProducto" value="2"/>
                         <div class="form-group">
                             <label>Proveedor</label>
-                            <select class="form-control show-tick ms select2" name="" data-placeholder="Select">                                
-                                <option value="#">sddsfdfa</option>
+                            <select class="form-control show-tick ms select2" name="idProveedor" data-placeholder="Select">                                
+                                @foreach ($proveedores as $proveedor)
+                                    <option value="{{$proveedor->idProveedores}}">{{$proveedor->nombre}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Nombre de Herramienta</label>
-                            <input type="text" class="form-control" name="" required>
+                            <input type="text" class="form-control" name="nombre" required>
                         </div>
                         <div class="form-group">
                             <label>Descripcion</label>
-                            <input type="text" class="form-control" name="" required>
+                            <input type="text" class="form-control" name="descripcion" required>
                         </div>
                         <div class="form-group mt-4">
                             <label>Costo unitario</label>
@@ -46,22 +51,22 @@ Inventario - Herramienta | Admin AEPSA Riviera
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input type="text" id="" class="form-control" value="">
+                                <input type="text" name="costoUnitario" class="form-control" value="">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Cantidad</label>
-                            <input type="text" class="form-control" name="" required>
+                            <label>Stock inicial</label>
+                            <input type="text" class="form-control" name="stockinicial" required>
                         </div>
                         <div class="form-group">
                             <label>Medida</label>
-                            <select class="form-control show-tick ms select2" name="" data-placeholder="Select">
+                            <select class="form-control show-tick ms select2" name="idUnidadMedida" data-placeholder="Select">
                                 <option value="2">Pza</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Observaciones</label>
-                            <input type="text" name="" class="form-control" required>
+                            <input type="text" name="observaciones" class="form-control" required>
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Guardar</button>
