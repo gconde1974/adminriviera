@@ -56,13 +56,7 @@ Inventario - Herramienta | Admin AEPSA Riviera
                         <div class="form-group">
                             <label>Medida</label>
                             <select class="form-control show-tick ms select2" name="" data-placeholder="Select">
-                                <option value="#">kg</option>    
-                                <option value="#">pza</option>
-                                <option value="#">litro</option>                                
-                                <option value="#">galon</option>
-                                <option value="#">cubeta</option>
-                                <option value="#">barril</option>
-                                <option value="#">totem</option>
+                                <option value="2">Pza</option>
                             </select>
                         </div>
                         <div class="form-group">

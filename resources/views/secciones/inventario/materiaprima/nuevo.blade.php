@@ -25,20 +25,23 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                     <h2>Agregar Materia Prima</h2>
                 </div>
                 <div class="body">
-                    <form id="basic-form" method="post" novalidate action="#">  
+                    <form id="basic-form" method="post" novalidate action="{{route('inventario.materiales.guardar')}}"> 
+                        @csrf 
                         <div class="form-group">
                             <label>Proveedor</label>
-                            <select class="form-control show-tick ms select2" name="" data-placeholder="Select">                                
-                                <option value="#">sddsfdfa</option>
+                            <select class="form-control show-tick ms select2" name="idProveedor" data-placeholder="Select">                                
+                                @foreach ($proveedores as $proveedor)
+                                    <option value="{{$proveedor->idProveedores}}">{{$proveedor->nombre}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Nombre de materia prima</label>
-                            <input type="text" class="form-control" name="" required>
+                            <input type="text" class="form-control" name="nombre" required>
                         </div>
                         <div class="form-group">
                             <label>Descripcion</label>
-                            <input type="text" class="form-control" name="" required>
+                            <input type="text" class="form-control" name="descripcion" required>
                         </div>
                         <div class="form-group mt-4">
                             <label>Costo unitario</label>
@@ -46,28 +49,22 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input type="text" id="" class="form-control" value="">
+                                <input type="number" id="" class="form-control" name="costoUnitario">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Cantidad</label>
-                            <input type="text" class="form-control" name="" required>
+                            <label>Stock inicial</label>
+                            <input type="text" class="form-control" name="stockinicial" required>
                         </div>
                         <div class="form-group">
                             <label>Medida</label>
-                            <select class="form-control show-tick ms select2" name="" data-placeholder="Select">
-                                <option value="#">kg</option>    
-                                <option value="#">pza</option>
-                                <option value="#">litro</option>                                
-                                <option value="#">galon</option>
-                                <option value="#">cubeta</option>
-                                <option value="#">barril</option>
-                                <option value="#">totem</option>
+                            <select class="form-control show-tick ms select2" name="idUnidadMedida" data-placeholder="Select">
+                                <option value="1">kg</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Observaciones</label>
-                            <input type="text" name="" class="form-control" required>
+                            <input type="text" name="observaciones" class="form-control" required>
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Guardar</button>

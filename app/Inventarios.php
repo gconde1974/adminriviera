@@ -38,4 +38,25 @@ class Inventarios extends Model
         return $movimientosProducto = DB::table('movimientoInventario')->where('idProducto', $idProducto)
                             ->get()->toArray();
     }
+
+
+    public function createProducto($arrayProducto)
+    {
+        return $proveedor = DB::table('producto')->insertGetId($arrayProducto);
+    }
+
+    public function createMaterial($arrayMaterial)
+    {
+        return $material = DB::table('materiales')->insert($arrayMaterial);
+    }
+
+    public function createMovimiento($arrayMovimiento)
+    {
+        return $movimiento = DB::table('movimientoInventario')->insertGetId($arrayMovimiento);
+    }
+
+    public function createProductoProveedor($arrayProductoProvee)
+    {
+        return $proveedor = DB::table('productoProveedores')->insert($arrayProductoProvee);
+    }
 }
