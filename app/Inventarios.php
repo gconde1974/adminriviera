@@ -24,7 +24,7 @@ class Inventarios extends Model
 
     public function getHerramientas()
     {
-        return $inventario = DB::table('producto')->where('tipoProducto', 1)
+        return $inventario = DB::table('producto')->where('tipoProducto', 2)
                 ->join('herramientas', 'herramientas.idProducto', '=', 'producto.idProducto')
                 ->join('productoProveedores', 'productoProveedores.idProducto', '=', 'producto.idProducto')
                 ->join('proveedores', 'productoProveedores.idProveedores', '=', 'proveedores.idProveedores')
