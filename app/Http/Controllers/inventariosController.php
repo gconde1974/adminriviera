@@ -142,8 +142,4 @@ class inventariosController extends Controller
         //
     }
 
-    public function destroy($id)
-    {
-        //
-    }
 }

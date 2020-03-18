@@ -15,24 +15,12 @@ Route::get('/', function () {
 });
 
 
-//revision
+//revision-- falta mejorar el pdf, con css simple
 Route::get('/pdfCotizacion', function () {
     return view('pdf.pdfCotizacion');
 });
 
 /* OBRAS */
-//revision
-Route::get('/listadoObras', function () {
-    return view('secciones.obras.listadoObras');
-});
-//revision
-Route::get('/detalleObra', function () {
-    return view('secciones.obras.detalleObra');
-});
-//revision
-Route::get('/seguimientoObra', function () {
-    return view('secciones.obras.seguimientoObra');
-});
 //revision
 Route::get('/gastosObra', function () {
     return view('secciones.obras.gastosObra');
@@ -68,20 +56,13 @@ Route::get('/usoHerramienta', function () {
 
 /* PERSONAL */
 
-//revision
+//revision - no hay nada en la vista aún.
 Route::get('/datoIndivPersonal', function () {
     return view('secciones.personal.datoIndivPersonal');
 });
 
 /* INVENTARIO HERRAMIENTAS */
-//revision
-Route::get('/listaGeneralHerramInvent', function () {
-    return view('secciones.inventario.herramienta.listaGeneralHerramInvent');
-});
-//revision
-Route::get('/nuevoHerramInvent', function () {
-    return view('secciones.inventario.herramienta.nuevoHerramInvent');
-});
+
 //revision
 Route::get('/entradaHerramInvent', function () {
     return view('secciones.inventario.herramienta.entradaHerramInvent');
@@ -94,20 +75,13 @@ Route::get('/salidaHerramInvent', function () {
 Route::get('/devolucionHerramInvent', function () {
     return view('secciones.inventario.herramienta.devolucionHerramInvent');
 });
-//revision
+//revision - no tiene nada la vista
 Route::get('/listaIndvHerramPrima', function () {
     return view('secciones.inventario.herramienta.listaIndvHerramPrima');
 });
 
 /* INVENTARIO MATERIA PRIMA */
-//revision
-Route::get('/listaGeneralMateriaInvent', function () {
-    return view('secciones.inventario.materiaprima.listaGeneralMateriaInvent');
-});
-//revision
-Route::get('/nuevoMateriaInvent', function () {
-    return view('secciones.inventario.materiaprima.nuevoMateriaInvent');
-});
+
 //revision
 Route::get('/entradaMateriaInvent', function () {
     return view('secciones.inventario.materiaprima.entradaMateriaInvent');
@@ -124,7 +98,6 @@ Route::get('/devolucionMateriaInvent', function () {
 Route::get('/listaIndvMateriaPrima', function () {
     return view('secciones.inventario.materiaprima.listaIndvMateriaPrima');
 });
-
 
 /* GASTOS */
 Route::get('/listaGastosGenerales', function () {
@@ -174,7 +147,6 @@ Route::prefix('obras')->group(function () {
     Route::get('/editar/{id}', 'obrasController@edit')->name('obras.editar');
     Route::post('/actualizar/{id}', 'obrasController@update')->name('obras.actualizar');
 });
-
 
 //Grupo de rutas para personal
 Route::prefix('personal')->group(function () {
