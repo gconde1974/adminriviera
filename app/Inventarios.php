@@ -14,7 +14,12 @@ class Inventarios extends Model
 
     public function getMateriales()
     {
-        return $inventario = DB::select('select * from materiales');
+        return $inventario = DB::table('producto')->where('tipoProducto', 1)
+                ->join('materiales', 'materiales.idProducto', '=', 'producto.idProducto')
+                ->join('productoProveedores', 'productoProveedores.idProducto', '=', 'producto.idProducto')
+                ->join('proveedores', 'productoProveedores.idProveedores', '=', 'proveedores.idProveedores')
+                ->select('producto.*','materiales.*', DB::raw('proveedores.nombre as proveedor'))
+                ->get()->toArray();
     }
 
     public function getHerramientas()

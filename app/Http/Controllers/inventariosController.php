@@ -27,6 +27,7 @@ class inventariosController extends Controller
     public function materiales()
     {
         $Listado = $this->Inventarios->getMateriales();
+        // dd($Listado);
         return view('secciones.inventario.materiaprima.listado', ['Listado' => $Listado]);
     }
 

@@ -41,12 +41,13 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($Listado as $item)
                                 <tr>
-                                    <td>asjfhdsaf</td>
-                                    <td>martillo</td>
-                                    <td>de goma</td>
-                                    <td>5</td>
-                                    <td>pza</td>
+                                    <td>{{$item->proveedor}}</td>
+                                    <td>{{$item->nombre}}</td>
+                                    <td>{{$item->descripcion}}</td>
+                                    <td>{{$item->stockActual}}</td>
+                                    <td>Kg</td>
                                     <td>
                                         <a href="#" class="btn btn-info">Entrada</a>
                                         <a href="#" class="btn btn-info">Salida</a>
@@ -54,6 +55,7 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                                         <a href="#" class="btn btn-warning">Detalle</a>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
