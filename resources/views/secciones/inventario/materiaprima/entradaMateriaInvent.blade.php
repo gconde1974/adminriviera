@@ -51,7 +51,7 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                                         <option>wsxedcdec</option>
                                     </select>
                                 </div> --}}
-                                <div class="mb-3">
+                                {{-- <div class="mb-3">
                                     <label>Nombre de materia prima</label>
                                     <select class="form-control show-tick ms select2" data-placeholder="Selecciona materia prima">
                                         <option></option>
@@ -59,16 +59,25 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                                         <option>bvnmvbnmbm</option>
                                         <option>wsxedcdec</option>
                                     </select>
+                                </div> --}}
+                                <div class="form-group">
+                                    <label>Proveedor</label>
+                                    <input type="text" class="form-control" value="Nombre" disabled>
+                                    <input type="hidden" value="" id="idProveedor" name="idProveedor">
                                 </div>
-                                <input type="hidden" value="" id="idProveedor" name="idProveedor">
+                                <div class="form-group">
+                                    <label>Nombre de materia prima</label>
+                                    <input type="text" class="form-control" value="Producto" disabled>
+                                    <input type="hidden" name="idProducto" class="form-control" value="1" >
+                                </div>
                                 <div class="form-group">
                                     <label>Cantidad</label>
-                                    <input type="text" class="form-control" name="" required>
+                                    <input type="text" class="form-control" name="cantidad" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Medida</label>
                                     <input type="text" class="form-control" value="Kg" disabled>
-                                    <input type="hidden" class="form-control" value="1" >
+                                    <input type="hidden" name="idUnidadMedida" class="form-control" value="1" >
                                 </div>
                                 <div class="form-group">
                                     <label>Costo unitario</label>
@@ -76,7 +85,7 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">$</span>
                                         </div>
-                                        <input type="text" id="" class="form-control" value="">
+                                        <input type="text" id="" class="form-control" name="costoUnitario" value="">
                                     </div>
                                 </div>
                                 <div class="form-group">
