@@ -27,7 +27,6 @@ class inventariosController extends Controller
     public function materiales()
     {
         $Listado = $this->Inventarios->getMateriales();
-        // dd($Listado);
         return view('secciones.inventario.materiaprima.listado', ['Listado' => $Listado]);
     }
 
@@ -35,6 +34,30 @@ class inventariosController extends Controller
     {
         $proveedores = $this->Proveedores->getProveedores();
         return view('secciones.inventario.materiaprima.nuevo', ['proveedores' => $proveedores]);
+    }
+
+    public function entradaMaterial()
+    {
+        $materiales = $this->Proveedores->getMateriales();
+        return view('secciones.inventario.materiaprima.nuevo', ['materiales' => $materiales]);
+    }
+
+    public function salidaMaterial()
+    {
+        $proveedores = $this->Proveedores->getProveedores();
+        return view('secciones.inventario.materiaprima.nuevo', ['proveedores' => $proveedores]);
+    }
+
+    public function herramientas()
+    {
+        $Listado = $this->Inventarios->getHerramientas();
+        return view('secciones.inventario.herramienta.listado', ['Listado' => $Listado]);
+    }
+
+    public function createHerramientas()
+    {
+        $proveedores = $this->Proveedores->getProveedores();
+        return view('secciones.inventario.herramienta.nuevo', ['proveedores' => $proveedores]);
     }
 
     public function storeProducto(Request $request)
@@ -104,40 +127,17 @@ class inventariosController extends Controller
         }
     }
 
-    public function herramientas()
-    {
-        $Listado = $this->Inventarios->getHerramientas();
-        return view('secciones.inventario.herramienta.listado', ['Listado' => $Listado]);
-    }
-
-    public function createHerramientas()
-    {
-        $proveedores = $this->Proveedores->getProveedores();
-        return view('secciones.inventario.herramienta.nuevo', ['proveedores' => $proveedores]);
-    }
-
-
-    public function create()
+    public function productoEntrada(Request $request)
     {
         //
     }
 
-    public function store(Request $request)
+    public function productoSalida(Request $request)
     {
         //
     }
 
-    public function show($id)
-    {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
+    public function productoDevolucion(Request $request)
     {
         //
     }

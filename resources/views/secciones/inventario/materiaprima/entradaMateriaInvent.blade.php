@@ -1,4 +1,4 @@
-@extends('layout.multiselector')
+@extends('layout.default')
 
 @section('titulo')
 Inventario - Materia Prima | Admin AEPSA Riviera
@@ -39,9 +39,10 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                 </div>
                 <div class="body">
                     <form id="basic-form" method="post" novalidate action="#">
+                        @csrf
                         <div class="row clearfix">
                             <div class="col-lg-12">
-                                <div class="mb-3">
+                                {{-- <div class="mb-3">
                                     <label>Proveedor</label>
                                     <select class="form-control show-tick ms select2" data-placeholder="Selecciona proveedor">
                                         <option></option>
@@ -49,7 +50,7 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                                         <option>bvnmvbnmbm</option>
                                         <option>wsxedcdec</option>
                                     </select>
-                                </div>
+                                </div> --}}
                                 <div class="mb-3">
                                     <label>Nombre de materia prima</label>
                                     <select class="form-control show-tick ms select2" data-placeholder="Selecciona materia prima">
@@ -59,13 +60,15 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                                         <option>wsxedcdec</option>
                                     </select>
                                 </div>
+                                <input type="hidden" value="" id="idProveedor" name="idProveedor">
                                 <div class="form-group">
                                     <label>Cantidad</label>
                                     <input type="text" class="form-control" name="" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Medida</label>
-                                    <input type="text" class="form-control" name="" disabled>
+                                    <input type="text" class="form-control" value="Kg" disabled>
+                                    <input type="hidden" class="form-control" value="1" >
                                 </div>
                                 <div class="form-group">
                                     <label>Costo unitario</label>
@@ -86,7 +89,7 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                         </div>
                     </form>
                     <!-- sin esta seccion el selector multiple no funciona -->
-                    <br><br>
+                    {{-- <br><br>
                     <div class="row clearfix">
                         <div class="col-lg-6 col-md-12">
                             <div id="nouislider_basic_example"></div>
@@ -94,7 +97,7 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                         <div class="col-lg-6 col-md-12">
                             <div id="nouislider_range_example"></div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- fin, sin esta seccion el selector multiple no funciona -->
                 </div>
             </div>
