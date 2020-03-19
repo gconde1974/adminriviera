@@ -4,6 +4,17 @@
 Inventario - Herramienta | Admin AEPSA Riviera
 @stop
 
+@section('css')
+<style>
+    .masherramienta{
+        background: #e6e6e6;
+        padding: 19px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+</style>
+@stop
+
 @section('contenido')
 <div class="container-fluid">
     <div class="block-header">
@@ -49,28 +60,31 @@ Inventario - Herramienta | Admin AEPSA Riviera
                                         <option>15 - Intumescente - av central cancun</option>
                                     </select>
                                 </div>
-                                <div class="mb-3">
-                                    <label>Nombre de herramienta</label>
-                                    <select class="form-control show-tick ms select2" data-placeholder="Selecciona materia prima">
-                                        <option></option>
-                                        <option>dfgdsfg</option>
-                                        <option>bvnmvbnmbm</option>
-                                        <option>wsxedcdec</option>
-                                    </select>
+                                <div class="masherramienta">
+                                    <div class="mb-3">
+                                        <label>Nombre de herramienta</label>
+                                        <select class="form-control show-tick ms select2" data-placeholder="Selecciona materia prima">
+                                            <option></option>
+                                            <option>dfgdsfg</option>
+                                            <option>bvnmvbnmbm</option>
+                                            <option>wsxedcdec</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Cantidad</label>
+                                        <input type="text" class="form-control" name="" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Medida</label>
+                                        <input type="text" class="form-control" name="" value="Kg" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Observaciones</label>
+                                        <input type="text" class="form-control" name="">
+                                    </div>
+                                    <br>
                                 </div>
-                                <div class="form-group">
-                                    <label>Cantidad</label>
-                                    <input type="text" class="form-control" name="" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Medida</label>
-                                    <input type="text" class="form-control" name="" value="Kg" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label>Observaciones</label>
-                                    <input type="text" class="form-control" name="">
-                                </div>
-                                <br>
+                                <button type="submit" class="btn btn-warning">Agregar herramienta</button>                                
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </div>
                         </div>

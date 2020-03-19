@@ -71,6 +71,7 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                                     <input type="text" class="form-control" name="">
                                 </div>
                                 <br>
+                                <button type="submit" class="btn btn-warning">Agregar material</button>
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </div>
                         </div>

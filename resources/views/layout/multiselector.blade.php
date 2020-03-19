@@ -25,6 +25,8 @@
 <!-- Select2 -->
 <link rel="stylesheet" href="{{ asset('assets/vendor/select2/select2.css') }}" />
 
+@yield('css')
+
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/color_skins.css') }}">
