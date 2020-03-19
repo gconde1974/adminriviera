@@ -49,9 +49,9 @@ Inventario - Herramienta | Admin AEPSA Riviera
                                         <td>{{$item->stockActual}}</td>
                                         <td>Pza</td>
                                         <td>
-                                            <a href="#" class="btn btn-info">Entrada</a>
-                                            <a href="#" class="btn btn-info">Salida</a>
-                                            <a href="#" class="btn btn-info">Devolucion</a>
+                                            <a href="{{route('inventario.herramientas.entrada', $item->idProducto)}}" class="btn btn-info">Entrada</a>
+                                            <a href="{{route('inventario.herramientas.salida', $item->idProducto)}}" class="btn btn-info">Salida</a>
+                                            <a href="{{route('inventario.herramientas.devolucion', $item->idProducto)}}" class="btn btn-info">Devolucion</a>
                                             <a href="#" class="btn btn-warning">Detalle</a>
                                         </td>
                                     </tr>

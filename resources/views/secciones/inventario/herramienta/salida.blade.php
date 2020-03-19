@@ -1,12 +1,12 @@
 @extends('layout.multiselector')
 
 @section('titulo')
-Inventario - Materia Prima | Admin AEPSA Riviera
+Inventario - Herramienta | Admin AEPSA Riviera
 @stop
 
 @section('css')
 <style>
-    .masmaterial{
+    .masherramienta{
         background: #e6e6e6;
         padding: 19px;
         border-radius: 10px;
@@ -33,7 +33,7 @@ Inventario - Materia Prima | Admin AEPSA Riviera
         <div class="col-md-12">
             <div class="card">
                 <div class="header">
-                    <h2>Salida de Materia Prima</h2>
+                    <h2>Salida de herramienta</h2>
                 </div>
 
                 <div class="body">
@@ -41,18 +41,18 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                         <div class="row clearfix">
                             <div class="col-lg-12">
                                 <div class="mb-3">
-                                    <label>Cliente</label>
-                                    <select class="form-control show-tick ms select2" data-placeholder="Selecciona cliente">
+                                    <label>ID personal - Nombre</label>
+                                    <select class="form-control show-tick ms select2" data-placeholder="Selecciona Id personal - Nombre">
                                         <option></option>
-                                        <option>Juan Perez</option>
-                                        <option>Ernesto</option>
-                                        <option>Rodrigo</option>
-                                        <option>Alberto</option>
+                                        <option>01 - Juan Perez</option>
+                                        <option>03 - Ernesto</option>
+                                        <option>15 - Rodrigo</option>
+                                        <option>29 - Alberto</option>
                                     </select>
                                 </div>
                                 <div class="mb-3">
                                     <label>Id Obra - Descripcion - Direccion</label>
-                                    <select class="form-control show-tick ms select2" data-placeholder="Selecciona ID obra - Descripcion - direccion">
+                                    <select class="form-control show-tick ms select2" data-placeholder="Selecciona Id obra - descripcion - direccion">
                                         <option></option>
                                         <option>4 - Espuma de poliuretano - av central cancun</option>
                                         <option>6 - Poliurea - av central cancun</option>
@@ -60,9 +60,9 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                                         <option>15 - Intumescente - av central cancun</option>
                                     </select>
                                 </div>
-                                <div class="masmaterial">
+                                <div class="masherramienta">
                                     <div class="mb-3">
-                                        <label>Nombre de materia prima</label>
+                                        <label>Nombre de herramienta</label>
                                         <select class="form-control show-tick ms select2" data-placeholder="Selecciona materia prima">
                                             <option></option>
                                             <option>dfgdsfg</option>
@@ -84,7 +84,7 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                                     </div>
                                     <br>
                                 </div>
-                                <button type="submit" class="btn btn-warning">Agregar material</button>
+                                <button type="submit" class="btn btn-warning">Agregar herramienta</button>                                
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </div>
                         </div>

@@ -179,6 +179,9 @@ Route::prefix('inventario')->group(function () {
     
     Route::get('/herramientas', 'inventariosController@herramientas')->name('inventario.herramientas');
     Route::get('/herramientas/nuevo', 'inventariosController@createHerramientas')->name('inventario.herramientas.nuevo');
+    Route::get('/herramientas/entrada/{id}', 'inventariosController@entradaHerramientas')->name('inventario.herramientas.entrada');
+    Route::get('/herramientas/salida/{id}', 'inventariosController@salidaHerramientas')->name('inventario.herramientas.salida');
+    Route::get('/herramientas/devolucion/{id}', 'inventariosController@devolucionHerramientas')->name('inventario.herramientas.devolucion');
     
 });
 
