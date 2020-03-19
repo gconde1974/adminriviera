@@ -49,9 +49,9 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                                     <td>{{$item->stockActual}}</td>
                                     <td>Kg</td>
                                     <td>
-                                        <a href="#" class="btn btn-info">Entrada</a>
-                                        <a href="#" class="btn btn-info">Salida</a>
-                                        <a href="#" class="btn btn-info">Devolucion</a>
+                                        <a href="{{route('inventario.materiales.entrada', $item->idProducto)}}" class="btn btn-info">Entrada</a>
+                                        <a href="{{route('inventario.materiales.salida', $item->idProducto)}}" class="btn btn-info">Salida</a>
+                                        <a href="{{route('inventario.materiales.devolucion', $item->idProducto)}}" class="btn btn-info">Devolucion</a>
                                         <a href="#" class="btn btn-warning">Detalle</a>
                                     </td>
                                 </tr>

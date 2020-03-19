@@ -173,7 +173,14 @@ Route::prefix('inventario')->group(function () {
     Route::get('/', 'inventariosController@index')->name('inventario.inventario');
     Route::get('/materiales', 'inventariosController@materiales')->name('inventario.materiales');
     Route::get('/materiales/nuevo', 'inventariosController@createMaterial')->name('inventario.materiales.nuevo');
+    Route::get('/materiales/entrada/{id}', 'inventariosController@entradaMaterial')->name('inventario.materiales.entrada');
+    Route::get('/materiales/salida/{id}', 'inventariosController@salidaMaterial')->name('inventario.materiales.salida');
+    Route::get('/materiales/devolucion/{id}', 'inventariosController@devolucionMaterial')->name('inventario.materiales.devolucion');
+    
     Route::post('/productos/guardar', 'inventariosController@storeProducto')->name('inventario.producto.guardar');
+    Route::post('/productos/entrada', 'inventariosController@productoEntrada')->name('inventario.producto.entrada');
+    Route::post('/productos/salida', 'inventariosController@productoSalida')->name('inventario.producto.salida');
+    Route::post('/productos/devolucion', 'inventariosController@productoDevolucion')->name('inventario.producto.devolucion');
     
     Route::get('/herramientas', 'inventariosController@herramientas')->name('inventario.herramientas');
     Route::get('/herramientas/nuevo', 'inventariosController@createHerramientas')->name('inventario.herramientas.nuevo');

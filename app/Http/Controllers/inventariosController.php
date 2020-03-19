@@ -36,16 +36,23 @@ class inventariosController extends Controller
         return view('secciones.inventario.materiaprima.nuevo', ['proveedores' => $proveedores]);
     }
 
-    public function entradaMaterial()
+    public function entradaMaterial($id)
     {
-        $materiales = $this->Proveedores->getMateriales();
-        return view('secciones.inventario.materiaprima.nuevo', ['materiales' => $materiales]);
+        // $materiales = $this->Inventarios->getMaterial($id);
+        $material = [];
+        return view('secciones.inventario.materiaprima.entrada', ['material' => $material]);
     }
 
     public function salidaMaterial()
     {
-        $proveedores = $this->Proveedores->getProveedores();
-        return view('secciones.inventario.materiaprima.nuevo', ['proveedores' => $proveedores]);
+        $material = [];
+        return view('secciones.inventario.materiaprima.salida', ['material' => $material]);
+    }
+
+    public function devolucionMaterial()
+    {
+        $material = [];
+        return view('secciones.inventario.materiaprima.devolucion', ['material' => $material]);
     }
 
     public function herramientas()
