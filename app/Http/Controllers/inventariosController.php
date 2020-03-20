@@ -38,9 +38,16 @@ class inventariosController extends Controller
 
     public function entradaMaterial($id)
     {
-        // $materiales = $this->Inventarios->getMaterial($id);
-        $material = [];
-        return view('secciones.inventario.materiaprima.entrada', ['material' => $material]);
+        try {
+            $material = $this->Inventarios->getMaterial($id);
+            
+            if($material){
+                return view('secciones.inventario.materiaprima.entrada', ['material' => $material]);
+            }
+            throw new \Exception("Error Processing Request", 1);
+        } catch (\Throwable $th) {
+            return redirect('/inventario/materiales')->with(['status' => 'Error al obtener la información','context' => 'error']);
+        }
     }
 
     public function salidaMaterial($id)
@@ -72,6 +79,7 @@ class inventariosController extends Controller
         // $materiales = $this->Inventarios->getHerramientas($id);
         $herramienta = [];
         return view('secciones.inventario.herramienta.entrada', ['herramienta' => $herramienta]);
+        
     }
 
     public function salidaHerramientas($id)
@@ -88,8 +96,8 @@ class inventariosController extends Controller
 
     public function storeProducto(Request $request)
     {
+        $tipoProducto = $request->input('tipoProducto');
         try {
-            $tipoProducto = $request->input('tipoProducto');
             DB::beginTransaction();
             //insert producto
             $arrayProducto = ['nombre' => $request->input('nombre'), 
@@ -148,14 +156,54 @@ class inventariosController extends Controller
             }
         } catch (\Throwable $th) {
             DB::rollBack();
-            // dd($th);
-            return redirect('/inventario/herramientas')->with(['status' => 'No se pudo crear la herramienta','context' => 'error']);
+            if($tipoProducto == 1) {
+                return redirect('/inventario/materiales')->with(['status' => 'No se pudo crear el material','context' => 'error']);
+            } else {
+                return redirect('/inventario/herramientas')->with(['status' => 'No se pudo crear la herramienta','context' => 'error']);
+            }
         }
     }
 
     public function productoEntrada(Request $request)
     {
-        //
+        $tipoProducto = $request->input('tipoProducto');
+        $stock = $request->input('stock');
+        $stockActual = $request->input('cantidad') + $stock;
+        $idProducto = $request->input('idProducto');
+
+        try {
+            dd($request->all());
+            DB::beginTransaction();
+
+            //insert movimiento inventario = entrada
+            $arrayMovimiento = ['idProducto' => $idProducto, 
+                'idTipoMovimiento' => $request->input('idTipoMovimiento'), //1 = entrada
+                'cantidad' => $request->input('cantidad'),
+                'stockActual' => $stockActual,
+                'idUnidadMedida' => $request->input('idUnidadMedida'),
+                'idDatoMovimiento' => $request->input('idProveedor'),
+                'costoUnitario' => $request->input('costoUnitario'),
+                'fecha' => date('Y-m-d'),
+                'entrada' => 1,
+            ];
+
+            $idMovimiento = $this->Inventarios->createMovimiento($arrayMovimiento);
+            $updateStock = $this->Inventarios->updateStockProducto($idProducto, $stock);
+            DB::commit();
+
+            if($tipoProducto == 1) {
+                return redirect('/inventario/materiales')->with(['status' => 'Salida de material creada!', 'context' => 'success']);
+            } else {
+                return redirect('/inventario/herramientas')->with(['status' => 'Salida de herramienta creada!', 'context' => 'success']);
+            }
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            if($tipoProducto == 1) {
+                return redirect('/inventario/materiales')->with(['status' => 'No se pudo crear la salida de material','context' => 'error']);
+            } else {
+                return redirect('/inventario/herramientas')->with(['status' => 'No se pudo crear la salida de herramienta','context' => 'error']);
+            }
+        }
     }
 
     public function productoSalida(Request $request)

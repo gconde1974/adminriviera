@@ -18,8 +18,18 @@ class Inventarios extends Model
                 ->join('materiales', 'materiales.idProducto', '=', 'producto.idProducto')
                 ->join('productoProveedores', 'productoProveedores.idProducto', '=', 'producto.idProducto')
                 ->join('proveedores', 'productoProveedores.idProveedores', '=', 'proveedores.idProveedores')
-                ->select('producto.*','materiales.*', DB::raw('proveedores.nombre as proveedor'))
+                ->select('producto.*','materiales.*', DB::raw('proveedores.idProveedores as idProveedor, proveedores.nombre as proveedor'))
                 ->get()->toArray();
+    }
+
+    public function getMaterial($idProducto)
+    {
+        return $inventario = DB::table('producto')->where('producto.idProducto', $idProducto)
+                ->join('materiales', 'materiales.idProducto', '=', 'producto.idProducto')
+                ->join('productoProveedores', 'productoProveedores.idProducto', '=', 'producto.idProducto')
+                ->join('proveedores', 'productoProveedores.idProveedores', '=', 'proveedores.idProveedores')
+                ->select('producto.*','materiales.*', DB::raw('proveedores.idProveedores as idProveedor, proveedores.nombre as proveedor'))
+                ->first();
     }
 
     public function getHerramientas()
@@ -53,6 +63,12 @@ class Inventarios extends Model
     public function createProducto($arrayProducto)
     {
         return $proveedor = DB::table('producto')->insertGetId($arrayProducto);
+    }
+
+    public function updateStockProducto($idProducto, $stock)
+    {
+        return $proveedor = DB::table('producto')->where('idProducto', $idProducto)
+                                ->update(['stockActual' => $stock]);
     }
 
     public function createMaterial($arrayMaterial)

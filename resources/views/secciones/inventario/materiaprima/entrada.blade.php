@@ -24,7 +24,7 @@ Inventario - Materia Prima | Admin AEPSA Riviera
             <div class="card">
                 <div class="header">
                     <h2>Entrada de Materia Prima</h2>
-                    <ul class="header-dropdown">
+                    {{-- <ul class="header-dropdown">
                         <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
                             <ul class="dropdown-menu">
                                 <li><a href="javascript:void(0);">Action</a></li>
@@ -35,10 +35,10 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                         <li class="remove">
                             <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
                         </li>
-                    </ul>
+                    </ul> --}}
                 </div>
                 <div class="body">
-                    <form id="basic-form" method="post" novalidate action="#">
+                    <form id="basic-form" method="post" novalidate action="inventario.producto.entrada">
                         @csrf
                         <div class="row clearfix">
                             <div class="col-lg-12">
@@ -62,17 +62,20 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                                 </div> --}}
                                 <div class="form-group">
                                     <label>Proveedor</label>
-                                    <input type="text" class="form-control" value="Nombre" disabled>
-                                    <input type="hidden" value="" id="idProveedor" name="idProveedor">
+                                    <input type="text" class="form-control" value="{{$material->proveedor}}" disabled>
+                                    <input type="hidden" value="{{$material->idProveedor}}" id="idProveedor" name="idProveedor">
+                                    <input type="hidden" name="idTipoMovimiento" value="1"/>
                                 </div>
                                 <div class="form-group">
                                     <label>Nombre de materia prima</label>
-                                    <input type="text" class="form-control" value="Producto" disabled>
-                                    <input type="hidden" name="idProducto" class="form-control" value="1" >
+                                    <input type="text" class="form-control" value="{{$material->nombre}}" disabled>
+                                    <input type="hidden" name="idProducto" class="form-control" value="{{$material->idProducto}}" >
+                                    <input type="hidden" name="stock" class="form-control" value="{{$material->stockActual}}" >
+                                    <input type="hidden" name="tipoProducto" class="form-control" value="{{$material->tipoProducto}}" >
                                 </div>
                                 <div class="form-group">
                                     <label>Cantidad</label>
-                                    <input type="text" class="form-control" name="cantidad" required>
+                                    <input type="number" class="form-control" step="0.01" min="1" name="cantidad" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Medida</label>
@@ -88,10 +91,10 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                                         <input type="text" id="" class="form-control" name="costoUnitario" value="">
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label>Observaciones</label>
                                     <input type="text" class="form-control" name="">
-                                </div>
+                                </div> --}}
                                 <br>
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </div>
@@ -99,7 +102,7 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                     </form>
                     <!-- sin esta seccion el selector multiple no funciona -->
                     {{-- <br><br>
-                    <div class="row clearfix">
+                    <div class="row clearfix" style="display:none">
                         <div class="col-lg-6 col-md-12">
                             <div id="nouislider_basic_example"></div>
                         </div>

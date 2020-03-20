@@ -51,12 +51,12 @@ Inventario - Herramienta | Admin AEPSA Riviera
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input type="text" name="costoUnitario" class="form-control" value="">
+                                <input type="number" step="0.01" name="costoUnitario" class="form-control" value="">
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Stock inicial</label>
-                            <input type="text" class="form-control" name="stockinicial" required>
+                            <input type="number" step="0.01" class="form-control" name="stockinicial" required>
                         </div>
                         <div class="form-group">
                             <label>Medida</label>
