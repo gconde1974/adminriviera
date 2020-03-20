@@ -38,7 +38,7 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                     </ul> --}}
                 </div>
                 <div class="body">
-                    <form id="basic-form" method="post" novalidate action="inventario.producto.entrada">
+                    <form id="basic-form" method="post" novalidate action="{{route('inventario.producto.entrada')}}">
                         @csrf
                         <div class="row clearfix">
                             <div class="col-lg-12">

@@ -172,7 +172,7 @@ class inventariosController extends Controller
         $idProducto = $request->input('idProducto');
 
         try {
-            dd($request->all());
+            // dd($stockActual);
             DB::beginTransaction();
 
             //insert movimiento inventario = entrada
@@ -188,7 +188,7 @@ class inventariosController extends Controller
             ];
 
             $idMovimiento = $this->Inventarios->createMovimiento($arrayMovimiento);
-            $updateStock = $this->Inventarios->updateStockProducto($idProducto, $stock);
+            $updateStock = $this->Inventarios->updateStockProducto($idProducto, $stockActual);
             DB::commit();
 
             if($tipoProducto == 1) {
