@@ -41,6 +41,10 @@ Cotizaciones | Admin AEPSA Riviera
                             <input type="text" class="form-control" value="{{$cliente->telefono}}" disabled>
                         </div>
                         <div class="form-group">
+                            <label>Título</label>
+                            <input type="text" class="form-control" value="IMPERMEABILIZACION PLANTA DE TRATAMIENTO" name="titulo">
+                        </div>
+                        <div class="form-group">
                             <label>Descripcion general</label>
                             <textarea class="form-control" rows="5" cols="30" name="desgeneral" required>Nos permitimos poner a su consideración la siguiente Cotización para el trabajo de Suministro y aplicación de Poliurea Espreada a 2mm de espesor para planta de tratamiento.</textarea>
                         </div>
@@ -56,7 +60,7 @@ Cotizaciones | Admin AEPSA Riviera
                                 <div class="col-lg-2 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label>Cantidad</label>
-                                        <textarea class="form-control" rows="3" name="cantidad[]" required>3,001.00</textarea>
+                                        <textarea class="form-control" rows="3" name="cantidad[]" required>3001.00</textarea>
                                     </div>        
                                 </div>
                                 <div class="col-lg-2 col-md-6 col-sm-12">

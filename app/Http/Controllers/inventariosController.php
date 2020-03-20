@@ -171,7 +171,6 @@ class inventariosController extends Controller
         $idProducto = $request->input('idProducto');
 
         try {
-            // dd($stockActual);
             DB::beginTransaction();
 
             //insert movimiento inventario = entrada

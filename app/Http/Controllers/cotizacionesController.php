@@ -55,7 +55,8 @@ class cotizacionesController extends Controller
             $precios = $request->has('pu') ? $request->input('pu') : [];
             $totales = $request->has('totalConcepto') ? $request->input('totalConcepto') : [];
 
-            $arrayCotizacion = ['descripcionGeneral' => $request->input('desgeneral'),
+            $arrayCotizacion = ['titulo' => $request->input('titulo'),
+                            'descripcionGeneral' => $request->input('desgeneral'),
                             'subtotal' => $request->input('subtotal'),
                             'iva' => $request->input('iva'),
                             'total' => $request->input('total'),
@@ -70,7 +71,7 @@ class cotizacionesController extends Controller
                             'idResponsableCotizacion' => $request->input('responsable'),
                         ];
             $idCotizacion = $this->Cotizaciones->createCotizacion($arrayCotizacion);
-            $arrayDetalle = []; //revisar el request para llenar el arreglo.
+            $arrayDetalle = []; 
             $descripcionArray = $request->has('concepto') ? $request->input('concepto') : [];
             foreach ($descripcionArray as $key => $value) {
                 $arrayDetalle[] = ['descripcion' => $value,
@@ -82,7 +83,7 @@ class cotizacionesController extends Controller
             }
 
             $detalle = $this->Cotizaciones->createDetalleCotizacion($arrayDetalle); //insertDetalles cot.
-            
+            //esta seccion guarda el pdf, pero necesita que este bien la vista que lo genera, para guardarse deifinivivamente.
             // $cotizacion = $this->Cotizaciones->getCotizacion($idCotizacion);
             // $detalleCotizacion = $this->Cotizaciones->getDetalleCotizacion($idCotizacion);
             // //guardar pdf al crear cotizacion
@@ -96,7 +97,6 @@ class cotizacionesController extends Controller
             return redirect('/cotizaciones')->with(['status' => 'Cotización creada!','context' => 'success']);
 
             //insert archivos?
-            //insert anticipos?
         } catch (\Throwable $th) {
             DB::rollBack();
             // dd($th);
@@ -118,7 +118,6 @@ class cotizacionesController extends Controller
                                 'anticipos' => $anticiposCotizacion
                             ];
             if($cotizacion){
-                // dd($arrayCotizacion);
                 $pdf=  \PDF::loadView('pdf.cotizacion', $arrayCotizacion);
                 return $pdf->download('cotizacion'.$id.'.pdf');
 
@@ -147,7 +146,6 @@ class cotizacionesController extends Controller
 
             throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {
-            // dd($th);
             return redirect()->route('cotizaciones.cotizaciones');
         }
     }

@@ -41,7 +41,7 @@
                         </div>
                         <div class="body">
                             <h3>Cotización: <strong class="text-primary">#{{$cotizacion->idCotizaciones}}</strong></h3>
-                            <h3>Descripcion: <strong class="text-primary">Impermeabilizacion planta de tratamiento</strong></h3>
+                            <h3>Descripcion: <strong class="text-primary">{{$cotizacion->titulo}}</strong></h3>
                             <p><b>Detalle general:</b> {{$cotizacion->descripcionGeneral}}</p>
                             <ul class="nav nav-tabs-new2">
                                 <li class="nav-item inlineblock"><a class="nav-link active" data-toggle="tab" href="#details" aria-expanded="true">Detalles</a></li>                                
