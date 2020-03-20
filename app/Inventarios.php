@@ -38,8 +38,18 @@ class Inventarios extends Model
                 ->join('herramientas', 'herramientas.idProducto', '=', 'producto.idProducto')
                 ->join('productoProveedores', 'productoProveedores.idProducto', '=', 'producto.idProducto')
                 ->join('proveedores', 'productoProveedores.idProveedores', '=', 'proveedores.idProveedores')
-                ->select('producto.*','herramientas.*', DB::raw('proveedores.nombre as proveedor'))
+                ->select('producto.*','herramientas.*', DB::raw('proveedores.idProveedores as idProveedor, proveedores.nombre as proveedor'))
                 ->get()->toArray();
+    }
+
+    public function getHerramienta($idProducto)
+    {
+        return $inventario = DB::table('producto')->where('producto.idProducto', $idProducto)
+                ->join('herramientas', 'herramientas.idProducto', '=', 'producto.idProducto')
+                ->join('productoProveedores', 'productoProveedores.idProducto', '=', 'producto.idProducto')
+                ->join('proveedores', 'productoProveedores.idProveedores', '=', 'proveedores.idProveedores')
+                ->select('producto.*','herramientas.*', DB::raw('proveedores.idProveedores as idProveedor, proveedores.nombre as proveedor'))
+                ->first();
     }
 
     public function getMovimientosInventario()

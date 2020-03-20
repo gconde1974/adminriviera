@@ -88,7 +88,7 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">$</span>
                                         </div>
-                                        <input type="text" id="" class="form-control" name="costoUnitario" value="">
+                                        <input type="number" class="form-control" step="0.01" name="costoUnitario" value="">
                                     </div>
                                 </div>
                                 {{-- <div class="form-group">

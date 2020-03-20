@@ -76,8 +76,7 @@ class inventariosController extends Controller
 
     public function entradaHerramientas($id)
     {
-        // $materiales = $this->Inventarios->getHerramientas($id);
-        $herramienta = [];
+        $herramienta = $this->Inventarios->getHerramienta($id);
         return view('secciones.inventario.herramienta.entrada', ['herramienta' => $herramienta]);
         
     }
