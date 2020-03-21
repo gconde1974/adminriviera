@@ -88,7 +88,7 @@ class Inventarios extends Model
 
     public function createHerramientas($arrayHerramienta)
     {
-        return $material = DB::table('herramientas')->insert($arrayHerramienta);
+        return $herramienta = DB::table('herramientas')->insert($arrayHerramienta);
     }
     
     public function createMovimiento($arrayMovimiento)
@@ -98,6 +98,11 @@ class Inventarios extends Model
 
     public function createProductoProveedor($arrayProductoProvee)
     {
-        return $proveedor = DB::table('productoProveedores')->insert($arrayProductoProvee);
+        return $insert = DB::table('productoProveedores')->insert($arrayProductoProvee);
+    }
+
+    public function createPersonalHerramienta($arrayPersonalHerramienta)
+    {
+        return $insert = DB::table('personalHerramientas')->insert($arrayPersonalHerramienta);
     }
 }

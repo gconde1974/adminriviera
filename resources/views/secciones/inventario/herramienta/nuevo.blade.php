@@ -56,7 +56,7 @@ Inventario - Herramienta | Admin AEPSA Riviera
                         </div>
                         <div class="form-group">
                             <label>Stock inicial</label>
-                            <input type="number" step="0.01" class="form-control" name="stockinicial" required>
+                            <input type="number" class="form-control" name="stockinicial" required>
                         </div>
                         <div class="form-group">
                             <label>Medida</label>
@@ -66,7 +66,7 @@ Inventario - Herramienta | Admin AEPSA Riviera
                         </div>
                         <div class="form-group">
                             <label>Observaciones</label>
-                            <input type="text" name="observaciones" class="form-control" required>
+                            <input type="text" name="observaciones" class="form-control">
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Guardar</button>

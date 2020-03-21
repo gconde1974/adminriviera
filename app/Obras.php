@@ -17,6 +17,17 @@ class Obras extends Model
                             ->get()->toArray();
     }
 
+    public function getObrasActivas(){
+        return $obras = DB::table('obras')
+                            ->join('cotizaciones', 'cotizaciones.idObras', '=', 'obras.idObras')
+                            ->join('clientes', 'cotizaciones.idClientes', '=', 'clientes.idClientes')
+                            ->leftJoin('estado', 'obras.idEstado', '=', 'estado.idEstado')
+                            ->leftJoin('ciudad', 'obras.idCiudad', '=', 'ciudad.idCiudad')
+                            ->select(DB::raw('obras.*, cotizaciones.*, clientes.nombre, clientes.telefono, clientes.correo, estado.nombre as estado, ciudad.nombre as ciudad'))
+                            ->where('fechaFinalObra', null)
+                            ->get()->toArray();
+    }
+
     public function getObra($idObra)
     {
         return $obra = DB::table('obras')->where('obras.idObras', $idObra)

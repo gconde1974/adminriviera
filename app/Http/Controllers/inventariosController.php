@@ -7,18 +7,21 @@ use Illuminate\Support\Facades\DB;
 use App\Inventarios;
 use App\Proveedores;
 use App\Personal;
+use App\Obras;
 
 class inventariosController extends Controller
 {
     protected $Inventarios;
     protected $Proveedores;
     protected $Personal;
+    protected $Obras;
 
-    public function __construct(Inventarios $inventarios, Proveedores $proveedores, Personal $personal){
+    public function __construct(Inventarios $inventarios, Proveedores $proveedores, Personal $personal, Obras $obras){
         $this->middleware('auth');
         $this->Inventarios = $inventarios;
         $this->Proveedores = $proveedores;
         $this->Personal = $personal;
+        $this->Obras = $obras;
     }
    
     public function index()
@@ -87,7 +90,8 @@ class inventariosController extends Controller
     {
         $herramienta = $this->Inventarios->getHerramienta($id);
         $ListadoPersonal = $this->Personal->getListadoPersonalActivo();
-        return view('secciones.inventario.herramienta.salida', ['herramienta' => $herramienta, 'ListadoPersonal' => $ListadoPersonal]);
+        $ListadoObras = $this->Obras->getObrasActivas();
+        return view('secciones.inventario.herramienta.salida', ['herramienta' => $herramienta, 'ListadoPersonal' => $ListadoPersonal, 'ListadoObras' => $ListadoObras]);
     }
 
     public function devolucionHerramientas($id)
@@ -209,7 +213,53 @@ class inventariosController extends Controller
 
     public function productoSalida(Request $request)
     {
-        //
+        $tipoProducto = $request->input('tipoProducto');
+        $stock = $request->input('stock');
+        $stockActual = $stock - $request->input('cantidad') ;
+        $idProducto = $request->input('idProducto');
+        $idObra = $request->input('idObra');
+        // dd($request->all());
+        try {
+            DB::beginTransaction();
+
+            //insert movimiento inventario = salida
+            $arrayMovimiento = ['idProducto' => $idProducto, 
+                'idTipoMovimiento' => $request->input('idTipoMovimiento'), //3 = salida obra
+                'cantidad' => $request->input('cantidad'),
+                'stockActual' => $stockActual,
+                'idUnidadMedida' => $request->input('idUnidadMedida'),
+                'idDatoMovimiento' => $idObra,
+                'fecha' => date('Y-m-d'),
+                'entrada' => 0, //salida
+            ];
+
+            $idMovimiento = $this->Inventarios->createMovimiento($arrayMovimiento);
+            $updateStock = $this->Inventarios->updateStockProducto($idProducto, $stockActual);
+            
+            //insert personalHerramientas
+            $arrayPersonalHerramienta = [ 'idPersonal' => $request->input('idPersonal'),
+                'idMovimientoInventario' => $idMovimiento,
+                'fecha' => date('Y-m-d'),
+                'idObras' => $idObra
+            ];
+
+            $insertPersonalHerramienta = $this->Inventarios->createPersonalHerramienta($arrayPersonalHerramienta);
+            DB::commit();
+
+            if($tipoProducto == 1) {
+                return redirect('/inventario/materiales')->with(['status' => 'Salida de material creada!', 'context' => 'success']);
+            } else {
+                return redirect('/inventario/herramientas')->with(['status' => 'Salida de herramienta creada!', 'context' => 'success']);
+            }
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            dd($th);
+            if($tipoProducto == 1) {
+                return redirect('/inventario/materiales')->with(['status' => 'No se pudo crear la salida de material','context' => 'error']);
+            } else {
+                return redirect('/inventario/herramientas')->with(['status' => 'No se pudo crear la salida de herramienta','context' => 'error']);
+            }
+        }
     }
 
     public function productoDevolucion(Request $request)

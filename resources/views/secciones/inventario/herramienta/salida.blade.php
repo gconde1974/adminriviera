@@ -37,51 +37,50 @@ Inventario - Herramienta | Admin AEPSA Riviera
                     <h2>Salida de herramienta</h2>
                 </div>
                 <div class="body">
-                    <form id="basic-form" method="post" novalidate action="#">
+                    <form id="basic-form" method="post" novalidate action="{{route('inventario.producto.salida')}}">
+                        @csrf
                         <div class="row clearfix">
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <label>ID personal - Nombre</label>
-                                    <select class="form-control show-tick ms select2" name="idPersonal" data-placeholder="Selecciona Id personal - Nombre">
+                                    <select class="form-control show-tick ms select2" name="idPersonal" data-placeholder="Selecciona Id personal - Nombre" required>
                                         <option></option>
                                         @foreach ($ListadoPersonal as $personal)
-                                            <option>{{$personal->idPersonal}} - {{$personal->nombre}}</option>
+                                            <option value="{{$personal->idPersonal}}">{{$personal->idPersonal}} - {{$personal->nombre}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="mb-3">
                                     <label>Id Obra - Descripcion - Direccion</label>
-                                    <select class="form-control show-tick ms select2" data-placeholder="Selecciona Id obra - descripcion - direccion">
+                                    <select class="form-control show-tick ms select2" name="idObra" data-placeholder="Selecciona Id obra - descripcion - cliente" required>
                                         <option></option>
-                                        <option>4 - Espuma de poliuretano - av central cancun</option>
-                                        <option>6 - Poliurea - av central cancun</option>
-                                        <option>8 - Cementicio - av central cancun</option>
-                                        <option>15 - Intumescente - av central cancun</option>
+                                        @foreach ($ListadoObras as $obra)
+                                            <option value="{{$obra->idObras}}">{{$obra->idObras}} - {{$obra->descripcionGeneral}} - {{$obra->nombre}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="masherramienta">
                                     <div class="mb-3">
                                         <label>Nombre de herramienta</label>
-                                        <select class="form-control show-tick ms select2" data-placeholder="Selecciona materia prima">
-                                            <option></option>
-                                            <option>dfgdsfg</option>
-                                            <option>bvnmvbnmbm</option>
-                                            <option>wsxedcdec</option>
-                                        </select>
+                                        <input type="text" class="form-control" name="nombre" value="{{$herramienta->nombre}}" disabled>
+                                        <input type="hidden" name="idProducto" class="form-control" value="{{$herramienta->idProducto}}" >
+                                        <input type="hidden" name="stock" class="form-control" value="{{$herramienta->stockActual}}" >
+                                        <input type="hidden" name="tipoProducto" class="form-control" value="{{$herramienta->tipoProducto}}" >
+                                        <input type="hidden" name="idTipoMovimiento" value="3"/>
                                     </div>
                                     <div class="form-group">
                                         <label>Cantidad</label>
-                                        <input type="text" class="form-control" name="" required>
+                                        <input type="number" max="{{$herramienta->stockActual}}" class="form-control" name="cantidad" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Medida</label>
-                                        <input type="text" class="form-control" name="" value="Kg" disabled>
+                                        <input type="text" class="form-control" name="unidad" value="Kg" disabled>
+                                        <input type="hidden" name="idUnidadMedida" class="form-control" value="2" >
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label>Observaciones</label>
                                         <input type="text" class="form-control" name="">
-                                    </div>
-                                    <br>
+                                    </div> --}}
                                 </div>
                                 <button type="submit" class="btn btn-warning">Agregar herramienta</button>                                
                                 <button type="submit" class="btn btn-primary">Guardar</button>

@@ -65,10 +65,9 @@
 
 <script src="{{ asset('assets/bundles/datatablescripts.bundle.js') }}"></script>
 
-<script src="{{ asset('assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js') }}"></script>
 <script src="{{ asset('assets/vendor/parsleyjs/js/parsley.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/toastr/toastr.js') }}"></script>
 
-<script src="{{ asset('assets/vendor/toastr/toastr.js') }}"></script> <!-- Select2 Js -->
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script> --}}
 

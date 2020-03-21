@@ -62,14 +62,7 @@ Route::get('/datoIndivPersonal', function () {
 });
 
 /* INVENTARIO HERRAMIENTAS */
-//revision
-Route::get('/entradaHerramInvent', function () {
-    return view('secciones.inventario.herramienta.entradaHerramInvent');
-});
-//revision
-Route::get('/salidaHerramInvent', function () {
-    return view('secciones.inventario.herramienta.salidaHerramInvent');
-});
+
 //revision
 Route::get('/devolucionHerramInvent', function () {
     return view('secciones.inventario.herramienta.devolucionHerramInvent');
