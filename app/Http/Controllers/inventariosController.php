@@ -237,8 +237,6 @@ class inventariosController extends Controller
             $idMovimiento = $this->Inventarios->createMovimiento($arrayMovimiento);
             $updateStock = $this->Inventarios->updateStockProducto($idProducto, $stockActual);
             
-            
-
             if($tipoProducto == 1) {
                 DB::commit();
                 return redirect('/inventario/materiales')->with(['status' => 'Salida de material creada!', 'context' => 'success']);
@@ -256,7 +254,6 @@ class inventariosController extends Controller
             }
         } catch (\Throwable $th) {
             DB::rollBack();
-            dd($th);
             if($tipoProducto == 1) {
                 return redirect('/inventario/materiales')->with(['status' => 'No se pudo crear la salida de material','context' => 'error']);
             } else {
