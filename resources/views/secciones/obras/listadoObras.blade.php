@@ -124,6 +124,15 @@ Obras | Admin AEPSA Riviera
             if(idObra !== undefined)
                 window.location.href = url
         });
+
+        $('.herramientasObra').click(function(){
+            var idObra = $("input[name=selectorObra]:checked" ).val();
+            url = '{{ route('obras.herramientas', 1) }}';
+            url = url.replace('1', idObra);
+
+            if(idObra !== undefined)
+                window.location.href = url
+        });
         
     });
 </script>

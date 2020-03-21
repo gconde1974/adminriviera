@@ -127,6 +127,16 @@ class obrasController extends Controller
 
     public function showHerramientas($id)
     {
+        try {
+            $obra = $this->Obras->getObra($id);
+            $herramientas = $this->getBitacoraObra($id); //cambiar
+            if($obra){
+                return view('secciones.obras.herramientaObra', ['obra' => $obra, 'herramientas' => $herramientas]);
+            }
+            throw new \Exception("Error Processing Request", 1);
+        } catch (\Throwable $th) {
+            return redirect()->route('obras.obras');
+        }
     }
 
     public function showVehiculos($id)
