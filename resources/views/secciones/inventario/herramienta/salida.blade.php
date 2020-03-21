@@ -74,7 +74,7 @@ Inventario - Herramienta | Admin AEPSA Riviera
                                     </div>
                                     <div class="form-group">
                                         <label>Medida</label>
-                                        <input type="text" class="form-control" name="unidad" value="Kg" disabled>
+                                        <input type="text" class="form-control" name="unidad" value="Pza" disabled>
                                         <input type="hidden" name="idUnidadMedida" class="form-control" value="2" >
                                     </div>
                                     {{-- <div class="form-group">

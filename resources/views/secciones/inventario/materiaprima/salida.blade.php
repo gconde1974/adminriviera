@@ -1,10 +1,12 @@
-@extends('layout.multiselector')
+@extends('layout.default')
 
 @section('titulo')
 Inventario - Materia Prima | Admin AEPSA Riviera
 @stop
 
 @section('css')
+<!-- Select2 -->
+<link rel="stylesheet" href="{{ asset('assets/vendor/select2/select2.css') }}" />
 <style>
     .masmaterial{
         background: #e6e6e6;
@@ -37,10 +39,11 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                 </div>
 
                 <div class="body">
-                    <form id="basic-form" method="post" novalidate action="#">
+                    <form id="basic-form" method="post" novalidate action="{{route('inventario.producto.salida')}}">
+                        @csrf
                         <div class="row clearfix">
                             <div class="col-lg-12">
-                                <div class="mb-3">
+                                {{-- <div class="mb-3">
                                     <label>Cliente</label>
                                     <select class="form-control show-tick ms select2" data-placeholder="Selecciona cliente">
                                         <option></option>
@@ -49,66 +52,52 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                                         <option>Rodrigo</option>
                                         <option>Alberto</option>
                                     </select>
-                                </div>
+                                </div> --}}
                                 <div class="mb-3">
                                     <label>Id Obra - Descripcion - Direccion</label>
-                                    <select class="form-control show-tick ms select2" data-placeholder="Selecciona ID obra - Descripcion - direccion">
+                                    <select class="form-control show-tick ms select2" name="idObra" data-placeholder="Selecciona Id obra - descripcion - cliente" required>
                                         <option></option>
-                                        <option>4 - Espuma de poliuretano - av central cancun</option>
-                                        <option>6 - Poliurea - av central cancun</option>
-                                        <option>8 - Cementicio - av central cancun</option>
-                                        <option>15 - Intumescente - av central cancun</option>
+                                        @foreach ($ListadoObras as $obra)
+                                            <option value="{{$obra->idObras}}">{{$obra->idObras}} - {{$obra->descripcionGeneral}} - {{$obra->nombre}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="masmaterial">
                                     <div class="mb-3">
                                         <label>Nombre de materia prima</label>
-                                        <select class="form-control show-tick ms select2" data-placeholder="Selecciona materia prima">
-                                            <option></option>
-                                            <option>dfgdsfg</option>
-                                            <option>bvnmvbnmbm</option>
-                                            <option>wsxedcdec</option>
-                                        </select>
+                                        <input type="text" class="form-control" name="nombre" value="{{$material->nombre}}" disabled>
+                                        <input type="hidden" name="idProducto" class="form-control" value="{{$material->idProducto}}" >
+                                        <input type="hidden" name="stock" class="form-control" value="{{$material->stockActual}}" >
+                                        <input type="hidden" name="tipoProducto" class="form-control" value="{{$material->tipoProducto}}" >
+                                        <input type="hidden" name="idTipoMovimiento" value="3"/>
                                     </div>
                                     <div class="form-group">
                                         <label>Cantidad</label>
-                                        <input type="text" class="form-control" name="" required>
+                                        <input type="number" step="0.01" max="{{$material->stockActual}}" class="form-control" name="cantidad" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Medida</label>
                                         <input type="text" class="form-control" name="" value="Kg" disabled>
+                                        <input type="hidden" name="idUnidadMedida" class="form-control" value="1" >
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label>Observaciones</label>
                                         <input type="text" class="form-control" name="">
-                                    </div>
-                                    <br>
+                                    </div> --}}
                                 </div>
                                 <button type="submit" class="btn btn-warning">Agregar material</button>
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </div>
                         </div>
                     </form>
-                    <!-- sin esta seccion el selector multiple no funciona -->
-                    <br><br>
-                    <div class="row clearfix">
-                        <div class="col-lg-6 col-md-12">
-                            <div id="nouislider_basic_example"></div>
-                        </div>
-                        <div class="col-lg-6 col-md-12">
-                            <div id="nouislider_range_example"></div>
-                        </div>
-                    </div>
-                    <!-- fin, sin esta seccion el selector multiple no funciona -->
                 </div>
-                
             </div>
         </div>
     </div>
-    
 </div>
 @stop
 
 @section('scripts')
-
+<script src="{{ asset('assets/vendor/select2/select2.min.js') }}"></script> <!-- Select2 Js -->
+<script src="{{ asset('assets/js/pages/forms/advanced-select2.js') }}"></script>
 @endsection

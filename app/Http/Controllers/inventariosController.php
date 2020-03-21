@@ -58,8 +58,10 @@ class inventariosController extends Controller
 
     public function salidaMaterial($id)
     {
-        $material = [];
-        return view('secciones.inventario.materiaprima.salida', ['material' => $material]);
+        $material = $this->Inventarios->getMaterial($id);
+        $ListadoObras = $this->Obras->getObrasActivas();
+
+        return view('secciones.inventario.materiaprima.salida', ['material' => $material, 'ListadoObras' => $ListadoObras]);
     }
 
     public function devolucionMaterial($id)
@@ -218,7 +220,6 @@ class inventariosController extends Controller
         $stockActual = $stock - $request->input('cantidad') ;
         $idProducto = $request->input('idProducto');
         $idObra = $request->input('idObra');
-        // dd($request->all());
         try {
             DB::beginTransaction();
 
@@ -236,19 +237,21 @@ class inventariosController extends Controller
             $idMovimiento = $this->Inventarios->createMovimiento($arrayMovimiento);
             $updateStock = $this->Inventarios->updateStockProducto($idProducto, $stockActual);
             
-            //insert personalHerramientas
-            $arrayPersonalHerramienta = [ 'idPersonal' => $request->input('idPersonal'),
-                'idMovimientoInventario' => $idMovimiento,
-                'fecha' => date('Y-m-d'),
-                'idObras' => $idObra
-            ];
-
-            $insertPersonalHerramienta = $this->Inventarios->createPersonalHerramienta($arrayPersonalHerramienta);
-            DB::commit();
+            
 
             if($tipoProducto == 1) {
+                DB::commit();
                 return redirect('/inventario/materiales')->with(['status' => 'Salida de material creada!', 'context' => 'success']);
             } else {
+                //insert personalHerramientas
+                $arrayPersonalHerramienta = [ 'idPersonal' => $request->input('idPersonal'),
+                    'idMovimientoInventario' => $idMovimiento,
+                    'fecha' => date('Y-m-d'),
+                    'idObras' => $idObra
+                ];
+
+                $insertPersonalHerramienta = $this->Inventarios->createPersonalHerramienta($arrayPersonalHerramienta);
+                DB::commit();
                 return redirect('/inventario/herramientas')->with(['status' => 'Salida de herramienta creada!', 'context' => 'success']);
             }
         } catch (\Throwable $th) {
