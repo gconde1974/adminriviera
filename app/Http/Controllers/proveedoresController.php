@@ -43,9 +43,10 @@ class proveedoresController extends Controller
     {
         try {
             $proveedor = $this->Proveedores->getProveedor($id);
+            $listaProductos = $this->Proveedores->getProductosProveedor($id);
             
             if($proveedor){
-                return view('secciones.proveedores.listaProductos', ['proveedor' => $proveedor]);
+                return view('secciones.proveedores.listaProductos', ['proveedor' => $proveedor, 'listaProductos' => $listaProductos]);
             }
             throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {

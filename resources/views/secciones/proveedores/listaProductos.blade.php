@@ -38,12 +38,14 @@ Proveedores | Admin AEPSA Riviera
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($listaProductos as $item)
                                 <tr>
-                                    <td>Lijas para esmeril</td>
-                                    <td>Lija del n° 7 cirular</td>
-                                    <td>250</td>
-                                    <td>el paquete consta de 10pzs</td>
+                                    <td>{{$item->nombre}}</td>
+                                    <td>{{$item->descripcion}}</td>
+                                    <td>${{$item->costo}}</td>
+                                    <td>{{$item->observaciones}}</td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
