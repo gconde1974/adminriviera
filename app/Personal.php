@@ -16,6 +16,16 @@ class Personal extends Model
                             ->get()->toArray();
     }
 
+    public function getListadoPersonalActivo()
+    {
+        return $personal = DB::table('personal')
+                            ->join('statusPersonal', 'personal.status', '=', 'statusPersonal.idStatusPersonal')
+                            ->join('puestos', 'personal.idPuestos', '=', 'puestos.idPuestos')
+                            ->select('personal.*', DB::raw('statusPersonal.descripcion as estatus, puestos.descripcion as puesto'))
+                            ->where('personal.status', '<>', 3)
+                            ->get()->toArray();
+    }
+
     public function getPersonal($idPersonal)
     {
         return $personal = DB::table('personal')->where('idPersonal', $idPersonal)

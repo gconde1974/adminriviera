@@ -6,16 +6,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Inventarios;
 use App\Proveedores;
+use App\Personal;
 
 class inventariosController extends Controller
 {
     protected $Inventarios;
     protected $Proveedores;
+    protected $Personal;
 
-    public function __construct(Inventarios $inventarios, Proveedores $proveedores){
+    public function __construct(Inventarios $inventarios, Proveedores $proveedores, Personal $personal){
         $this->middleware('auth');
         $this->Inventarios = $inventarios;
         $this->Proveedores = $proveedores;
+        $this->Personal = $personal;
     }
    
     public function index()
@@ -78,13 +81,13 @@ class inventariosController extends Controller
     {
         $herramienta = $this->Inventarios->getHerramienta($id);
         return view('secciones.inventario.herramienta.entrada', ['herramienta' => $herramienta]);
-        
     }
 
     public function salidaHerramientas($id)
     {
-        $herramienta = [];
-        return view('secciones.inventario.herramienta.salida', ['herramienta' => $herramienta]);
+        $herramienta = $this->Inventarios->getHerramienta($id);
+        $ListadoPersonal = $this->Personal->getListadoPersonalActivo();
+        return view('secciones.inventario.herramienta.salida', ['herramienta' => $herramienta, 'ListadoPersonal' => $ListadoPersonal]);
     }
 
     public function devolucionHerramientas($id)

@@ -1,10 +1,12 @@
-@extends('layout.multiselector')
+@extends('layout.default')
 
 @section('titulo')
 Inventario - Herramienta | Admin AEPSA Riviera
 @stop
 
 @section('css')
+<!-- Select2 -->
+<link rel="stylesheet" href="{{ asset('assets/vendor/select2/select2.css') }}" />
 <style>
     .masherramienta{
         background: #e6e6e6;
@@ -28,26 +30,23 @@ Inventario - Herramienta | Admin AEPSA Riviera
             </div>
         </div>
     </div>
-    
     <div class="row clearfix">
         <div class="col-md-12">
             <div class="card">
                 <div class="header">
                     <h2>Salida de herramienta</h2>
                 </div>
-
                 <div class="body">
                     <form id="basic-form" method="post" novalidate action="#">
                         <div class="row clearfix">
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <label>ID personal - Nombre</label>
-                                    <select class="form-control show-tick ms select2" data-placeholder="Selecciona Id personal - Nombre">
+                                    <select class="form-control show-tick ms select2" name="idPersonal" data-placeholder="Selecciona Id personal - Nombre">
                                         <option></option>
-                                        <option>01 - Juan Perez</option>
-                                        <option>03 - Ernesto</option>
-                                        <option>15 - Rodrigo</option>
-                                        <option>29 - Alberto</option>
+                                        @foreach ($ListadoPersonal as $personal)
+                                            <option>{{$personal->idPersonal}} - {{$personal->nombre}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="mb-3">
@@ -89,26 +88,14 @@ Inventario - Herramienta | Admin AEPSA Riviera
                             </div>
                         </div>
                     </form>
-                    <!-- sin esta seccion el selector multiple no funciona -->
-                    <br><br>
-                    <div class="row clearfix">
-                        <div class="col-lg-6 col-md-12">
-                            <div id="nouislider_basic_example"></div>
-                        </div>
-                        <div class="col-lg-6 col-md-12">
-                            <div id="nouislider_range_example"></div>
-                        </div>
-                    </div>
-                    <!-- fin, sin esta seccion el selector multiple no funciona -->
                 </div>
-                
             </div>
         </div>
     </div>
-    
 </div>
 @stop
 
 @section('scripts')
-
+<script src="{{ asset('assets/vendor/select2/select2.min.js') }}"></script> <!-- Select2 Js -->
+<script src="{{ asset('assets/js/pages/forms/advanced-select2.js') }}"></script>
 @endsection
