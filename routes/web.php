@@ -75,10 +75,6 @@ Route::get('/listaIndvHerramPrima', function () {
 /* INVENTARIO MATERIA PRIMA */
 
 //revision
-Route::get('/salidaMateriaInvent', function () {
-    return view('secciones.inventario.materiaprima.salidaMateriaInvent');
-});
-//revision
 Route::get('/devolucionMateriaInvent', function () {
     return view('secciones.inventario.materiaprima.devolucionMateriaInvent');
 });
