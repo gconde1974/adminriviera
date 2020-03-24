@@ -24,12 +24,11 @@ Obras | Admin AEPSA Riviera
                 <div class="header">
                     <h2>Lista de personal en Obra<small>Basic example without any additional modification classes</small></h2>
                     <br>
-                    <h2>ID cotizacion: 5</h2>
-                    <h2>ID cliente: 1042</h2>
-                    <h2>Nombre: juan perez</h2>
-                    <h2>Descripcion: espuma de poliuretano 1" en lamina para una nave</h2>
+                    <h2>ID cotizacion: {{$obra->idCotizaciones}}</h2>
+                    <h2>ID cliente: {{$obra->idClientes}}</h2>
+                    <h2>Nombre: {{$obra->nombre}}</h2>
+                    <h2>Descripcion: {{$obra->descripcionGeneral}}</h2>
                     <br>
-                    <!-- <a href="#" class="btn btn-primary">Nuevo cliente</a> -->
                     <a href="#" class="btn btn-info">Detalle de obra</a>
                     <a href="#" class="btn btn-info">Gastos de obra</a>
                     <a href="#" class="btn btn-info">Personal asignado</a>
@@ -37,7 +36,7 @@ Obras | Admin AEPSA Riviera
                     <a href="#" class="btn btn-info">Herramientas</a>
                     <a href="#" class="btn btn-info">Vehiculos</a>
                     <br><br>
-                    <a href="#" class="btn btn-primary">Asignacion de personal para obra</a>
+                    <a href="{{route('obras.personal.asignar', $obra->idObras)}}" class="btn btn-primary">Asignacion de personal para obra</a>
                 </div>
                
                 <div class="body">
@@ -52,30 +51,14 @@ Obras | Admin AEPSA Riviera
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($personal as $item)
                                 <tr>
-                                    <td>2020-03-24</td>
-                                    <td>56</td>
-                                    <td>Juan perez</td>
-                                    <td>Aplicador</td>
+                                    <td>{{$item->fecha}}</td>
+                                    <td>{{$item->idPersonal}}</td>
+                                    <td>{{$item->nombre}}</td>
+                                    <td>{{$item->puesto}}</td>
                                 </tr>
-                                <tr>
-                                    <td>2020-03-25</td>
-                                    <td>57</td>
-                                    <td>Juan perez</td>
-                                    <td>Aplicador</td>
-                                </tr>
-                                <tr>
-                                    <td>2020-03-26</td>
-                                    <td>58</td>
-                                    <td>Juan perez</td>
-                                    <td>Aplicador</td>
-                                </tr>
-                                <tr>
-                                    <td>2020-03-27</td>
-                                    <td>59</td>
-                                    <td>Juan perez</td>
-                                    <td>Aplicador</td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

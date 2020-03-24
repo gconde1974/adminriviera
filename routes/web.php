@@ -124,6 +124,9 @@ Route::prefix('obras')->group(function () {
     Route::get('/detalle/nuevo/{id}', 'obrasController@createBitacoraObra')->name('obras.bitacora');
     Route::post('/detalle/guardar', 'obrasController@saveBitacora')->name('obras.bitacora.guardar');
     Route::get('/personal/{id}', 'obrasController@showPersonal')->name('obras.personal');
+    Route::get('/asignarpersonal/{id}', 'obrasController@showAsignarPersonal')->name('obras.personal.asignar');
+    Route::post('/personal/guardar', 'obrasController@saveAsignarPersonal')->name('obras.personal.guardar');
+
     Route::get('/gastos/{id}', 'obrasController@showGastos')->name('obras.gastos');
     Route::get('/materiales/{id}', 'obrasController@showMateriales')->name('obras.materiales');
     Route::get('/herramientas/{id}', 'obrasController@showHerramientas')->name('obras.herramientas');

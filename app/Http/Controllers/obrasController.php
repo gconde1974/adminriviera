@@ -6,19 +6,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Obras;
+use App\Personal;
 use App\Cotizaciones;
 use App\Catalogos;
 
 class obrasController extends Controller
 {
     protected $Obras;
+    protected $Personal;
     protected $Cotizaciones;
     protected $Catalogos;
 
-    public function __construct(Obras $obras, Cotizaciones $cotizaciones, Catalogos $catalogos)
+    public function __construct(Obras $obras, Personal $personal, Cotizaciones $cotizaciones, Catalogos $catalogos)
     {
         $this->middleware('auth');
         $this->Obras = $obras;
+        $this->Personal = $personal;
         $this->Cotizaciones = $cotizaciones;
         $this->Catalogos = $catalogos;
     }
@@ -88,15 +91,55 @@ class obrasController extends Controller
         try {
             $obra = $this->Obras->getObra($id);
             $personal = $this->getObraPersonal($id);
+            // dd($personal);
             if($obra){
                 return view('secciones.obras.personalObra', ['obra' => $obra, 'personal' => $personal]);
             }
             throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {
-            return redirect()->route('obras.obras');
+            return redirect('/obras')->with(['status' => 'Error al obtener la información.', 'context' => 'error']);
         }
     }
 
+    public function showAsignarPersonal($id)
+    {
+        try {
+            $obra = $this->Obras->getObra($id);
+            $personal = $this->Personal->getListadoPersonalActivo();
+            if($obra){
+                return view('secciones.obras.asignarPersonal', ['obra' => $obra, 'personal' => $personal]);
+            }
+            throw new \Exception("Error Processing Request", 1);
+        } catch (\Throwable $th) {
+            return redirect('/obras/personal/'.$id)->with(['status' => 'Error al obtener la información.', 'context' => 'error']);
+        }
+    }
+
+    public function saveAsignarPersonal(Request $request)
+    {
+        $idObra = $request->input('idObra');
+        try {
+            DB::beginTransaction();
+            $arrayPersonalObra = [];
+            $personal = $request->input('personalAsignado');
+
+            foreach ($personal as $key => $value) {
+                $arrayPersonalObra[] = ['idObras' => $idObra,
+                'idPersonal' => $value,
+                'fecha' => date('Y-m-d'),
+                ];
+            }
+
+            $insert = $this->Obras->createObraPersonal($arrayPersonalObra);
+            DB::commit();
+
+            return redirect('/obras/personal/'.$idObra)->with(['status' => 'Asignacion de personal creada!', 'context' => 'success']);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect('/obras/personal/'.$idObra)->with(['status' => 'Error al asignar el personal!', 'context' => 'error']); 
+        }
+    }
+    
     public function showGastos($id)
     {
         try {
@@ -236,8 +279,8 @@ class obrasController extends Controller
 
     public function getObraPersonal($id)
     {
-        $bitacora = $this->Obras->getObraPersonal($id);
-        return $bitacora;
+        $personalObras = $this->Obras->getObraPersonal($id);
+        return $personalObras;
     }
 
     

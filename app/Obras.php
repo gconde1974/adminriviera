@@ -82,7 +82,12 @@ class Obras extends Model
 
     public function getObraPersonal($idObra)
     {
-        return $personalObra = DB::table('obrasPersonal')->where('idObras', $idObra)->get()->toArray();
+        return $personalObra = DB::table('obrasPersonal')->where('idObras', $idObra)
+                                ->join('personal', 'obrasPersonal.idPersonal', '=', 'personal.idPersonal')
+                                ->join('statusPersonal', 'personal.status', '=', 'statusPersonal.idStatusPersonal')
+                                ->join('puestos', 'personal.idPuestos', '=', 'puestos.idPuestos')
+                                ->select(DB::raw('obrasPersonal.*, personal.*, statusPersonal.descripcion as estatus, puestos.descripcion as puesto'))
+                                ->get()->toArray();
     }
 
     public function getObraVehiculos($idObra)
