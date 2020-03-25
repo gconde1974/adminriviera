@@ -29,7 +29,7 @@ class obrasController extends Controller
     public function index()
     {
         $obras = $this->Obras->getObras();
-        // dd($obras);
+        
         return view('secciones.obras.listadoObras', ['obras' => $obras]);
     }
 
@@ -76,7 +76,7 @@ class obrasController extends Controller
         try {
             $obra = $this->Obras->getObra($id);
             $bitacora = $this->getBitacoraObra($id);
-            // dd($bitacora);
+            
             if($obra){
                 return view('secciones.obras.detalleObra', ['obra' => $obra, 'bitacora' => $bitacora]);
             }
@@ -91,7 +91,7 @@ class obrasController extends Controller
         try {
             $obra = $this->Obras->getObra($id);
             $personal = $this->getObraPersonal($id);
-            // dd($personal);
+            
             if($obra){
                 return view('secciones.obras.personalObra', ['obra' => $obra, 'personal' => $personal]);
             }
@@ -158,7 +158,7 @@ class obrasController extends Controller
     {
         try {
             $obra = $this->Obras->getObra($id);
-            $materiales = $this->getBitacoraObra($id); //cambiar
+            $materiales = $this->Obras->getMaterialesObra($id);
             if($obra){
                 return view('secciones.obras.materiaPrimaObra', ['obra' => $obra, 'materiales' => $materiales]);
             }
@@ -167,6 +167,17 @@ class obrasController extends Controller
             return redirect()->route('obras.obras');
         }
     }
+
+    public function showAsignarMateriales($id)
+    {
+        return view('secciones.obras.asignacionMateriaPrimaObra', []);
+    }
+
+    public function showMaterialesUso($id)
+    {
+        return view('secciones.obras.usoMateriaPrima');
+    }
+    
 
     public function showHerramientas($id)
     {
@@ -216,7 +227,7 @@ class obrasController extends Controller
                     ];
 
             $updateObra = $this->Obras->updateObra($id, $arrayObra);
-            return redirect('/obras')->with(['status' => 'obra actualizada!', 'context' => 'success']); //cambiar vista
+            return redirect('/obras')->with(['status' => 'obra actualizada!', 'context' => 'success']);
         } catch (\Throwable $th) {
             return redirect()->route('obras.obras');
         }
@@ -230,7 +241,6 @@ class obrasController extends Controller
 
     public function createBitacoraObra($id)
     {
-        // $bitacora = $this->Obras->getBitacoraObra($id);
         return view('secciones.obras.seguimientoObra', ['id' => $id]);
     }
 

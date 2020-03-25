@@ -37,7 +37,7 @@ Obras | Admin AEPSA Riviera
                     <a href="#" class="btn btn-info">Herramientas</a>
                     <a href="#" class="btn btn-info">Vehiculos</a>
                     <br><br>
-                    <a href="#" class="btn btn-primary">Agregar materia prima a la obra</a>
+                    <a href="{{route('obras.materiales.asignar', $obra->idObras)}}" class="btn btn-primary">Agregar materia prima a la obra</a>
                 </div>
                
                 <div class="body">
@@ -49,71 +49,25 @@ Obras | Admin AEPSA Riviera
                                     <th>Producto</th>                                    
                                     <th>Cantidad</th>
                                     <th>Medida</th>
-                                    <th>Observaciones</th>
+                                    {{-- <th>Observaciones</th> --}}
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($materiales as $material)
                                 <tr>
-                                    <td>2020-03-24</td>
-                                    <td>ISO DE ESPUMA 101 (")</td>
-                                    <td>50</td>
-                                    <td>Kg</td>
-                                    <td>dfgsr asdd asdfd sdfasdf sdf</td>
+                                    <td>{{$material->fecha}}</td>
+                                    <td>{{$material->nombre}}</td>
+                                    <td>{{$material->cantidad}}</td>
+                                    <td>{{$material->unidad}}</td>
+                                    {{-- <td>{{$material->observaciones}}</td> --}}
                                     <td>
-                                        <a href="#" class="btn btn-info">Uso</a>
+                                        <a href="{{route('obras.materiales.uso', $obra->idObras)}}" class="btn btn-info">Uso</a>
                                         <a href="#" class="btn btn-info">Devolucion</a>
                                         <a href="#" class="btn btn-warning">Detalle</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2020-03-24</td>
-                                    <td>ISO DE ESPUMA 101 (")</td>
-                                    <td>50</td>
-                                    <td>Kg</td>
-                                    <td>dfgsr asdd asdfd sdfasdf sdf</td>
-                                    <td>
-                                        <a href="#" class="btn btn-info">Uso</a>
-                                        <a href="#" class="btn btn-info">Devolucion</a>
-                                        <a href="#" class="btn btn-warning">Detalle</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2020-03-24</td>
-                                    <td>ISO DE ESPUMA 101 (")</td>
-                                    <td>50</td>
-                                    <td>Kg</td>
-                                    <td>dfgsr asdd asdfd sdfasdf sdf</td>
-                                    <td>
-                                        <a href="#" class="btn btn-info">Uso</a>
-                                        <a href="#" class="btn btn-info">Devolucion</a>
-                                        <a href="#" class="btn btn-warning">Detalle</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2020-03-24</td>
-                                    <td>ISO DE ESPUMA 101 (")</td>
-                                    <td>50</td>
-                                    <td>Kg</td>
-                                    <td>dfgsr asdd asdfd sdfasdf sdf</td>
-                                    <td>
-                                        <a href="#" class="btn btn-info">Uso</a>
-                                        <a href="#" class="btn btn-info">Devolucion</a>
-                                        <a href="#" class="btn btn-warning">Detalle</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2020-03-24</td>
-                                    <td>ISO DE ESPUMA 101 (")</td>
-                                    <td>50</td>
-                                    <td>Kg</td>
-                                    <td>dfgsr asdd asdfd sdfasdf sdf</td>
-                                    <td>
-                                        <a href="#" class="btn btn-info">Uso</a>
-                                        <a href="#" class="btn btn-info">Devolucion</a>
-                                        <a href="#" class="btn btn-warning">Detalle</a>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

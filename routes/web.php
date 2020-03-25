@@ -29,14 +29,7 @@ Route::get('/gastosObra', function () {
 Route::get('/nuevoGastoObra', function () {
     return view('secciones.obras.nuevoGastoObra');
 });
-//revision
-Route::get('/personalObra', function () {
-    return view('secciones.obras.personalObra');
-});
-//revision
-Route::get('/asignacionPersonalObra', function () {
-    return view('secciones.obras.asignacionPersonalObra');
-});
+
 //revision
 Route::get('/materiaPrimaObra', function () {
     return view('secciones.obras.materiaPrimaObra');
@@ -78,7 +71,7 @@ Route::get('/listaIndvHerramPrima', function () {
 Route::get('/devolucionMateriaInvent', function () {
     return view('secciones.inventario.materiaprima.devolucionMateriaInvent');
 });
-//revision
+//revision - no tiene nada la vista
 Route::get('/listaIndvMateriaPrima', function () {
     return view('secciones.inventario.materiaprima.listaIndvMateriaPrima');
 });
@@ -128,7 +121,11 @@ Route::prefix('obras')->group(function () {
     Route::post('/personal/guardar', 'obrasController@saveAsignarPersonal')->name('obras.personal.guardar');
 
     Route::get('/gastos/{id}', 'obrasController@showGastos')->name('obras.gastos');
+
     Route::get('/materiales/{id}', 'obrasController@showMateriales')->name('obras.materiales');
+    Route::get('/materiales/uso/{id}', 'obrasController@showMaterialesUso')->name('obras.materiales.uso');
+    Route::get('/asignarmateriales/{id}', 'obrasController@showAsignarMateriales')->name('obras.materiales.asignar');
+
     Route::get('/herramientas/{id}', 'obrasController@showHerramientas')->name('obras.herramientas');
     Route::get('/vehiculos/{id}', 'obrasController@showVehiculos')->name('obras.vehiculos');
     Route::get('/editar/{id}', 'obrasController@edit')->name('obras.editar');

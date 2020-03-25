@@ -66,7 +66,7 @@ Inventario - Materia Prima | Admin AEPSA Riviera
                         </div>
                         <div class="form-group">
                             <label>Observaciones</label>
-                            <input type="text" name="observaciones" class="form-control" required>
+                            <input type="text" name="observaciones" class="form-control">
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Guardar</button>

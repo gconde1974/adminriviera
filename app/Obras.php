@@ -101,4 +101,24 @@ class Obras extends Model
                                 ->join('archivos', 'archivos.idArchivos', '=', 'bitacoraArchivos.idArchivos')
                                 ->get()->toArray();
     }
+
+    public function getMaterialesObra($idObra)
+    {
+        return $materiales = DB::table('movimientoInventario')->where('idTipoMovimiento', 3)->where('idDatoMovimiento', $idObra)
+                                ->join('producto', 'movimientoInventario.idProducto', '=', 'producto.idProducto')
+                                ->join('unidadMedida', 'movimientoInventario.idUnidadMedida', '=', 'unidadMedida.idUnidadMedida')
+                                ->select('producto.*','movimientoInventario.*', DB::raw('unidadMedida.simbolo as unidad'))
+                                ->where('tipoProducto', 1)
+                                ->get()->toArray();
+    }
+
+    // public function getHerramientasObra($idObra)
+    // {
+    //     return $materiales = DB::table('movimientoInventario')->where('idTipoMovimiento', 3)->where('idDatoMovimiento', $idObra)
+    //                             ->join('producto', 'movimientoInventario.idProducto', '=', 'producto.idProducto')
+    //                             ->join('unidadMedida', 'movimientoInventario.idUnidadMedida', '=', 'unidadMedida.idUnidadMedida')
+    //                             ->select('producto.*','movimientoInventario.*', DB::raw('unidadMedida.simbolo as unidad'))
+    //                             ->where('tipoProducto', 2)
+    //                             ->get()->toArray();
+    // }
 }
