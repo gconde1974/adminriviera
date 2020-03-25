@@ -17,7 +17,7 @@ class gastosController extends Controller
     public function index()
     {
         $gastos = $this->Gastos->getGastos();
-        return view('gastos.listado', ['gastos' => $gastos]); //cambiar vista
+        return view('secciones.gastos.listaGastosGenerales', ['gastos' => $gastos]);
     }
 
     public function create()

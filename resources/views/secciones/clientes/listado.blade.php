@@ -44,7 +44,7 @@ Clientes | Admin AEPSA Riviera
                                     <th>mts2</th>
                                     <th>Medio</th>
                                     <th>Accion</th>
-                                    <th>Alertas</th>
+                                    {{-- <th>Alertas</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,9 +66,9 @@ Clientes | Admin AEPSA Riviera
                                         <!-- <a href="{{route('cotizaciones.cliente', $cliente['idClientes']) }}" class="btn btn-warning">Cotizaciones</a> -->
                                         <a href="{{route('clientes.editar', $cliente['idClientes'])}}" class="btn btn-primary">Edicion</a>
                                     </td>
-                                    <td>
-                                        {{-- <a href="#" class="btn btn-outline-danger">Anticipo</a> --}}
-                                    </td>
+                                    {{-- <td>
+                                        <a href="#" class="btn btn-outline-danger">Anticipo</a>
+                                    </td> --}}
                                 </tr>
                                 @endforeach
                             </tbody>

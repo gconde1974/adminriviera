@@ -51,7 +51,7 @@
                             <li><a href="{{route('cotizaciones.cotizaciones')}}"><i class="icon-calculator"></i> <span>Cotizaciones</span></a></li>
                             
                             <li><a href="{{route('obras.obras')}}"><i class="fa fa-legal"></i> <span>Obras</span></a></li>
-                            <li><a href="#Dashboard"><i class="fa fa-money"></i> <span>Gastos</span></a></li>
+                            <li><a href="{{route('gastos.gastos')}}"><i class="fa fa-money"></i> <span>Gastos</span></a></li>
                             <li><a href="{{route('personal.personal')}}"><i class="fa fa-users"></i> <span>Personal</span></a></li>
                             <li><a href="#Dashboard"><i class="fa fa-truck"></i> <span>Vehiculos</span></a></li>
                             <li><a href="{{route('proveedores.proveedores')}}"><i class="fa fa-cubes"></i> <span>Proveedores</span></a></li>
