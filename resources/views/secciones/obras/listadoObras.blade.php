@@ -24,7 +24,6 @@ Obras | Admin AEPSA Riviera
                 <div class="header">
                     <h2>Listado general de Obras<small>Basic example without any additional modification classes</small></h2>
                     <br>
-                    <!-- <a href="#" class="btn btn-primary">Nuevo cliente</a> -->
                     <a href="javascript:void(0)" class="btn btn-info detalleObra">Detalle de obra</a>
                     <a href="javascript:void(0)" class="btn btn-info gastosObra">Gastos de obra</a>
                     <a href="javascript:void(0)" class="btn btn-info personalObra">Personal asignado</a>

@@ -153,6 +153,11 @@ class obrasController extends Controller
         }
     }
 
+    public function createGastos($id)
+    {
+        return view('secciones.obras.nuevoGastoObra', []);
+    }
+
     public function showMateriales($id)
     {
         try {

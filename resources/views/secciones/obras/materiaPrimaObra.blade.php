@@ -29,12 +29,11 @@ Obras | Admin AEPSA Riviera
                     <h2>Nombre: {{$obra->nombre}}</h2>
                     <h2>Descripcion: {{$obra->descripcionGeneral}}</h2>
                     <br>
-                    <!-- <a href="#" class="btn btn-primary">Nuevo cliente</a> -->
-                    <a href="#" class="btn btn-info">Detalle de obra</a>
-                    <a href="#" class="btn btn-info">Gastos de obra</a>
-                    <a href="#" class="btn btn-info">Personal asignado</a>
-                    <a href="#" class="btn btn-info">Materia prima</a>
-                    <a href="#" class="btn btn-info">Herramientas</a>
+                    <a href="{{ route('obras.detalle', $obra->idObras) }}" class="btn btn-info">Detalle de obra</a>
+                    <a href="{{ route('obras.gastos', $obra->idObras) }}" class="btn btn-info">Gastos de obra</a>
+                    <a href="{{ route('obras.personal', $obra->idObras) }}" class="btn btn-info">Personal asignado</a>
+                    <a href="{{ route('obras.materiales', $obra->idObras) }}" class="btn btn-info">Materia prima</a>
+                    <a href="{{ route('obras.herramientas', $obra->idObras) }}" class="btn btn-info">Herramientas</a>
                     <a href="#" class="btn btn-info">Vehiculos</a>
                     <br><br>
                     <a href="{{route('obras.materiales.asignar', $obra->idObras)}}" class="btn btn-primary">Agregar materia prima a la obra</a>
