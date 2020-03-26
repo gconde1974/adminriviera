@@ -112,13 +112,15 @@ class Obras extends Model
                                 ->get()->toArray();
     }
 
-    // public function getHerramientasObra($idObra)
-    // {
-    //     return $materiales = DB::table('movimientoInventario')->where('idTipoMovimiento', 3)->where('idDatoMovimiento', $idObra)
-    //                             ->join('producto', 'movimientoInventario.idProducto', '=', 'producto.idProducto')
-    //                             ->join('unidadMedida', 'movimientoInventario.idUnidadMedida', '=', 'unidadMedida.idUnidadMedida')
-    //                             ->select('producto.*','movimientoInventario.*', DB::raw('unidadMedida.simbolo as unidad'))
-    //                             ->where('tipoProducto', 2)
-    //                             ->get()->toArray();
-    // }
+    public function getHerramientasObra($idObra)
+    {
+        return $materiales = DB::table('movimientoInventario')->where('idTipoMovimiento', 3)->where('idDatoMovimiento', $idObra)
+                                ->join('producto', 'movimientoInventario.idProducto', '=', 'producto.idProducto')
+                                ->join('unidadMedida', 'movimientoInventario.idUnidadMedida', '=', 'unidadMedida.idUnidadMedida')
+                                ->join('personalHerramientas', 'movimientoInventario.idMovimientoInventario', '=', 'personalHerramientas.idMovimientoInventario')
+                                ->join('personal', 'personal.idPersonal', '=', 'personalHerramientas.idPersonal')
+                                ->select('producto.*','movimientoInventario.*', DB::raw('unidadMedida.simbolo as unidad, personal.nombre as responsable'))
+                                ->where('tipoProducto', 2)
+                                ->get()->toArray();
+    }
 }

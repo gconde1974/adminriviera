@@ -127,6 +127,8 @@ Route::prefix('obras')->group(function () {
     Route::get('/asignarmateriales/{id}', 'obrasController@showAsignarMateriales')->name('obras.materiales.asignar');
 
     Route::get('/herramientas/{id}', 'obrasController@showHerramientas')->name('obras.herramientas');
+    Route::get('/herramientas/uso/{id}', 'obrasController@showHerramientasUso')->name('obras.herramientas.uso');
+
     Route::get('/vehiculos/{id}', 'obrasController@showVehiculos')->name('obras.vehiculos');
     Route::get('/editar/{id}', 'obrasController@edit')->name('obras.editar');
     Route::post('/actualizar/{id}', 'obrasController@update')->name('obras.actualizar');

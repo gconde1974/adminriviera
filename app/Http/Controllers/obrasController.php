@@ -29,7 +29,6 @@ class obrasController extends Controller
     public function index()
     {
         $obras = $this->Obras->getObras();
-        
         return view('secciones.obras.listadoObras', ['obras' => $obras]);
     }
 
@@ -82,7 +81,7 @@ class obrasController extends Controller
             }
             throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {
-            return redirect()->route('obras.obras');
+            return redirect('/obras')->with(['status' => 'Error al obtener la información.', 'context' => 'error']);
         }
     }
 
@@ -164,7 +163,7 @@ class obrasController extends Controller
             }
             throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {
-            return redirect()->route('obras.obras');
+            return redirect('/obras')->with(['status' => 'Error al obtener la información.', 'context' => 'error']);
         }
     }
 
@@ -177,21 +176,26 @@ class obrasController extends Controller
     {
         return view('secciones.obras.usoMateriaPrima');
     }
-    
 
     public function showHerramientas($id)
     {
         try {
             $obra = $this->Obras->getObra($id);
-            $herramientas = $this->getBitacoraObra($id); //cambiar
+            $herramientas = $this->Obras->getHerramientasObra($id);
             if($obra){
                 return view('secciones.obras.herramientaObra', ['obra' => $obra, 'herramientas' => $herramientas]);
             }
             throw new \Exception("Error Processing Request", 1);
         } catch (\Throwable $th) {
-            return redirect()->route('obras.obras');
+            return redirect('/obras')->with(['status' => 'Error al obtener la información.', 'context' => 'error']);
         }
     }
+
+    public function showHerramientasUso($id)
+    {
+        return view('secciones.obras.usoHerramienta');
+    }
+    
 
     public function showVehiculos($id)
     {

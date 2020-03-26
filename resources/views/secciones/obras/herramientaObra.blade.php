@@ -24,10 +24,10 @@ Obras | Admin AEPSA Riviera
                 <div class="header">
                     <h2>Lista de herramienta de la Obra<small>Basic example without any additional modification classes</small></h2>
                     <br>
-                    <h2>ID cotizacion: 5</h2>
-                    <h2>ID cliente: 1042</h2>
-                    <h2>Nombre: juan perez</h2>
-                    <h2>Descripcion: espuma de poliuretano 1" en lamina para una nave</h2>
+                    <h2>ID cotizacion: {{$obra->idCotizaciones}}</h2>
+                    <h2>ID cliente: {{$obra->idClientes}}</h2>
+                    <h2>Nombre: {{$obra->nombre}}</h2>
+                    <h2>Descripcion: {{$obra->descripcionGeneral}}</h2>
                     <br>
                     <!-- <a href="#" class="btn btn-primary">Nuevo cliente</a> -->
                     <a href="#" class="btn btn-info">Detalle de obra</a>
@@ -45,75 +45,31 @@ Obras | Admin AEPSA Riviera
                         <table class="table table-bordered table-hover js-basic-example dataTable table-custom">
                             <thead>
                                 <tr>
+                                    <th>Fecha</th>
                                     <th>Nombre</th>
                                     <th>Cantidad</th>
                                     <th>Medida</th>
                                     <th>Responsable</th>
-                                    <th>Observaciones</th>
+                                    {{-- <th>Observaciones</th> --}}
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($herramientas as $herramienta)
                                 <tr>
-                                    <td>martillo</td>
-                                    <td>1</td>
-                                    <td>pza</td>
-                                    <td>Joel rodriguez</td>
-                                    <td>dfgsr asdd asdfd sdfasdf sdf</td>
+                                    <td>{{$herramienta->fecha}}</td>
+                                    <td>{{$herramienta->nombre}}</td>
+                                    <td>{{$herramienta->cantidad}}</td>
+                                    <td>{{$herramienta->unidad}}</td>
+                                    <td>{{$herramienta->responsable}}</td>
+                                    {{-- <td>{{$material->observaciones}}</td> --}}
                                     <td>
-                                        <a href="#" class="btn btn-info">Uso</a>
+                                        <a href="{{route('obras.herramientas.uso', $obra->idObras)}}" class="btn btn-info">Uso</a>
                                         <a href="#" class="btn btn-info">Devolucion</a>
                                         <a href="#" class="btn btn-warning">Detalle</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>martillo</td>
-                                    <td>1</td>
-                                    <td>pza</td>
-                                    <td>Joel rodriguez</td>
-                                    <td>dfgsr asdd asdfd sdfasdf sdf</td>
-                                    <td>
-                                        <a href="#" class="btn btn-info">Uso</a>
-                                        <a href="#" class="btn btn-info">Devolucion</a>
-                                        <a href="#" class="btn btn-warning">Detalle</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>martillo</td>
-                                    <td>1</td>
-                                    <td>pza</td>
-                                    <td>Joel rodriguez</td>
-                                    <td>dfgsr asdd asdfd sdfasdf sdf</td>
-                                    <td>
-                                        <a href="#" class="btn btn-info">Uso</a>
-                                        <a href="#" class="btn btn-info">Devolucion</a>
-                                        <a href="#" class="btn btn-warning">Detalle</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>martillo</td>
-                                    <td>1</td>
-                                    <td>pza</td>
-                                    <td>Joel rodriguez</td>
-                                    <td>dfgsr asdd asdfd sdfasdf sdf</td>
-                                    <td>
-                                        <a href="#" class="btn btn-info">Uso</a>
-                                        <a href="#" class="btn btn-info">Devolucion</a>
-                                        <a href="#" class="btn btn-warning">Detalle</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>martillo</td>
-                                    <td>1</td>
-                                    <td>pza</td>
-                                    <td>Joel rodriguez</td>
-                                    <td>dfgsr asdd asdfd sdfasdf sdf</td>
-                                    <td>
-                                        <a href="#" class="btn btn-info">Uso</a>
-                                        <a href="#" class="btn btn-info">Devolucion</a>
-                                        <a href="#" class="btn btn-warning">Detalle</a>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
