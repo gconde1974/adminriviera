@@ -122,6 +122,7 @@ Route::prefix('obras')->group(function () {
 
     Route::get('/gastos/{id}', 'obrasController@showGastos')->name('obras.gastos');
     Route::get('/gastos/nuevo/{id}', 'obrasController@createGastos')->name('obras.gastos.nuevo');
+    Route::post('/gastos/guardar', 'gastosController@store')->name('obras.gastos.guardar');
 
     Route::get('/materiales/{id}', 'obrasController@showMateriales')->name('obras.materiales');
     Route::get('/materiales/uso/{id}', 'obrasController@showMaterialesUso')->name('obras.materiales.uso');

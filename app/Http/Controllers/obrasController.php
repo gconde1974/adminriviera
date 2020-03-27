@@ -156,7 +156,8 @@ class obrasController extends Controller
     public function createGastos($id)
     {
         $personal = $this->Personal->getListadoPersonalActivo();
-        return view('secciones.obras.nuevoGastoObra', ['ListadoPersonal'=> $personal]);
+        $obra = $this->Obras->getObra($id);
+        return view('secciones.obras.nuevoGastoObra', ['obra' => $obra, 'ListadoPersonal'=> $personal]);
     }
 
     public function showMateriales($id)

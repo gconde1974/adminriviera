@@ -27,20 +27,20 @@ class gastosController extends Controller
 
     public function store(Request $request)
     {
+        $idObra = $request->input('idObra');
         try {
-            $arrayGasto = ['fecha' => $request->input('fecha'),
+            // dd($request->all());
+            $arrayGasto = ['fecha' => date('Y-m-d'),
                         'descripcion' => $request->input('descripcion'),
-                        'monto' => $request->input('total'),
+                        'monto' => $request->input('monto'),
                         'observaciones' => $request->input('observaciones'),
-                        'idObras' => $request->input('idObras'),
+                        'idObras' => $idObra,
                         'idPersonal' => $request->input('idPersonal'),
                     ];
             $nuevoGasto = $this->Gastos->createGasto($arrayGasto);
-            return redirect('/gastos')->with('status', 'gasto creado!'); //cambiar vista
-
-            // throw new \Exception("Error Processing Request", 1);
+            return redirect('/obras/gastos/'.$idObra)->with(['status' => 'Gasto creado!', 'context' => 'success']);
         } catch (\Throwable $th) {
-            return redirect()->route('gastos.gastos');
+            return redirect('/obras/gastos/'.$idObra)->with(['status' => 'Error al crear el gasto!', 'context' => 'error']);
         }
     }
 

@@ -31,35 +31,42 @@ Obras | Admin AEPSA Riviera
                         <h2>Nuevo gasto de obra</h2>
                     </div>
                     <div class="body">
-                        <div class="mb-3">
-                            <label>ID personal - Nombre</label>
-                            <select class="form-control show-tick ms select2" name="idPersonal" data-placeholder="Selecciona Id personal - Nombre" required>
-                                <option></option>
-                                @foreach ($ListadoPersonal as $personal)
-                                    <option value="{{$personal->idPersonal}}">{{$personal->idPersonal}} - {{$personal->nombre}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Descripcion</label>
-                            <textarea class="form-control" rows="5" cols="30" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Observaciones</label>
-                            <textarea class="form-control" rows="5" cols="30" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Monto</label>
-                            <textarea class="form-control" rows="5" cols="30" required></textarea>
-                        </div>
-                        <br>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <form id="basic-form" method="post" novalidate action="{{route('obras.gastos.guardar')}}"> 
+                            @csrf 
+                            <input type="hidden" name="idObra"  value="{{$obra->idObras}}" >
+                            <div class="mb-3">
+                                <label>ID personal - Nombre</label>
+                                <select class="form-control show-tick ms select2" name="idPersonal" data-placeholder="Selecciona Id personal - Nombre" required>
+                                    <option></option>
+                                    @foreach ($ListadoPersonal as $personal)
+                                        <option value="{{$personal->idPersonal}}">{{$personal->idPersonal}} - {{$personal->nombre}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Concepto</label>
+                                <input type="text" class="form-control" name="descripcion" required>
+                            </div>
+                            <div class="form-group mt-4">
+                                <label>Monto</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+                                    <input type="number" step="0.01" id="" class="form-control" name="monto" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Observaciones</label>
+                                <textarea class="form-control" rows="5" cols="30" name="observaciones" required></textarea>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </form>
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 </div>
 @stop
